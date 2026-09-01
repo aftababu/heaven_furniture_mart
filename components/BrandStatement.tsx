@@ -13,16 +13,24 @@ export const BrandStatement: React.FC = () => {
       id="about"
       className="relative w-full min-h-[85vh] lg:min-h-screen flex items-center overflow-hidden group py-20"
     >
-      {/* Background Image with Slow Motion Zoom */}
-      <div className="absolute inset-0 w-full h-full">
-        <img
-          src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=2000"
-          alt="High-end bespoke furniture interior"
-          className="object-cover w-full h-full transform transition-transform duration-[15s] ease-out scale-100 group-hover:scale-105 object-[60%_40%]"
-        />
-        {/* Tonal Color Overlays */}
-        <div className="absolute inset-0 bg-[#261C16]/65 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-[#1A2F2F]/40 mix-blend-overlay" />
+      {/* Background Cloudinary Brand Showcase Video */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=2000"
+          className="object-cover w-full h-full transform transition-transform duration-[15s] ease-out scale-100 group-hover:scale-105"
+        >
+          <source
+            src="https://res.cloudinary.com/dmglab5ej/video/upload/v1788277092/hackathon/heaven_furniture_mart_snni0t.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Tonal Color Overlays mapped to Client Palette */}
+        <div className="absolute inset-0 bg-[#34494A]/70 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[#4A3B31]/35 mix-blend-overlay" />
       </div>
 
       {/* Content Overlay */}
@@ -37,13 +45,13 @@ export const BrandStatement: React.FC = () => {
             className="flex items-center gap-4 mb-6"
           >
             <span className="h-px w-10 bg-[#C9A227]" />
-            <span className="font-hanken text-xs text-[#F2EFE9] uppercase tracking-[0.25em] font-bold">
+            <span className="font-hanken text-xs text-[#F4F1EA] uppercase tracking-[0.25em] font-bold">
               {t("approachEyebrow")}
             </span>
           </motion.div>
 
           {/* Headline Stagger */}
-          <div className="font-cormorant text-5xl sm:text-7xl lg:text-[88px] text-[#F2EFE9] leading-[1.1] mb-8 font-light">
+          <div className="font-cormorant text-5xl sm:text-7xl lg:text-[88px] text-[#F4F1EA] leading-[1.1] mb-8 font-light">
             <motion.span
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -79,7 +87,7 @@ export const BrandStatement: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="font-hanken text-base sm:text-lg text-[#F2EFE9]/90 max-w-lg mb-6 leading-relaxed"
+            className="font-hanken text-base sm:text-lg text-[#F4F1EA]/90 max-w-lg mb-6 leading-relaxed"
           >
             {t("approachSubtext")}
           </motion.p>
@@ -102,16 +110,16 @@ export const BrandStatement: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 1.2 }}
             href="#collections"
-            className="font-hanken text-xs uppercase tracking-[0.2em] font-semibold text-[#F2EFE9] hover:text-[#C9A227] flex items-center gap-3 border-b border-[#F2EFE9] pb-2 hover:border-[#C9A227] transition-all"
+            className="font-hanken text-xs uppercase tracking-[0.2em] font-semibold text-[#F4F1EA] hover:text-[#C9A227] flex items-center gap-3 border-b border-[#F4F1EA] pb-2 hover:border-[#C9A227] transition-all group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
           >
             <span>{t("approachCta")}</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
           </motion.a>
         </div>
       </div>
 
       {/* Bottom Scroll Cue */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-[#F2EFE9]/70">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-[#F4F1EA]/70">
         <span className="font-hanken text-[9px] uppercase tracking-[0.25em] font-semibold">
           {t("scrollDiscover")}
         </span>

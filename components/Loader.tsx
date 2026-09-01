@@ -26,7 +26,6 @@ export const Loader: React.FC = () => {
         const screenCenterY = window.innerHeight / 2;
         setTargetDeltaY(targetCenterY - screenCenterY);
       } else {
-        // Fallback default calculation based on screen height
         setTargetDeltaY(-(window.innerHeight / 2 - (isMobile ? 32 : 44)));
       }
     };
@@ -34,7 +33,6 @@ export const Loader: React.FC = () => {
     calculateDelta();
     window.addEventListener("resize", calculateDelta);
 
-    // Timeline: 0.3s hold centered -> 1.5s smooth transition to header position -> 0.4s fade overlay out
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, 2200);
@@ -54,7 +52,7 @@ export const Loader: React.FC = () => {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.4, ease: "easeOut" } }}
-          className="fixed inset-0 z-[9999] bg-[#FAF7F2] flex items-center justify-center pointer-events-none select-none overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-[#F4F1EA] flex items-center justify-center pointer-events-none select-none overflow-hidden"
         >
           {/* THE SINGLE ANIMATING HEAVEN LOGO ELEMENT */}
           <motion.div
@@ -71,10 +69,10 @@ export const Loader: React.FC = () => {
             }}
             className="text-center flex flex-col items-center justify-center transform-gpu origin-center"
           >
-            <h1 className="font-bodoni text-3xl sm:text-4xl lg:text-5xl tracking-normal text-[#382C24] block uppercase leading-none">
+            <h1 className="font-bodoni text-3xl sm:text-4xl lg:text-5xl tracking-normal text-[#4A3B31] block uppercase leading-none">
               HEAVEN
             </h1>
-            <span className="font-hanken text-[9px] sm:text-[10px] tracking-[0.25em] text-[#A88849] uppercase mt-1 font-bold">
+            <span className="font-hanken text-[9px] sm:text-[10px] tracking-[0.25em] text-[#C9A227] uppercase mt-1 font-bold">
               {t("brandSubtitle")}
             </span>
           </motion.div>

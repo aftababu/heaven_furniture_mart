@@ -47,7 +47,7 @@ export const Collections: React.FC<CollectionsProps> = ({ onOpenConsultationWith
   const { t } = useLanguage();
 
   return (
-    <section id="collections" className="py-24 sm:py-32 bg-[#EFECE5] relative">
+    <section id="collections" className="py-24 sm:py-32 bg-[#EBE5DA] relative">
       <div className="max-w-[1600px] mx-auto px-6 sm:px-12">
         {/* Section Thin Editorial Display Headline (SangBleu Sunrise 300 Light) */}
         <motion.h2
@@ -55,7 +55,7 @@ export const Collections: React.FC<CollectionsProps> = ({ onOpenConsultationWith
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-sangbleu-sunrise font-light text-4xl sm:text-6xl md:text-7xl lg:text-[80px] text-center text-[#382C24] mb-16 sm:mb-24 tracking-tight leading-tight"
+          className="font-sangbleu-sunrise font-light text-4xl sm:text-6xl md:text-7xl lg:text-[80px] text-center text-[#4A3B31] mb-16 sm:mb-24 tracking-tight leading-tight"
         >
           {t("collectionsHeadline")}
         </motion.h2>
@@ -74,7 +74,7 @@ export const Collections: React.FC<CollectionsProps> = ({ onOpenConsultationWith
               rel="noopener noreferrer"
               className="group flex flex-col items-center cursor-pointer"
             >
-              <div className="w-full aspect-[3/4] sm:aspect-[9/16] lg:aspect-[3/5] overflow-hidden mb-6 bg-[#382C24]/5 rounded-sm border border-[#382C24]/10 shadow-sm relative">
+              <div className="w-full aspect-[3/4] sm:aspect-[9/16] lg:aspect-[3/5] overflow-hidden mb-6 bg-[#4A3B31]/5 rounded-sm border border-[#C9A882]/40 shadow-sm relative">
                 <img
                   src={cat.img}
                   alt={t(cat.key)}
@@ -83,7 +83,7 @@ export const Collections: React.FC<CollectionsProps> = ({ onOpenConsultationWith
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </div>
 
-              <div className="flex items-center gap-2 text-[#382C24] group-hover:text-[#C9A227] transition-colors duration-300">
+              <div className="flex items-center gap-2 text-[#4A3B31] group-hover:text-[#C9A227] transition-colors duration-300">
                 <span className="font-hanken text-sm font-bold tracking-[0.2em] uppercase">
                   {t(cat.key)}
                 </span>

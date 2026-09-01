@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { X, Phone, MessageCircleCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, MessageCircleCheck, Phone } from "lucide-react";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -46,18 +46,18 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-[#34494A]/60 backdrop-blur-sm">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="relative w-full max-w-xl bg-[#F2EFE9] border border-[#382C24]/20 rounded-2xl shadow-2xl p-6 sm:p-10 overflow-hidden"
+          className="relative w-full max-w-xl bg-[#F4F1EA] border border-[#C9A882]/30 rounded-2xl shadow-2xl p-6 sm:p-10 overflow-hidden"
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 rounded-full text-[#382C24] hover:bg-[#382C24]/10 transition-colors"
+            className="absolute top-6 right-6 p-2 rounded-full text-[#4A3B31] hover:bg-[#4A3B31]/10 transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A227]"
           >
             <X className="w-5 h-5" />
           </button>
@@ -65,30 +65,30 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
           {submitted ? (
             <div className="text-center py-12 flex flex-col items-center">
               <MessageCircleCheck className="w-16 h-16 text-[#C9A227] mb-4 animate-bounce" />
-              <h3 className="font-cormorant text-4xl text-[#382C24] mb-2 font-bold">
+              <h3 className="font-cormorant text-4xl text-[#4A3B31] mb-2 font-bold">
                 Thank You!
               </h3>
-              <p className="font-hanken text-sm text-[#382C24]/80">
+              <p className="font-hanken text-sm text-[#4A3B31]/80">
                 Opening WhatsApp to connect directly with our design artisan...
               </p>
             </div>
           ) : (
             <div>
               <div className="mb-8">
-                <span className="font-hanken text-[10px] text-[#A88849] uppercase tracking-[0.25em] font-bold block mb-1">
+                <span className="font-hanken text-[10px] text-[#C9A227] uppercase tracking-[0.25em] font-bold block mb-1">
                   HEAVEN FURNITURE MART
                 </span>
-                <h3 className="font-cormorant text-3xl sm:text-4xl text-[#382C24] font-light">
+                <h3 className="font-cormorant text-3xl sm:text-4xl text-[#4A3B31] font-light">
                   {t("modalTitle")}
                 </h3>
-                <p className="font-hanken text-xs sm:text-sm text-[#382C24]/70 mt-1">
+                <p className="font-hanken text-xs sm:text-sm text-[#4A3B31]/70 mt-1">
                   {t("modalSubtitle")}
                 </p>
               </div>
 
               <form onSubmit={handleWhatsAppSend} className="space-y-4">
                 <div>
-                  <label className="block font-hanken text-xs text-[#382C24] uppercase tracking-wider font-bold mb-1">
+                  <label className="block font-hanken text-xs text-[#4A3B31] uppercase tracking-wider font-bold mb-1">
                     {t("fullName")} *
                   </label>
                   <input
@@ -97,12 +97,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Abul Kalam"
-                    className="w-full px-4 py-3 bg-white/70 border border-[#382C24]/20 rounded-md font-hanken text-sm text-[#382C24] focus:outline-none focus:border-[#C5A059]"
+                    className="w-full px-4 py-3 bg-white/70 border border-[#C9A882]/40 rounded-md font-hanken text-sm text-[#4A3B31] focus:outline-none focus:border-[#C9A227]"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-hanken text-xs text-[#382C24] uppercase tracking-wider font-bold mb-1">
+                  <label className="block font-hanken text-xs text-[#4A3B31] uppercase tracking-wider font-bold mb-1">
                     {t("phone")} *
                   </label>
                   <input
@@ -111,19 +111,19 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+880 1700-000000"
-                    className="w-full px-4 py-3 bg-white/70 border border-[#382C24]/20 rounded-md font-hanken text-sm text-[#382C24] focus:outline-none focus:border-[#C5A059]"
+                    className="w-full px-4 py-3 bg-white/70 border border-[#C9A882]/40 rounded-md font-hanken text-sm text-[#4A3B31] focus:outline-none focus:border-[#C9A227]"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-hanken text-xs text-[#382C24] uppercase tracking-wider font-bold mb-1">
+                    <label className="block font-hanken text-xs text-[#4A3B31] uppercase tracking-wider font-bold mb-1">
                       {t("furnitureType")}
                     </label>
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full px-4 py-3 bg-white/70 border border-[#382C24]/20 rounded-md font-hanken text-sm text-[#382C24] focus:outline-none focus:border-[#C5A059]"
+                      className="w-full px-4 py-3 bg-white/70 border border-[#C9A882]/40 rounded-md font-hanken text-sm text-[#4A3B31] focus:outline-none focus:border-[#C9A227]"
                     >
                       <option value="Living / Sofa">Living / Sofa</option>
                       <option value="Bedroom / Bed Set">Bedroom / Bed Set</option>
@@ -134,13 +134,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </div>
 
                   <div>
-                    <label className="block font-hanken text-xs text-[#382C24] uppercase tracking-wider font-bold mb-1">
+                    <label className="block font-hanken text-xs text-[#4A3B31] uppercase tracking-wider font-bold mb-1">
                       {t("woodPreference")}
                     </label>
                     <select
                       value={material}
                       onChange={(e) => setMaterial(e.target.value)}
-                      className="w-full px-4 py-3 bg-white/70 border border-[#382C24]/20 rounded-md font-hanken text-sm text-[#382C24] focus:outline-none focus:border-[#C5A059]"
+                      className="w-full px-4 py-3 bg-white/70 border border-[#C9A882]/40 rounded-md font-hanken text-sm text-[#4A3B31] focus:outline-none focus:border-[#C9A227]"
                     >
                       <option value="Solid Teak Wood (সেগুন)">Solid Teak Wood (সেগুন)</option>
                       <option value="Premium Mahogany (মেহগনি)">Premium Mahogany (মেহগনি)</option>
@@ -151,7 +151,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block font-hanken text-xs text-[#382C24] uppercase tracking-wider font-bold mb-1">
+                  <label className="block font-hanken text-xs text-[#4A3B31] uppercase tracking-wider font-bold mb-1">
                     {t("detailsMessage")}
                   </label>
                   <textarea
@@ -159,18 +159,20 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     placeholder="Tell us about room dimensions or custom design preferences..."
-                    className="w-full px-4 py-3 bg-white/70 border border-[#382C24]/20 rounded-md font-hanken text-sm text-[#382C24] focus:outline-none focus:border-[#C5A059]"
+                    className="w-full px-4 py-3 bg-white/70 border border-[#C9A882]/40 rounded-md font-hanken text-sm text-[#4A3B31] focus:outline-none focus:border-[#C9A227]"
                   />
                 </div>
 
                 <div className="pt-4 flex flex-col gap-3">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-[#25D366] text-white py-4 px-6 rounded-md font-hanken text-xs uppercase tracking-[0.15em] font-bold hover:bg-[#1ebd59] transition-all flex items-center justify-center gap-2 shadow-lg"
+                    className="w-full bg-[#34494A] text-[#F4F1EA] hover:bg-[#C9A227] hover:text-[#34494A] py-4 px-6 rounded-md font-hanken text-xs uppercase tracking-[0.15em] font-bold transition-all flex items-center justify-center gap-2 shadow-lg focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                   >
-                    <Phone className="w-4 h-4 fill-white" />
+                    <Phone className="w-4 h-4 fill-current" />
                     <span>{t("sendWhatsApp")}</span>
-                  </button>
+                  </motion.button>
                 </div>
               </form>
             </div>

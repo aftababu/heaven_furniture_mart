@@ -153,21 +153,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           className="lg:col-span-5 flex flex-col justify-center"
         >
           <div className="mb-6 flex items-center gap-3">
-            <span className="h-px w-8 bg-[#A88849]" />
-            <span className="font-hanken text-xs text-[#A88849] uppercase tracking-[0.25em] font-bold">
+            <span className="h-px w-8 bg-[#C9A227]" />
+            <span className="font-hanken text-xs text-[#C9A227] uppercase tracking-[0.25em] font-bold">
               {t("heroEyebrow")}
             </span>
           </div>
 
-          <h1 className="font-cormorant text-6xl sm:text-7xl md:text-8xl lg:text-[96px] text-[#382C24] leading-[1.05] tracking-tight italic mb-8">
+          <h1 className="font-cormorant text-6xl sm:text-7xl md:text-8xl lg:text-[96px] text-[#4A3B31] leading-[1.05] tracking-tight italic mb-8">
             {t("heroTitleLine1")}
             <br />
             {t("heroTitleLine2")}
             <br />
-            <span className="text-[#A88849] not-italic block">{t("heroTitleLine3")}</span>
+            <span className="text-[#C9A227] not-italic block">{t("heroTitleLine3")}</span>
           </h1>
 
-          <p className="font-hanken text-base sm:text-lg text-[#382C24]/80 mb-10 max-w-md font-medium leading-relaxed">
+          <p className="font-hanken text-base sm:text-lg text-[#4A3B31]/80 mb-10 max-w-md font-medium leading-relaxed">
             {t("heroSubtext")}
           </p>
 
@@ -176,7 +176,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={onOpenConsultation}
-              className="bg-[#382C24] text-[#F2EFE9] px-8 py-4 font-hanken text-xs uppercase tracking-[0.15em] font-semibold hover:bg-[#C5A059] hover:text-[#382C24] transition-all duration-300 flex items-center gap-3 shadow-md group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+              className="bg-[#34494A] text-[#F4F1EA] px-8 py-4 font-hanken text-xs uppercase tracking-[0.15em] font-semibold hover:bg-[#C9A227] hover:text-[#34494A] transition-all duration-300 flex items-center gap-3 shadow-md group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               <span>{t("heroCtaPrimary")}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -186,7 +186,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               href="#collections"
-              className="font-hanken text-xs uppercase tracking-[0.15em] font-semibold text-[#382C24] hover:text-[#A88849] flex items-center gap-2 border-b border-[#382C24] pb-1 hover:border-[#A88849] transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+              className="font-hanken text-xs uppercase tracking-[0.15em] font-semibold text-[#4A3B31] hover:text-[#C9A227] flex items-center gap-2 border-b border-[#4A3B31] pb-1 hover:border-[#C9A227] transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               <span>{t("heroCtaSecondary")}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -202,10 +202,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           className="lg:col-span-7 relative h-[500px] sm:h-[650px] lg:h-[750px] w-full mt-8 lg:mt-0"
         >
           <div className="w-full h-full relative">
-            {/* Top Dominant Landscape Image (Layer 1: Heavy, Slower Floating Offset) */}
+            {/* Top Dominant Landscape Image */}
             <div
               ref={img1Ref}
-              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-[#382C24]/10 will-change-transform"
+              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-[#C9A882]/30 will-change-transform"
             >
               <img
                 src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=2000"
@@ -214,10 +214,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               />
             </div>
 
-            {/* Bottom Left Portrait Image (Layer 2: Medium Response, Wide Cross-Diagonal Offset) */}
+            {/* Bottom Left Portrait Image */}
             <div
               ref={img2Ref}
-              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-4 border-[#F2EFE9] will-change-transform"
+              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-4 border-[#F4F1EA] will-change-transform"
             >
               <img
                 src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=2000"
@@ -226,10 +226,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               />
             </div>
 
-            {/* Bottom Right Detail Image (Layer 3: Faster Floating Offset) */}
+            {/* Bottom Right Detail Image */}
             <div
               ref={img3Ref}
-              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-8 border-[#F2EFE9] shadow-2xl rounded-sm will-change-transform"
+              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-8 border-[#F4F1EA] shadow-2xl rounded-sm will-change-transform"
             >
               <img
                 src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=2000"
@@ -245,9 +245,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       <div className="flex justify-center mt-16 sm:mt-24">
         <a
           href="#about"
-          className="flex items-center gap-3 text-[#382C24]/60 hover:text-[#A88849] transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+          className="flex items-center gap-3 text-[#4A3B31]/60 hover:text-[#C9A227] transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A227]"
         >
-          <ArrowDown className="w-4 h-4 animate-bounce text-[#A88849]" />
+          <ArrowDown className="w-4 h-4 animate-bounce text-[#C9A227]" />
           <span className="font-hanken text-[10px] uppercase tracking-[0.25em] font-semibold">
             {t("scrollDiscover")}
           </span>

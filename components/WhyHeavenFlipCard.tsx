@@ -167,7 +167,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
     <section id="why-heaven" className="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 flex justify-center items-center">
       <div className="lookbook-stage max-w-[1520px] w-full">
         <div
-          className={`lookbook-page border border-[#EAE4D8] rounded-[2rem] bg-[#FAF8F5] relative ${
+          className={`lookbook-page border border-[#C9A882]/30 rounded-[2rem] bg-[#F4F1EA] relative ${
             isFlipped ? "flipped" : ""
           }`}
         >
@@ -189,16 +189,16 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                   >
                     <h2
                       dangerouslySetInnerHTML={{ __html: t(activeSlide.headlineKey) }}
-                      className="text-4xl sm:text-5xl lg:text-[3.65rem] font-sangbleu-sunrise font-light text-[#181715] leading-[1.04] tracking-tight mb-4"
+                      className="text-4xl sm:text-5xl lg:text-[3.65rem] font-sangbleu-sunrise font-light text-[#4A3B31] leading-[1.04] tracking-tight mb-4"
                     />
-                    <p className="font-hanken text-[#524E47] text-sm sm:text-base font-light leading-relaxed max-w-sm">
+                    <p className="font-hanken text-[#4A3B31]/80 text-sm sm:text-base font-light leading-relaxed max-w-sm">
                       {t(activeSlide.statementKey)}
                     </p>
                   </div>
                 </div>
 
                 {/* 5 Synced Reason Steps (Clickable, Highlights active) */}
-                <div className="border-t border-[#181715]/10 divide-y divide-[#181715]/10 my-8">
+                <div className="border-t border-[#4A3B31]/10 divide-y divide-[#4A3B31]/10 my-8">
                   {slides.map((s, idx) => {
                     const isActive = idx === currentSlide;
                     return (
@@ -209,7 +209,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                       >
                         <span
                           className={`reason-num text-lg font-cormorant font-light w-6 shrink-0 transition-colors ${
-                            isActive ? "text-[#C9A227]" : "text-[#181715]/25"
+                            isActive ? "text-[#C9A227]" : "text-[#4A3B31]/25"
                           }`}
                         >
                           {s.num}
@@ -218,15 +218,15 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                           <h3
                             className={`reason-title text-xs font-bold uppercase tracking-wider transition-colors font-hanken ${
                               isActive
-                                ? "text-[#181715]"
-                                : "text-[#181715]/40 group-hover:text-[#C9A227]"
+                                ? "text-[#4A3B31]"
+                                : "text-[#4A3B31]/50 group-hover:text-[#C9A227]"
                             }`}
                           >
                             {t(s.titleKey)}
                           </h3>
                           <p
                             className={`reason-desc text-[0.72rem] font-light leading-snug transition-colors font-hanken ${
-                              isActive ? "text-[#181715]" : "text-[#857F75]/60"
+                              isActive ? "text-[#4A3B31]" : "text-[#4A3B31]/60"
                             }`}
                           >
                             {t(s.descKey)}
@@ -243,7 +243,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={triggerLookbookFlip}
-                    className="group inline-flex items-center gap-3 border border-[#BFA680] hover:border-[#181715] bg-transparent hover:bg-[#181715] hover:text-white px-6 py-3 text-xs font-bold tracking-[0.2em] uppercase transition duration-300 text-[#181715] cursor-pointer shadow-sm font-hanken focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+                    className="group inline-flex items-center gap-3 border border-[#C9A882] hover:border-[#34494A] bg-transparent hover:bg-[#34494A] hover:text-[#F4F1EA] px-6 py-3 text-xs font-bold tracking-[0.2em] uppercase transition duration-300 text-[#4A3B31] cursor-pointer shadow-sm font-hanken focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                   >
                     <span>{t("btnSeeAll")}</span>
                     <motion.span
@@ -268,7 +268,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
               <div className="lg:col-span-7 flex flex-col justify-center">
                 <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/10] rounded-2xl overflow-hidden shadow-md bg-stone-200">
                   {/* Floating Slide Index Label (Top-Left) */}
-                  <div className="absolute top-5 left-5 z-20 bg-[#181715]/80 backdrop-blur-md px-3.5 py-1.5 rounded text-[0.62rem] uppercase tracking-[0.25em] font-semibold text-[#FAF7F2] border border-white/10 pointer-events-none font-hanken">
+                  <div className="absolute top-5 left-5 z-20 bg-[#34494A]/85 backdrop-blur-md px-3.5 py-1.5 rounded text-[0.62rem] uppercase tracking-[0.25em] font-semibold text-[#F4F1EA] border border-white/10 pointer-events-none font-hanken">
                     <span>{lang === "bn" ? activeSlide.tagBn : activeSlide.tagEn}</span>
                   </div>
 
@@ -291,14 +291,14 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
           </div>
 
           {/* REVERSE FACE: COMPLETE LOOKBOOK MANIFESTO & TRUST ARCHITECTURE */}
-          <div className="page-back p-6 sm:p-10 lg:p-16 flex flex-col justify-between bg-[#FAF8F5] rounded-[2rem]">
+          <div className="page-back p-6 sm:p-10 lg:p-16 flex flex-col justify-between bg-[#F4F1EA] rounded-[2rem]">
             {/* Reverse Header with 5s Return Progress Indicator */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#181715]/10 pb-6 mb-10 gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#4A3B31]/10 pb-6 mb-10 gap-4">
               <div>
                 <span className="text-[0.68rem] font-bold uppercase tracking-[0.3em] text-[#C9A227] block mb-1 font-hanken">
                   {t("revEyebrow")}
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-cormorant font-light text-[#181715] tracking-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-cormorant font-light text-[#4A3B31] tracking-tight">
                   {t("revTitle")}
                 </h2>
               </div>
@@ -306,12 +306,12 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
               {/* 5s Hold Visual Countdown Badge */}
               <div className="flex items-center gap-3 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-black/5 self-start sm:self-auto">
                 <div className="w-2 h-2 rounded-full bg-[#C9A227] animate-pulse" />
-                <span className="text-[0.68rem] font-mono text-[#857F75] uppercase tracking-wider">
+                <span className="text-[0.68rem] font-mono text-[#4A3B31]/70 uppercase tracking-wider">
                   HOLDING {secondsLeft.toFixed(1)}S
                 </span>
                 <button
                   onClick={returnFromFlip}
-                  className="text-[0.68rem] font-bold text-[#181715] hover:text-[#C9A227] uppercase tracking-widest pl-2 border-l border-black/10 cursor-pointer font-hanken focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+                  className="text-[0.68rem] font-bold text-[#4A3B31] hover:text-[#C9A227] uppercase tracking-widest pl-2 border-l border-black/10 cursor-pointer font-hanken focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                 >
                   {t("revReturnBtn")}
                 </button>
@@ -323,15 +323,15 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
               {/* Left: 5 Pillars with Large Faded Serif Numbers */}
               <div className="lg:col-span-6 space-y-6">
                 {slides.map((s) => (
-                  <div key={s.num} className="flex items-start gap-5 pb-4 border-b border-[#181715]/10">
+                  <div key={s.num} className="flex items-start gap-5 pb-4 border-b border-[#4A3B31]/10">
                     <span className="text-3xl sm:text-4xl font-cormorant font-light text-[#C9A227]/70 w-10 shrink-0 leading-none">
                       {s.num}
                     </span>
                     <div>
-                      <h4 className="text-xs uppercase tracking-[0.22em] font-bold text-[#181715] mb-1 font-hanken">
+                      <h4 className="text-xs uppercase tracking-[0.22em] font-bold text-[#4A3B31] mb-1 font-hanken">
                         {t(s.titleKey)}
                       </h4>
-                      <p className="text-xs text-[#524E47] font-light leading-relaxed font-hanken">
+                      <p className="text-xs text-[#4A3B31]/80 font-light leading-relaxed font-hanken">
                         {t(s.descKey)}
                       </p>
                     </div>
@@ -340,16 +340,16 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
               </div>
 
               {/* Right: 8 Editorial Trust Verification Points */}
-              <div className="lg:col-span-6 bg-white/60 rounded-2xl p-6 sm:p-8 border border-[#181715]/10">
-                <span className="text-[0.65rem] uppercase tracking-[0.25em] font-bold text-[#181715] block mb-6 font-hanken">
+              <div className="lg:col-span-6 bg-white/60 rounded-2xl p-6 sm:p-8 border border-[#C9A882]/30">
+                <span className="text-[0.65rem] uppercase tracking-[0.25em] font-bold text-[#4A3B31] block mb-6 font-hanken">
                   {t("revTrustLabel")}
                 </span>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 text-xs text-[#524E47] font-light">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 text-xs text-[#4A3B31]/80 font-light">
                   {trustPointsKeys.map((key) => (
                     <div key={key} className="flex items-start gap-2.5">
                       <span className="text-[#C9A227] font-bold leading-none">✦</span>
-                      <span className="font-medium text-[#181715] font-hanken">
+                      <span className="font-medium text-[#4A3B31] font-hanken">
                         {t(key)}
                       </span>
                     </div>
@@ -357,12 +357,12 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                 </div>
 
                 {/* Managing Director Sign-off */}
-                <div className="mt-8 pt-6 border-t border-[#181715]/10 flex items-center justify-between">
+                <div className="mt-8 pt-6 border-t border-[#4A3B31]/10 flex items-center justify-between">
                   <div>
-                    <p className="text-[0.68rem] uppercase tracking-widest font-semibold text-[#181715] font-hanken">
+                    <p className="text-[0.68rem] uppercase tracking-widest font-semibold text-[#4A3B31] font-hanken">
                       {t("mdName")}
                     </p>
-                    <p className="text-[0.6rem] uppercase tracking-wider text-[#857F75] font-hanken">
+                    <p className="text-[0.6rem] uppercase tracking-wider text-[#4A3B31]/60 font-hanken">
                       {t("mdRole")}
                     </p>
                   </div>
@@ -370,7 +370,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={onOpenConsultation}
-                    className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#C9A227] hover:text-[#181715] transition-colors font-hanken flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+                    className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#C9A227] hover:text-[#34494A] transition-colors font-hanken flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                   >
                     <span>DIRECT INQUIRY</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -380,7 +380,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
             </div>
 
             {/* Reverse Page Footer Rule */}
-            <div className="pt-8 mt-6 border-t border-[#181715]/10 flex justify-between items-center text-[0.65rem] uppercase tracking-[0.2em] text-[#857F75] font-hanken">
+            <div className="pt-8 mt-6 border-t border-[#4A3B31]/10 flex justify-between items-center text-[0.65rem] uppercase tracking-[0.2em] text-[#4A3B31]/60 font-hanken">
               <span>AGRABAD ACCESS ROAD · CHATTOGRAM</span>
               <span>HEAVEN EDITORIAL ARCHIVE</span>
             </div>

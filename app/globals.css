@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 /* =========================================================
-   LOCAL FONTS MAPPING (MOIREST & SANGBLEU SUNRISE LIGHT 300)
+   CLIENT BRAND COLOR SYSTEM
+   - Warm Ivory: #F4F1EA (Clean space around content)
+   - Deep Brown: #4A3B31 (Primary text & grounding tones)
+   - Deep Charcoal-Teal: #34494A (Grounding dark background)
+   - Muted Gold / Brass: #C9A227 (Small accent only from logo)
+   - Natural Wood Tan: #C9A882 (Material-led accents)
 ========================================================= */
 
-/* Moirest Supporting Sans-Serif */
 @font-face {
   font-family: "Moirest";
   src: url("/fonts/MoirestLight-YqMJj.ttf") format("truetype");
@@ -29,7 +33,6 @@
   font-display: swap;
 }
 
-/* SangBleu Sunrise Editorial Display Fonts */
 @font-face {
   font-family: "SangBleu Sunrise";
   src: url("/fonts/SangBleuSunriseTrial-Light.woff2") format("woff2");
@@ -72,53 +75,46 @@
 
 @layer base {
   :root {
-    --background: #FAF7F2;
-    --foreground: #181715;
-    --primary: #181715;
-    --brass: #C9A227;
-    --brass-dark: #A8841B;
-    --charcoal-muted: #524E47;
-    --warm-muted: #857F75;
-    --page-border: #EAE4D8;
+    --background: #F4F1EA;       /* Warm Ivory */
+    --foreground: #4A3B31;       /* Deep Brown */
+    --primary: #4A3B31;          /* Deep Brown */
+    --charcoal-teal: #34494A;    /* Deep Charcoal-Teal */
+    --brass: #C9A227;            /* Muted Gold / Brass */
+    --wood-tan: #C9A882;         /* Natural Wood Tan */
+    --page-border: #E3DCCF;
   }
 
   body {
-    background-color: #FAF7F2;
-    color: #181715;
+    background-color: #F4F1EA;
+    color: #4A3B31;
     font-family: var(--font-moirest), "Moirest", sans-serif;
-    font-weight: 300; /* Moirest Light for body copy */
+    font-weight: 300;
     overflow-x: hidden;
     background-image: 
-      radial-gradient(circle at 12% 18%, rgba(201, 162, 39, 0.035) 0%, transparent 45%), 
+      radial-gradient(circle at 12% 18%, rgba(201, 162, 39, 0.04) 0%, transparent 45%), 
       radial-gradient(circle at 88% 82%, rgba(201, 162, 39, 0.03) 0%, transparent 50%);
     background-attachment: fixed;
   }
 }
 
-/* =========================================================
-   ITALIAN / EUROPEAN EDITORIAL TYPOGRAPHY HIERARCHY
-========================================================= */
-
-/* SangBleu Sunrise 300 Light Display Typography */
+/* Typography Utilities */
 .font-sangbleu-air,
 .font-sangbleu-sunrise,
 .font-cormorant,
 .font-bodoni,
 .font-serif {
   font-family: var(--font-sangbleu-sunrise), "SangBleu Sunrise", serif;
-  font-weight: 300; /* SangBleu Sunrise Light (300) for refined, high-end editorial statements */
+  font-weight: 300;
 }
 
-/* Moirest — Supporting Architecture Sans-Serif */
 .font-hanken,
 .font-jakarta,
 .font-sans,
 .font-moirest {
   font-family: var(--font-moirest), "Moirest", sans-serif;
-  font-weight: 300; /* Moirest Light (300) default */
+  font-weight: 300;
 }
 
-/* Moirest Regular (400) for buttons and UI emphasis */
 button,
 .btn-ui,
 .font-normal {
@@ -126,7 +122,6 @@ button,
   font-weight: 400;
 }
 
-/* Moirest Bold (700) for high-priority small badges */
 .font-bold,
 .font-semibold {
   font-weight: 700;
@@ -138,7 +133,11 @@ button,
 }
 
 .border-thin-charcoal {
-  border: 0.5px solid #181715;
+  border: 0.5px solid #34494A;
+}
+
+.border-thin-wood {
+  border: 0.5px solid #C9A882;
 }
 
 /* Editorial Image Zoom & Card Transitions */
@@ -154,9 +153,7 @@ button,
   transform: scale(1.05);
 }
 
-/* =========================================================
-   3D REALISTIC LOOKBOOK PAGE-FLIP ENGINE (IMMEDIATE FLIP)
-========================================================= */
+/* 3D Lookbook Flip Card Engine */
 .lookbook-stage {
   perspective: 2400px;
 }
@@ -167,13 +164,13 @@ button,
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1), box-shadow 0.95s ease;
-  box-shadow: 0 25px 70px -15px rgba(24, 23, 21, 0.07), 0 0 0 1px rgba(24, 23, 21, 0.04);
+  box-shadow: 0 25px 70px -15px rgba(52, 73, 74, 0.08), 0 0 0 1px rgba(74, 59, 49, 0.05);
 }
 
 .lookbook-page.flipped {
   transform: rotateY(-180deg);
   -webkit-transform: rotateY(-180deg);
-  box-shadow: 0 35px 90px -10px rgba(24, 23, 21, 0.12), 0 0 0 1px rgba(24, 23, 21, 0.05);
+  box-shadow: 0 35px 90px -10px rgba(52, 73, 74, 0.14), 0 0 0 1px rgba(74, 59, 49, 0.06);
 }
 
 .page-front,
@@ -182,7 +179,7 @@ button,
   -webkit-backface-visibility: hidden;
   width: 100%;
   border-radius: 2rem;
-  background-color: #FAF8F5;
+  background-color: #F4F1EA;
 }
 
 .page-front {
@@ -199,30 +196,27 @@ button,
   overflow-y: auto;
 }
 
-/* Smooth Editorial Crossfade */
 .img-crossfade {
   transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Abstract Map Pattern */
 .map-bg-pattern {
-  background-color: #EAE6DF;
+  background-color: #EBE5DA;
   background-image: 
-    linear-gradient(45deg, transparent 48%, rgba(200, 185, 150, 0.2) 49%, rgba(200, 185, 150, 0.2) 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, rgba(200, 185, 150, 0.2) 49%, rgba(200, 185, 150, 0.2) 51%, transparent 52%),
-    linear-gradient(20deg, transparent 48%, rgba(200, 185, 150, 0.15) 49%, rgba(200, 185, 150, 0.15) 51%, transparent 52%),
-    linear-gradient(-20deg, transparent 48%, rgba(200, 185, 150, 0.15) 49%, rgba(200, 185, 150, 0.15) 51%, transparent 52%);
+    linear-gradient(45deg, transparent 48%, rgba(201, 168, 130, 0.22) 49%, rgba(201, 168, 130, 0.22) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(201, 168, 130, 0.22) 49%, rgba(201, 168, 130, 0.22) 51%, transparent 52%),
+    linear-gradient(20deg, transparent 48%, rgba(201, 168, 130, 0.15) 49%, rgba(201, 168, 130, 0.15) 51%, transparent 52%),
+    linear-gradient(-20deg, transparent 48%, rgba(201, 168, 130, 0.15) 49%, rgba(201, 168, 130, 0.15) 51%, transparent 52%);
   background-size: 150px 150px, 200px 200px, 250px 250px, 180px 180px;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #F4F1EA;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -231,5 +225,5 @@ button,
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #A8841B;
+  background: #C9A882;
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 
 interface GalleryCardItem {
   id: string;
@@ -184,7 +184,7 @@ export const HorizontalGallery: React.FC = () => {
           }
           revealRatio = Math.max(0, Math.min(1, revealRatio));
 
-          // 1. Curtain clip-path wipe (unveils from 12% inset to 0%)
+          // 1. Curtain clip-path wipe
           const clipInset = (1 - revealRatio) * 12;
           card.style.clipPath = `inset(${clipInset.toFixed(2)}% 0% ${clipInset.toFixed(2)}% 0% round 1rem)`;
 
@@ -233,7 +233,7 @@ export const HorizontalGallery: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="social-proof" className="relative h-[420vh] w-full bg-[#FAF7F2]">
+    <section ref={sectionRef} id="social-proof" className="relative h-[420vh] w-full bg-[#F4F1EA]">
       {/* STICKY VIEWPORT (locked full-screen) */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
         {/* HORIZONTAL MOVING TRACK */}
@@ -255,10 +255,10 @@ export const HorizontalGallery: React.FC = () => {
             </div>
 
             {/* Main Serif Quote (SangBleu Sunrise 300 Light) */}
-            <blockquote className="text-2xl sm:text-3xl lg:text-[2.6rem] font-sangbleu-sunrise font-light text-[#181715] leading-[1.2] tracking-tight">
+            <blockquote className="text-2xl sm:text-3xl lg:text-[2.6rem] font-sangbleu-sunrise font-light text-[#4A3B31] leading-[1.2] tracking-tight">
               <span>{t("quote_p1")}</span>
-              <span className="block mt-2 text-[#181715]/80">{t("quote_p2")}</span>
-              <span className="block mt-3 text-[#181715]/70 font-light text-[0.8em]">
+              <span className="block mt-2 text-[#4A3B31]/80">{t("quote_p2")}</span>
+              <span className="block mt-3 text-[#4A3B31]/70 font-light text-[0.8em]">
                 {t("quote_p3")}
               </span>
             </blockquote>
@@ -267,20 +267,20 @@ export const HorizontalGallery: React.FC = () => {
 
             {/* Author Signature */}
             <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.2em] font-bold text-[#181715] font-hanken">
+              <p className="text-[0.7rem] uppercase tracking-[0.2em] font-bold text-[#4A3B31] font-hanken">
                 {t("quote_author")}
               </p>
-              <p className="text-[0.6rem] uppercase tracking-[0.18em] text-[#857F75] mt-0.5 font-hanken">
+              <p className="text-[0.6rem] uppercase tracking-[0.18em] text-[#4A3B31]/60 mt-0.5 font-hanken">
                 {t("quote_role")}
               </p>
             </div>
 
             {/* Trust Badge */}
-            <div className="mt-8 pt-6 border-t border-[#181715]/10">
-              <span className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-[#181715] block font-hanken">
+            <div className="mt-8 pt-6 border-t border-[#4A3B31]/10">
+              <span className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-[#4A3B31] block font-hanken">
                 {t("trust_title")}
               </span>
-              <p className="text-[0.65rem] text-[#857F75] font-light mt-1 font-hanken">
+              <p className="text-[0.65rem] text-[#4A3B31]/70 font-light mt-1 font-hanken">
                 {t("trust_desc")}
               </p>
             </div>
@@ -296,7 +296,7 @@ export const HorizontalGallery: React.FC = () => {
               className="shrink-0 ml-6 sm:ml-12 lg:ml-16 parallax-item"
             >
               <div
-                className={`image-card ${item.widthClass} ${item.aspect} relative rounded-2xl overflow-hidden bg-[#E8E2D8] shadow-sm`}
+                className={`image-card ${item.widthClass} ${item.aspect} relative rounded-2xl overflow-hidden bg-[#EBE5DA] shadow-sm`}
               >
                 <img
                   src={item.img}
@@ -305,7 +305,7 @@ export const HorizontalGallery: React.FC = () => {
                   loading="lazy"
                 />
               </div>
-              <p className="image-caption text-[0.6rem] tracking-[0.2em] uppercase text-[#857F75] font-semibold pt-[0.85rem] border-t border-[#C9A227]/15 block transition-all font-hanken">
+              <p className="image-caption text-[0.6rem] tracking-[0.2em] uppercase text-[#4A3B31]/70 font-semibold pt-[0.85rem] border-t border-[#C9A227]/15 block transition-all font-hanken">
                 {t(item.capKey)}
               </p>
             </div>
@@ -320,7 +320,7 @@ export const HorizontalGallery: React.FC = () => {
               ✦
             </span>
 
-            <h3 className="text-3xl sm:text-4xl lg:text-[2.8rem] font-sangbleu-sunrise font-light text-[#181715] leading-[1.15] mb-6">
+            <h3 className="text-3xl sm:text-4xl lg:text-[2.8rem] font-sangbleu-sunrise font-light text-[#4A3B31] leading-[1.15] mb-6">
               Made for homes that <span className="text-[#C9A227]/70">feel like yours.</span>
             </h3>
 
@@ -328,22 +328,22 @@ export const HorizontalGallery: React.FC = () => {
 
             <a
               href="#showroom"
-              className="group inline-flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-[#181715] hover:text-[#C9A227] transition-colors duration-300 pb-1.5 border-b-2 border-[#181715]/10 hover:border-[#C9A227] w-fit font-hanken"
+              className="group inline-flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-[#4A3B31] hover:text-[#C9A227] transition-colors duration-300 pb-1.5 border-b-2 border-[#4A3B31]/10 hover:border-[#C9A227] w-fit font-hanken"
             >
               <span>{t("end_cta")}</span>
               <ArrowRight className="w-4 h-4 text-[#C9A227] transform group-hover:translate-x-2 transition-transform duration-300" />
             </a>
 
-            <p className="text-[0.6rem] text-[#857F75] font-light mt-4 font-hanken">
+            <p className="text-[0.6rem] text-[#4A3B31]/60 font-light mt-4 font-hanken">
               {t("end_sub")}
             </p>
           </div>
         </div>
 
         {/* SCROLL PROGRESS INDICATOR (Bottom Right) */}
-        <div className="absolute bottom-10 right-12 hidden sm:flex items-center gap-3 text-[0.55rem] font-bold tracking-[0.22em] uppercase text-[#857F75]/70 pointer-events-none z-30 font-hanken">
+        <div className="absolute bottom-10 right-12 hidden sm:flex items-center gap-3 text-[0.55rem] font-bold tracking-[0.22em] uppercase text-[#4A3B31]/70 pointer-events-none z-30 font-hanken">
           <span>Explore</span>
-          <div className="w-20 h-[1.5px] bg-[#EAE4D9] rounded overflow-hidden">
+          <div className="w-20 h-[1.5px] bg-[#E3DCCF] rounded overflow-hidden">
             <div ref={progressFillRef} className="h-full w-0 bg-[#C9A227] rounded" />
           </div>
         </div>
