@@ -40,25 +40,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
           <nav className="hidden md:flex gap-8 items-center">
             <a
               href="#collections"
-              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold"
+              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               {t("navShop")}
             </a>
             <a
               href="#bespoke"
-              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold"
+              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               {t("navBespoke")}
             </a>
             <a
               href="#why-heaven"
-              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold"
+              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               {t("navWhyHeaven")}
             </a>
             <a
               href="#showroom"
-              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold"
+              className="font-hanken text-xs tracking-[0.2em] text-[#382C24] hover:text-[#C5A059] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               {t("navShowroom")}
             </a>
@@ -68,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 text-[#382C24] focus:outline-none"
+              className="p-2 text-[#382C24] focus:outline-none focus-visible:outline-2 focus-visible:outline-[#C9A227]"
               aria-label="Open Mobile Menu"
             >
               <Menu className="w-6 h-6" />
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
           >
             <a
               href="#"
-              className="font-bodoni text-3xl sm:text-4xl lg:text-5xl tracking-normal text-[#382C24] block uppercase leading-none"
+              className="font-bodoni text-3xl sm:text-4xl lg:text-5xl tracking-normal text-[#382C24] block uppercase leading-none focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               HEAVEN
             </a>
@@ -93,40 +93,39 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
 
           {/* Right Controls */}
           <div className="flex gap-4 sm:gap-6 items-center">
-            {/* Language Switcher */}
-            <div className="flex items-center border border-[#382C24]/30 rounded px-1.5 py-0.5 bg-white/40 backdrop-blur-sm">
-              <Globe className="w-3.5 h-3.5 text-[#382C24] mr-1" />
+            {/* Language Switcher with Motion EN ↔ BN State Transition */}
+            <div className="flex items-center border border-[#382C24]/30 rounded px-1.5 py-0.5 bg-white/40 backdrop-blur-sm relative overflow-hidden">
+              <Globe className="w-3.5 h-3.5 text-[#382C24] mr-1 shrink-0" />
               <button
-                onClick={() => setLang("en")}
-                className={`font-hanken text-xs font-bold px-1.5 py-0.5 transition-colors ${
-                  lang === "en"
-                    ? "text-[#382C24] bg-[#382C24]/10 rounded"
-                    : "text-[#382C24]/50 hover:text-[#382C24]"
-                }`}
+                onClick={() => setLang(lang === "en" ? "bn" : "en")}
+                className="font-hanken text-xs font-bold px-1.5 py-0.5 transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A227] flex items-center gap-1"
               >
-                EN
-              </button>
-              <span className="text-[#382C24]/30 text-xs">|</span>
-              <button
-                onClick={() => setLang("bn")}
-                className={`font-hanken text-xs font-bold px-1.5 py-0.5 transition-colors ${
-                  lang === "bn"
-                    ? "text-[#382C24] bg-[#382C24]/10 rounded"
-                    : "text-[#382C24]/50 hover:text-[#382C24]"
-                }`}
-              >
-                BN
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={lang}
+                    initial={{ opacity: 0, y: -4, filter: "blur(2px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: 4, filter: "blur(2px)" }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="inline-block text-[#382C24]"
+                  >
+                    {lang.toUpperCase()}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="text-[#382C24]/40 text-[9px]">▾</span>
               </button>
             </div>
 
             {/* Quick Quote CTA */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={onOpenConsultation}
-              className="hidden sm:inline-flex items-center gap-2 bg-[#382C24] text-[#F2EFE9] px-4 py-2 text-xs font-hanken uppercase tracking-[0.15em] font-semibold hover:bg-[#C5A059] hover:text-[#382C24] transition-all shadow-sm"
+              className="hidden sm:inline-flex items-center gap-2 bg-[#382C24] text-[#F2EFE9] px-4 py-2 text-xs font-hanken uppercase tracking-[0.15em] font-semibold hover:bg-[#C5A059] hover:text-[#382C24] transition-all duration-300 shadow-sm focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>{t("navQuote")}</span>
-            </button>
+            </motion.button>
           </div>
         </div>
       </header>
@@ -150,7 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-[#382C24] border border-[#382C24]/20 rounded-full"
+                className="p-2 text-[#382C24] border border-[#382C24]/20 rounded-full focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                 aria-label="Close Mobile Menu"
               >
                 <X className="w-6 h-6" />
@@ -194,7 +193,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
                   setMobileMenuOpen(false);
                   onOpenConsultation();
                 }}
-                className="w-full text-center bg-[#382C24] text-white py-4 font-hanken text-xs uppercase tracking-widest font-bold"
+                className="w-full text-center bg-[#382C24] text-white py-4 font-hanken text-xs uppercase tracking-widest font-bold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
               >
                 {t("heroCtaPrimary")}
               </button>

@@ -13,56 +13,64 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
   const { t } = useLanguage();
   const heroRef = useRef<HTMLElement>(null);
 
-  // Refs for each image element to apply independent 3D parallax
+  // Refs for individual floating editorial image layers
   const img1Ref = useRef<HTMLDivElement>(null);
   const img2Ref = useRef<HTMLDivElement>(null);
   const img3Ref = useRef<HTMLDivElement>(null);
 
-  // Targets and current interpolated offsets for Image 1 (Top Landscape)
+  // Physics state for Image 1 (Top Landscape — Heavy, Slower floating response)
   const target1X = useRef(0);
   const target1Y = useRef(0);
   const current1X = useRef(0);
   const current1Y = useRef(0);
+  const vx1 = useRef(0);
+  const vy1 = useRef(0);
 
-  // Targets and current interpolated offsets for Image 2 (Bottom Left Portrait)
+  // Physics state for Image 2 (Bottom Left Portrait — Medium floating response, wider amplitude)
   const target2X = useRef(0);
   const target2Y = useRef(0);
   const current2X = useRef(0);
   const current2Y = useRef(0);
+  const vx2 = useRef(0);
+  const vy2 = useRef(0);
 
-  // Targets and current interpolated offsets for Image 3 (Bottom Right Detail)
+  // Physics state for Image 3 (Bottom Right Detail — Faster, floating response)
   const target3X = useRef(0);
   const target3Y = useRef(0);
   const current3X = useRef(0);
   const current3Y = useRef(0);
+  const vx3 = useRef(0);
+  const vy3 = useRef(0);
 
   const rafId = useRef<number | null>(null);
 
   useEffect(() => {
-    // Disable effect on touch/mobile devices
     if (typeof window === "undefined") return;
+
+    // Respect reduced motion & touch devices
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) return;
+    if (prefersReducedMotion || isTouch) return;
 
     const heroEl = heroRef.current;
     if (!heroEl) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = heroEl.getBoundingClientRect();
-      const relativeX = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
-      const relativeY = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+      const relX = Math.max(-1, Math.min(1, (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)));
+      const relY = Math.max(-1, Math.min(1, (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)));
 
-      // Image 1 (Top Landscape): X -10px..+10px, Y -5px..+5px
-      target1X.current = Math.max(-10, Math.min(10, relativeX * -10));
-      target1Y.current = Math.max(-5, Math.min(5, relativeY * -5));
+      // Image 1: Organic diagonal path (Max ±12px X, ±8px Y)
+      target1X.current = Math.max(-12, Math.min(12, relX * -12 + relY * 4));
+      target1Y.current = Math.max(-8, Math.min(8, relY * -8 - relX * 3));
 
-      // Image 2 (Bottom Left Portrait): X -18px..+18px, Y +8px..-8px (Inverse direction, higher magnitude)
-      target2X.current = Math.max(-18, Math.min(18, relativeX * -18));
-      target2Y.current = Math.max(-8, Math.min(8, relativeY * 8));
+      // Image 2: Cross diagonal path (Max ±18px X, ±12px Y)
+      target2X.current = Math.max(-18, Math.min(18, relX * -18 - relY * 6));
+      target2Y.current = Math.max(-12, Math.min(12, relY * 12 + relX * 5));
 
-      // Image 3 (Bottom Right Detail): X +12px..-12px, Y -10px..+10px (Opposite horizontal direction)
-      target3X.current = Math.max(-12, Math.min(12, relativeX * 12));
-      target3Y.current = Math.max(-10, Math.min(10, relativeY * -10));
+      // Image 3: Counter diagonal path (Max ±10px X, ±14px Y)
+      target3X.current = Math.max(-10, Math.min(10, relX * 10 - relY * 5));
+      target3Y.current = Math.max(-14, Math.min(14, relY * -14 + relX * 4));
     };
 
     const handleMouseLeave = () => {
@@ -74,40 +82,55 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       target3Y.current = 0;
     };
 
-    const animate = () => {
-      // Smooth interpolation/easing for Image 1
-      current1X.current += (target1X.current - current1X.current) * 0.07;
-      current1Y.current += (target1Y.current - current1Y.current) * 0.07;
+    const animatePhysics = () => {
+      // Image 1 Spring Physics (Slower lerp 0.035, heavy damping 0.88)
+      const ax1 = (target1X.current - current1X.current) * 0.035;
+      const ay1 = (target1Y.current - current1Y.current) * 0.035;
+      vx1.current = (vx1.current + ax1) * 0.88;
+      vy1.current = (vy1.current + ay1) * 0.88;
+      current1X.current += vx1.current;
+      current1Y.current += vy1.current;
+
       if (img1Ref.current) {
         img1Ref.current.style.transform = `translate3d(${current1X.current.toFixed(
           2
         )}px, ${current1Y.current.toFixed(2)}px, 0)`;
       }
 
-      // Smooth interpolation/easing for Image 2
-      current2X.current += (target2X.current - current2X.current) * 0.07;
-      current2Y.current += (target2Y.current - current2Y.current) * 0.07;
+      // Image 2 Spring Physics (Medium lerp 0.05, damping 0.85)
+      const ax2 = (target2X.current - current2X.current) * 0.05;
+      const ay2 = (target2Y.current - current2Y.current) * 0.05;
+      vx2.current = (vx2.current + ax2) * 0.85;
+      vy2.current = (vy2.current + ay2) * 0.85;
+      current2X.current += vx2.current;
+      current2Y.current += vy2.current;
+
       if (img2Ref.current) {
         img2Ref.current.style.transform = `translate3d(${current2X.current.toFixed(
           2
         )}px, ${current2Y.current.toFixed(2)}px, 0)`;
       }
 
-      // Smooth interpolation/easing for Image 3
-      current3X.current += (target3X.current - current3X.current) * 0.07;
-      current3Y.current += (target3Y.current - current3Y.current) * 0.07;
+      // Image 3 Spring Physics (Faster lerp 0.07, damping 0.82)
+      const ax3 = (target3X.current - current3X.current) * 0.07;
+      const ay3 = (target3Y.current - current3Y.current) * 0.07;
+      vx3.current = (vx3.current + ax3) * 0.82;
+      vy3.current = (vy3.current + ay3) * 0.82;
+      current3X.current += vx3.current;
+      current3Y.current += vy3.current;
+
       if (img3Ref.current) {
         img3Ref.current.style.transform = `translate3d(${current3X.current.toFixed(
           2
         )}px, ${current3Y.current.toFixed(2)}px, 0)`;
       }
 
-      rafId.current = requestAnimationFrame(animate);
+      rafId.current = requestAnimationFrame(animatePhysics);
     };
 
     heroEl.addEventListener("mousemove", handleMouseMove);
     heroEl.addEventListener("mouseleave", handleMouseLeave);
-    rafId.current = requestAnimationFrame(animate);
+    rafId.current = requestAnimationFrame(animatePhysics);
 
     return () => {
       heroEl.removeEventListener("mousemove", handleMouseMove);
@@ -149,25 +172,29 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={onOpenConsultation}
-              className="bg-[#382C24] text-[#F2EFE9] px-8 py-4 font-hanken text-xs uppercase tracking-[0.15em] font-semibold hover:bg-[#C5A059] hover:text-[#382C24] transition-all flex items-center gap-3 shadow-md group"
+              className="bg-[#382C24] text-[#F2EFE9] px-8 py-4 font-hanken text-xs uppercase tracking-[0.15em] font-semibold hover:bg-[#C5A059] hover:text-[#382C24] transition-all duration-300 flex items-center gap-3 shadow-md group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               <span>{t("heroCtaPrimary")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+            </motion.button>
 
-            <a
+            <motion.a
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
               href="#collections"
-              className="font-hanken text-xs uppercase tracking-[0.15em] font-semibold text-[#382C24] hover:text-[#A88849] flex items-center gap-2 border-b border-[#382C24] pb-1 hover:border-[#A88849] transition-all"
+              className="font-hanken text-xs uppercase tracking-[0.15em] font-semibold text-[#382C24] hover:text-[#A88849] flex items-center gap-2 border-b border-[#382C24] pb-1 hover:border-[#A88849] transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
             >
               <span>{t("heroCtaSecondary")}</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+            </motion.a>
           </div>
         </motion.div>
 
-        {/* Right Column: Asymmetric Image Composition (Independent Parallax Layers) */}
+        {/* Right Column: Asymmetric Image Composition (Independent Floating Layers) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -175,7 +202,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           className="lg:col-span-7 relative h-[500px] sm:h-[650px] lg:h-[750px] w-full mt-8 lg:mt-0"
         >
           <div className="w-full h-full relative">
-            {/* Top Dominant Landscape Image (Image 1: Independent Parallax) */}
+            {/* Top Dominant Landscape Image (Layer 1: Heavy, Slower Floating Offset) */}
             <div
               ref={img1Ref}
               className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-[#382C24]/10 will-change-transform"
@@ -183,11 +210,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               <img
                 src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=2000"
                 alt="Luxury bespoke sofa in a minimal, sun-lit interior"
-                className="object-cover w-full h-full object-center"
+                className="object-cover w-full h-full object-center pointer-events-none"
               />
             </div>
 
-            {/* Bottom Left Portrait Image (Image 2: Independent Parallax) */}
+            {/* Bottom Left Portrait Image (Layer 2: Medium Response, Wide Cross-Diagonal Offset) */}
             <div
               ref={img2Ref}
               className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-4 border-[#F2EFE9] will-change-transform"
@@ -195,11 +222,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               <img
                 src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=2000"
                 alt="Modern luxury dining room with custom wood table"
-                className="object-cover w-full h-full object-[20%_50%]"
+                className="object-cover w-full h-full object-[20%_50%] pointer-events-none"
               />
             </div>
 
-            {/* Bottom Right Detail Image (Image 3: Independent Parallax) */}
+            {/* Bottom Right Detail Image (Layer 3: Faster Floating Offset) */}
             <div
               ref={img3Ref}
               className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-8 border-[#F2EFE9] shadow-2xl rounded-sm will-change-transform"
@@ -207,7 +234,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               <img
                 src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=2000"
                 alt="Close-up detail of handcrafted wood joinery"
-                className="object-cover w-full h-full object-[80%_80%]"
+                className="object-cover w-full h-full object-[80%_80%] pointer-events-none"
               />
             </div>
           </div>
@@ -218,7 +245,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       <div className="flex justify-center mt-16 sm:mt-24">
         <a
           href="#about"
-          className="flex items-center gap-3 text-[#382C24]/60 hover:text-[#A88849] transition-colors"
+          className="flex items-center gap-3 text-[#382C24]/60 hover:text-[#A88849] transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A227]"
         >
           <ArrowDown className="w-4 h-4 animate-bounce text-[#A88849]" />
           <span className="font-hanken text-[10px] uppercase tracking-[0.25em] font-semibold">

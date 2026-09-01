@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 interface SlideData {
@@ -188,7 +189,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                   >
                     <h2
                       dangerouslySetInnerHTML={{ __html: t(activeSlide.headlineKey) }}
-                      className="text-4xl sm:text-5xl lg:text-[3.65rem] font-cormorant font-normal text-[#181715] leading-[1.04] tracking-tight mb-4"
+                      className="text-4xl sm:text-5xl lg:text-[3.65rem] font-sangbleu-sunrise font-light text-[#181715] leading-[1.04] tracking-tight mb-4"
                     />
                     <p className="font-hanken text-[#524E47] text-sm sm:text-base font-light leading-relaxed max-w-sm">
                       {t(activeSlide.statementKey)}
@@ -238,13 +239,22 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
 
                 {/* Bottom Action Row with Immediate 3D Page Flip Trigger */}
                 <div className="flex items-center gap-6 pt-2">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={triggerLookbookFlip}
-                    className="group inline-flex items-center gap-3 border border-[#BFA680] hover:border-[#181715] bg-transparent hover:bg-[#181715] hover:text-white px-6 py-3 text-xs font-bold tracking-[0.2em] uppercase transition duration-300 text-[#181715] cursor-pointer shadow-sm font-hanken"
+                    className="group inline-flex items-center gap-3 border border-[#BFA680] hover:border-[#181715] bg-transparent hover:bg-[#181715] hover:text-white px-6 py-3 text-xs font-bold tracking-[0.2em] uppercase transition duration-300 text-[#181715] cursor-pointer shadow-sm font-hanken focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                   >
                     <span>{t("btnSeeAll")}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </button>
+                    <motion.span
+                      className="inline-block"
+                      initial={false}
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </motion.span>
+                  </motion.button>
 
                   <div className="h-6 w-[1px] bg-black/10" />
 
@@ -254,7 +264,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                 </div>
               </div>
 
-              {/* RIGHT COLUMN: ONE LARGE DOMINANT PHOTOGRAPH (~60% Width) */}
+              {/* RIGHT COLUMN: ONE LARGE DOMINANT PHOTOGRAPH WITH MOTION CROSSFADE */}
               <div className="lg:col-span-7 flex flex-col justify-center">
                 <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/10] rounded-2xl overflow-hidden shadow-md bg-stone-200">
                   {/* Floating Slide Index Label (Top-Left) */}
@@ -262,19 +272,19 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                     <span>{lang === "bn" ? activeSlide.tagBn : activeSlide.tagEn}</span>
                   </div>
 
-                  {/* Synchronized Crossfading Images */}
-                  {slides.map((s, idx) => (
-                    <img
-                      key={s.num}
-                      src={s.img}
-                      alt={t(s.titleKey)}
-                      className={`img-crossfade absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
-                        idx === currentSlide
-                          ? "opacity-100 scale-100 z-10"
-                          : "opacity-0 scale-105 z-0"
-                      }`}
+                  {/* Motion Pure Crossfade Image Stage */}
+                  <AnimatePresence mode="sync">
+                    <motion.img
+                      key={activeSlide.num}
+                      src={activeSlide.img}
+                      alt={t(activeSlide.titleKey)}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
-                  ))}
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
@@ -301,7 +311,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                 </span>
                 <button
                   onClick={returnFromFlip}
-                  className="text-[0.68rem] font-bold text-[#181715] hover:text-[#C9A227] uppercase tracking-widest pl-2 border-l border-black/10 cursor-pointer font-hanken"
+                  className="text-[0.68rem] font-bold text-[#181715] hover:text-[#C9A227] uppercase tracking-widest pl-2 border-l border-black/10 cursor-pointer font-hanken focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                 >
                   {t("revReturnBtn")}
                 </button>
@@ -356,13 +366,15 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({ onOpenCons
                       {t("mdRole")}
                     </p>
                   </div>
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={onOpenConsultation}
-                    className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#C9A227] hover:text-[#181715] transition-colors font-hanken flex items-center gap-1"
+                    className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#C9A227] hover:text-[#181715] transition-colors font-hanken flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                   >
                     <span>DIRECT INQUIRY</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
