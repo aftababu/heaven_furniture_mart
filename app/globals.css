@@ -1,26 +1,235 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* =========================================================
+   LOCAL FONTS MAPPING (MOIREST & SANGBLEU SUNRISE LIGHT 300)
+========================================================= */
+
+/* Moirest Supporting Sans-Serif */
+@font-face {
+  font-family: "Moirest";
+  src: url("/fonts/MoirestLight-YqMJj.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: "Moirest";
+  src: url("/fonts/Moirest-rv4mO.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
+@font-face {
+  font-family: "Moirest";
+  src: url("/fonts/MoirestBold-R9JyM.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SangBleu Sunrise Editorial Display Fonts */
+@font-face {
+  font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-RegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #FAF7F2;
+    --foreground: #181715;
+    --primary: #181715;
+    --brass: #C9A227;
+    --brass-dark: #A8841B;
+    --charcoal-muted: #524E47;
+    --warm-muted: #857F75;
+    --page-border: #EAE4D8;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #181715;
+    font-family: var(--font-moirest), "Moirest", sans-serif;
+    font-weight: 300; /* Moirest Light for body copy */
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 12% 18%, rgba(201, 162, 39, 0.035) 0%, transparent 45%), 
+      radial-gradient(circle at 88% 82%, rgba(201, 162, 39, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* =========================================================
+   ITALIAN / EUROPEAN EDITORIAL TYPOGRAPHY HIERARCHY
+========================================================= */
+
+/* SangBleu Sunrise 300 Light Display Typography */
+.font-sangbleu-air,
+.font-sangbleu-sunrise,
+.font-cormorant,
+.font-bodoni,
+.font-serif {
+  font-family: var(--font-sangbleu-sunrise), "SangBleu Sunrise", serif;
+  font-weight: 300; /* SangBleu Sunrise Light (300) for refined, high-end editorial statements */
+}
+
+/* Moirest — Supporting Architecture Sans-Serif */
+.font-hanken,
+.font-jakarta,
+.font-sans,
+.font-moirest {
+  font-family: var(--font-moirest), "Moirest", sans-serif;
+  font-weight: 300; /* Moirest Light (300) default */
+}
+
+/* Moirest Regular (400) for buttons and UI emphasis */
+button,
+.btn-ui,
+.font-normal {
+  font-family: var(--font-moirest), "Moirest", sans-serif;
+  font-weight: 400;
+}
+
+/* Moirest Bold (700) for high-priority small badges */
+.font-bold,
+.font-semibold {
+  font-weight: 700;
+}
+
+/* Thin Editorial Borders */
+.border-thin-brass {
+  border: 0.5px solid #C9A227;
+}
+
+.border-thin-charcoal {
+  border: 0.5px solid #181715;
+}
+
+/* Editorial Image Zoom & Card Transitions */
+.editorial-img-container {
+  overflow: hidden;
+}
+
+.editorial-img-container img {
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.editorial-img-container:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   3D REALISTIC LOOKBOOK PAGE-FLIP ENGINE (IMMEDIATE FLIP)
+========================================================= */
+.lookbook-stage {
+  perspective: 2400px;
+}
+
+.lookbook-page {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1), box-shadow 0.95s ease;
+  box-shadow: 0 25px 70px -15px rgba(24, 23, 21, 0.07), 0 0 0 1px rgba(24, 23, 21, 0.04);
+}
+
+.lookbook-page.flipped {
+  transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  box-shadow: 0 35px 90px -10px rgba(24, 23, 21, 0.12), 0 0 0 1px rgba(24, 23, 21, 0.05);
+}
+
+.page-front,
+.page-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  width: 100%;
+  border-radius: 2rem;
+  background-color: #FAF8F5;
+}
+
+.page-front {
+  position: relative;
+  z-index: 2;
+}
+
+.page-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  z-index: 1;
+  overflow-y: auto;
+}
+
+/* Smooth Editorial Crossfade */
+.img-crossfade {
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Abstract Map Pattern */
+.map-bg-pattern {
+  background-color: #EAE6DF;
+  background-image: 
+    linear-gradient(45deg, transparent 48%, rgba(200, 185, 150, 0.2) 49%, rgba(200, 185, 150, 0.2) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(200, 185, 150, 0.2) 49%, rgba(200, 185, 150, 0.2) 51%, transparent 52%),
+    linear-gradient(20deg, transparent 48%, rgba(200, 185, 150, 0.15) 49%, rgba(200, 185, 150, 0.15) 51%, transparent 52%),
+    linear-gradient(-20deg, transparent 48%, rgba(200, 185, 150, 0.15) 49%, rgba(200, 185, 150, 0.15) 51%, transparent 52%);
+  background-size: 150px 150px, 200px 200px, 250px 250px, 180px 180px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9A227;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A8841B;
 }
