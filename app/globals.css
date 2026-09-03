@@ -1,13 +1,41 @@
 @import "tailwindcss";
 
 /* =========================================================
-   CLIENT BRAND COLOR SYSTEM
-   - Warm Ivory: #F4F1EA (Clean space around content)
-   - Deep Brown: #4A3B31 (Primary text & grounding tones)
-   - Deep Charcoal-Teal: #34494A (Grounding dark background)
-   - Muted Gold / Brass: #C9A227 (Small accent only from logo)
-   - Natural Wood Tan: #C9A882 (Material-led accents)
+   HEAVEN LUXURY ARCHITECTURAL DESIGN SYSTEM (Tailwind v4 @theme)
+   Fonts: SangBleu Sunrise & Moirest loaded from public/fonts/
 ========================================================= */
+
+@theme {
+  /* Breakpoint Tokens */
+  --breakpoint-xs: 480px;
+
+  /* Brand Typography Tokens */
+  --font-serif: var(--font-sangbleu-sunrise), "SangBleu Sunrise", serif;
+  --font-sans: var(--font-moirest), "Moirest", sans-serif;
+  --font-sangbleu-sunrise:
+    var(--font-sangbleu-sunrise), "SangBleu Sunrise", serif;
+  --font-moirest: var(--font-moirest), "Moirest", sans-serif;
+  --font-hanken: var(--font-moirest), "Moirest", sans-serif;
+
+  /* Architectural Color Tokens */
+  /* --color-ivory: #faf7f2; Warm Ivory Canvas */
+  --color-ivory: #f0e8e4;
+  --color-charcoal: #181715; /* Obsidian Primary Ink Charcoal */
+  --color-charcoal-body: #24221f; /* Deep High-Contrast Body Charcoal */
+  --color-slate-warm: #383531; /* Primary Warm Slate Gray */
+  --color-slate-gray: #4a463f; /* Secondary Warm Slate Gray */
+  --color-slate-muted: #5c574f; /* Muted Slate Gray */
+  --color-graphite-muted: #8c857b; /* Muted Graphite */
+  --color-brass: #4a3b31; /* Deepened Antique Brass (Accessible > 4.5:1) */
+  --color-brass-gold: #34494a; /* Accessible Bright Brass */
+  --color-gold: #c9a227; /* Micro Accent Gold */
+  --color-wood-border: #d1c9bc; /* Fine Architectural Divider */
+  --color-border-divider: #e8e2d5; /* Subtle Divider */
+  /* --color-sand: #ebe5da; Sand Surface */
+  --color-sand: #faf7f6; /* Sand Surface */
+  --color-paper: #f4f1ea; /* Paper Surface */
+  --color-logo-bg: #2b4542; /* Exact Slate-Pine Green matching /public/logo.jpg */
+}
 
 @font-face {
   font-family: "Moirest";
@@ -43,6 +71,14 @@
 
 @font-face {
   font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SangBleu Sunrise";
   src: url("/fonts/SangBleuSunriseTrial-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
@@ -67,44 +103,134 @@
 
 @font-face {
   font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SangBleu Sunrise";
   src: url("/fonts/SangBleuSunriseTrial-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "SangBleu Sunrise";
+  src: url("/fonts/SangBleuSunriseTrial-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   :root {
-    --background: #F4F1EA;       /* Warm Ivory */
-    --foreground: #4A3B31;       /* Deep Brown */
-    --primary: #4A3B31;          /* Deep Brown */
-    --charcoal-teal: #34494A;    /* Deep Charcoal-Teal */
-    --brass: #C9A227;            /* Muted Gold / Brass */
-    --wood-tan: #C9A882;         /* Natural Wood Tan */
-    --page-border: #E3DCCF;
+    --background: #faf7f2; /* Warm Ivory Canvas */
+    --foreground: #181715; /* Primary Ink Charcoal */
+    --body-charcoal: #24221f; /* Deep Body Charcoal */
+    --slate-gray: #4a463f; /* Secondary Warm Slate */
+    --brass-accent: #947116; /* Accessible Deepened Brass */
+    --gold-accent: #c9a227; /* Micro-accent Gold */
+    --border-muted: #d1c9bc; /* Fine Architectural Divider */
+    --card-surface: #f4f1ea; /* Warm Surface Card */
+    --card-alt: #ebe5da; /* Warm Natural Sand Surface */
   }
 
   body {
-    background-color: #F4F1EA;
-    color: #4A3B31;
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal-body);
     font-family: var(--font-moirest), "Moirest", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     overflow-x: hidden;
-    background-image: 
-      radial-gradient(circle at 12% 18%, rgba(201, 162, 39, 0.04) 0%, transparent 45%), 
-      radial-gradient(circle at 88% 82%, rgba(201, 162, 39, 0.03) 0%, transparent 50%);
+    background-image:
+      radial-gradient(
+        circle at 12% 18%,
+        rgba(148, 113, 22, 0.035) 0%,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 88% 82%,
+        rgba(148, 113, 22, 0.025) 0%,
+        transparent 50%
+      );
     background-attachment: fixed;
   }
 }
 
-/* Typography Utilities */
+/* Radix Dialog Luxury Animation Keyframes */
+@keyframes dialogOverlayShow {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes dialogOverlayHide {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes dialogContentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -44%) scale(0.92);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes dialogContentHide {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.95);
+    filter: blur(4px);
+  }
+}
+
+.animate-dialog-overlay-show {
+  animation: dialogOverlayShow 380ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-dialog-overlay-hide {
+  animation: dialogOverlayHide 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-dialog-content-show {
+  animation: dialogContentShow 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-dialog-content-hide {
+  animation: dialogContentHide 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Strict Typography Mapping to public/fonts/ */
 .font-sangbleu-air,
 .font-sangbleu-sunrise,
 .font-cormorant,
 .font-bodoni,
 .font-serif {
   font-family: var(--font-sangbleu-sunrise), "SangBleu Sunrise", serif;
-  font-weight: 300;
 }
 
 .font-hanken,
@@ -112,32 +238,27 @@
 .font-sans,
 .font-moirest {
   font-family: var(--font-moirest), "Moirest", sans-serif;
-  font-weight: 300;
 }
 
 button,
 .btn-ui,
-.font-normal {
+input,
+select,
+textarea {
   font-family: var(--font-moirest), "Moirest", sans-serif;
-  font-weight: 400;
 }
 
-.font-bold,
-.font-semibold {
-  font-weight: 700;
-}
-
-/* Thin Editorial Borders */
+/* Fine Editorial Borders */
 .border-thin-brass {
-  border: 0.5px solid #C9A227;
+  border: 0.5px solid #947116;
 }
 
 .border-thin-charcoal {
-  border: 0.5px solid #34494A;
+  border: 0.5px solid #181715;
 }
 
 .border-thin-wood {
-  border: 0.5px solid #C9A882;
+  border: 0.5px solid #d1c9bc;
 }
 
 /* Editorial Image Zoom & Card Transitions */
@@ -150,7 +271,7 @@ button,
 }
 
 .editorial-img-container:hover img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 /* 3D Lookbook Flip Card Engine */
@@ -163,14 +284,20 @@ button,
   width: 100%;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1), box-shadow 0.95s ease;
-  box-shadow: 0 25px 70px -15px rgba(52, 73, 74, 0.08), 0 0 0 1px rgba(74, 59, 49, 0.05);
+  transition:
+    transform 0.95s cubic-bezier(0.65, 0, 0.35, 1),
+    box-shadow 0.95s ease;
+  box-shadow:
+    0 25px 70px -15px rgba(24, 23, 21, 0.08),
+    0 0 0 1px rgba(24, 23, 21, 0.05);
 }
 
 .lookbook-page.flipped {
   transform: rotateY(-180deg);
   -webkit-transform: rotateY(-180deg);
-  box-shadow: 0 35px 90px -10px rgba(52, 73, 74, 0.14), 0 0 0 1px rgba(74, 59, 49, 0.06);
+  box-shadow:
+    0 35px 90px -10px rgba(24, 23, 21, 0.14),
+    0 0 0 1px rgba(24, 23, 21, 0.06);
 }
 
 .page-front,
@@ -179,7 +306,7 @@ button,
   -webkit-backface-visibility: hidden;
   width: 100%;
   border-radius: 2rem;
-  background-color: #F4F1EA;
+  background-color: var(--color-ivory);
 }
 
 .page-front {
@@ -196,18 +323,42 @@ button,
   overflow-y: auto;
 }
 
-.img-crossfade {
-  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .map-bg-pattern {
-  background-color: #EBE5DA;
-  background-image: 
-    linear-gradient(45deg, transparent 48%, rgba(201, 168, 130, 0.22) 49%, rgba(201, 168, 130, 0.22) 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, rgba(201, 168, 130, 0.22) 49%, rgba(201, 168, 130, 0.22) 51%, transparent 52%),
-    linear-gradient(20deg, transparent 48%, rgba(201, 168, 130, 0.15) 49%, rgba(201, 168, 130, 0.15) 51%, transparent 52%),
-    linear-gradient(-20deg, transparent 48%, rgba(201, 168, 130, 0.15) 49%, rgba(201, 168, 130, 0.15) 51%, transparent 52%);
-  background-size: 150px 150px, 200px 200px, 250px 250px, 180px 180px;
+  background-color: var(--color-sand);
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 48%,
+      rgba(209, 201, 188, 0.4) 49%,
+      rgba(209, 201, 188, 0.4) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 48%,
+      rgba(209, 201, 188, 0.4) 49%,
+      rgba(209, 201, 188, 0.4) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      20deg,
+      transparent 48%,
+      rgba(209, 201, 188, 0.25) 49%,
+      rgba(209, 201, 188, 0.25) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      -20deg,
+      transparent 48%,
+      rgba(209, 201, 188, 0.25) 49%,
+      rgba(209, 201, 188, 0.25) 51%,
+      transparent 52%
+    );
+  background-size:
+    150px 150px,
+    200px 200px,
+    250px 250px,
+    180px 180px;
 }
 
 ::-webkit-scrollbar {
@@ -216,14 +367,36 @@ button,
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4F1EA;
+  background: var(--color-ivory);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C9A227;
+  background: var(--color-brass);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C9A882;
+  background: var(--color-gold);
+}
+
+/* Lenis Luxury Smooth Scroll Rules */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

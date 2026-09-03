@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Loader } from "@/components/Loader";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { BrandStatement } from "@/components/BrandStatement";
@@ -23,7 +24,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F2EFE9] text-[#2D2926] relative">
+    <main className="min-h-screen bg-ivory text-charcoal relative">
+      <SmoothScroll />
       <Loader />
       <Navbar onOpenConsultation={() => handleOpenConsultation()} />
       <Hero onOpenConsultation={() => handleOpenConsultation()} />

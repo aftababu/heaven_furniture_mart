@@ -3,7 +3,7 @@
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRight, Phone } from "lucide-react";
-import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 interface FooterProps {
   onOpenConsultation: () => void;
@@ -13,63 +13,127 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-[#F4F1EA] text-[#4A3B31] py-20 sm:py-28 px-6 sm:px-12 border-t border-[#C9A882]/30 relative">
+    <footer className="bg-ivory text-charcoal-body py-16 xs:py-20 sm:py-28 px-4 xs:px-6 sm:px-12 border-t border-wood-border relative overflow-hidden">
       <div className="max-w-[1600px] mx-auto">
         {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 sm:mb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 mb-16 sm:mb-28">
           {/* Brand & Socials */}
           <div className="lg:col-span-4 flex flex-col justify-between">
-            <div>
-              <h2 className="font-bodoni text-5xl sm:text-6xl uppercase tracking-tight mb-3 text-[#4A3B31]">
+            <div className="mb-6 lg:mb-0">
+              <h2 className="font-sangbleu-sunrise text-4xl xs:text-5xl sm:text-6xl uppercase tracking-tight mb-3 text-charcoal-body">
                 HEAVEN
               </h2>
-              <p className="font-hanken text-sm text-[#4A3B31]/75 mb-8">
+              <p className="font-hanken text-xs sm:text-sm font-normal text-slate-warm mt-2 block">
                 {t("footerTagline")}
               </p>
             </div>
-            <div className="flex gap-6 font-hanken text-[10px] tracking-[0.25em] font-bold uppercase text-[#4A3B31]/80">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A227] transition-colors">
+            <div className="flex flex-wrap gap-4 sm:gap-6 font-hanken text-[0.65rem] sm:text-[0.68rem] font-semibold tracking-[0.2em] text-slate-gray">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-charcoal transition-colors uppercase"
+              >
                 INSTAGRAM
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A227] transition-colors">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-charcoal transition-colors uppercase"
+              >
                 FACEBOOK
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A227] transition-colors">
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-charcoal transition-colors uppercase"
+              >
                 YOUTUBE
               </a>
             </div>
           </div>
 
           {/* Link Columns */}
-          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="lg:col-span-5 grid grid-cols-2 xs:grid-cols-3 gap-6 sm:gap-8">
             <div>
-              <h4 className="font-hanken text-[10px] text-[#C9A227] tracking-[0.2em] mb-5 uppercase font-bold">
+              <span className="font-hanken text-[0.7rem] font-bold tracking-[0.22em] text-brass uppercase mb-3 sm:mb-4 block">
                 {t("navCollections")}
-              </h4>
-              <ul className="flex flex-col gap-2.5 font-hanken text-sm text-[#4A3B31]/70 font-medium">
-                <li><a href="#collections" className="hover:text-[#4A3B31] transition-colors">{t("catLiving")}</a></li>
-                <li><a href="#collections" className="hover:text-[#4A3B31] transition-colors">{t("catBedroom")}</a></li>
-                <li><a href="#collections" className="hover:text-[#4A3B31] transition-colors">{t("catDining")}</a></li>
-                <li><a href="#bespoke" className="hover:text-[#4A3B31] transition-colors">{t("catBespoke")}</a></li>
+              </span>
+              <ul className="flex flex-col gap-2 sm:gap-2.5 font-hanken text-xs font-medium text-slate-gray">
+                <li>
+                  <a
+                    href="#collections"
+                    className="hover:text-charcoal hover:translate-x-4 transition-colors leading-relaxed"
+                  >
+                    {t("catLiving")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#collections"
+                    className="hover:text-charcoal transition-colors leading-relaxed"
+                  >
+                    {t("catBedroom")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#collections"
+                    className="hover:text-charcoal transition-colors leading-relaxed"
+                  >
+                    {t("catDining")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#bespoke"
+                    className="hover:text-charcoal transition-colors leading-relaxed"
+                  >
+                    {t("catBespoke")}
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-hanken text-[10px] text-[#C9A227] tracking-[0.2em] mb-5 uppercase font-bold">
+              <span className="font-hanken text-[0.7rem] font-bold tracking-[0.22em] text-brass uppercase mb-3 sm:mb-4 block">
                 Company
-              </h4>
-              <ul className="flex flex-col gap-2.5 font-hanken text-sm text-[#4A3B31]/70 font-medium">
-                <li><a href="#about" className="hover:text-[#4A3B31] transition-colors">About Us</a></li>
-                <li><a href="#why-heaven" className="hover:text-[#4A3B31] transition-colors">Our Craft</a></li>
-                <li><a href="#showroom" className="hover:text-[#4A3B31] transition-colors">Showroom</a></li>
+              </span>
+              <ul className="flex flex-col gap-2 sm:gap-2.5 font-hanken text-xs font-medium text-slate-gray">
+                <li>
+                  <a
+                    href="#about"
+                    className="hover:text-charcoal transition-colors leading-relaxed"
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#why-heaven"
+                    className="hover:text-charcoal transition-colors leading-relaxed"
+                  >
+                    Our Craft
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#showroom"
+                    className="hover:text-charcoal transition-colors leading-relaxed"
+                  >
+                    Showroom
+                  </a>
+                </li>
               </ul>
             </div>
 
-            <div>
-              <h4 className="font-hanken text-[10px] text-[#C9A227] tracking-[0.2em] mb-5 uppercase font-bold">
+            <div className="col-span-2 xs:col-span-1">
+              <span className="font-hanken text-[0.7rem] font-bold tracking-[0.22em] text-brass uppercase mb-3 sm:mb-4 block">
                 Visit
-              </h4>
-              <div className="font-hanken text-sm text-[#4A3B31]/70 leading-relaxed font-medium">
+              </span>
+              <div className="font-hanken text-xs font-medium text-slate-gray leading-relaxed">
                 <p>Agrabad Access Road</p>
                 <p>Chattogram, Bangladesh</p>
               </div>
@@ -79,43 +143,46 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
           {/* Inquiries */}
           <div className="lg:col-span-3 flex flex-col items-start lg:items-end text-left lg:text-right">
             <div className="mb-6">
-              <h4 className="font-hanken text-[10px] text-[#C9A227] tracking-[0.2em] mb-3 uppercase font-bold">
+              <span className="font-hanken text-[0.7rem] font-bold tracking-[0.22em] text-brass uppercase mb-3 sm:mb-4 block">
                 {t("footerInquiries")}
-              </h4>
-              <p className="font-hanken text-base font-bold text-[#4A3B31] mb-1 flex items-center gap-2 lg:justify-end">
-                <Phone className="w-4 h-4 text-[#C9A227]" />
+              </span>
+              <p className="font-hanken text-sm sm:text-base font-bold text-charcoal-body mb-1 flex items-center gap-2 lg:justify-end">
+                <Phone className="w-4 h-4 text-brass" />
                 <span>+880 1960-481983</span>
               </p>
-              <p className="font-hanken text-xs text-[#4A3B31]/70">
+              <a
+                href="mailto:heavenfurnituremart@gmail.com"
+                className="font-hanken text-xs font-medium text-slate-warm hover:text-brass transition-colors block mt-1"
+              >
                 heavenfurnituremart@gmail.com
-              </p>
+              </a>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+            <Button
+              variant="link"
+              size="sm"
               onClick={onOpenConsultation}
-              className="inline-flex items-center gap-2 font-hanken text-xs tracking-[0.15em] uppercase font-bold border-b border-[#4A3B31] pb-2 hover:text-[#C9A227] hover:border-[#C9A227] transition-all group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+              className="gap-2"
             >
               <span>{t("requestQuoteFooter")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-            </motion.button>
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="pt-12 border-t border-[#C9A882]/30">
-          <div className="text-center mb-12">
-            <h1 className="font-bodoni text-[14vw] leading-none tracking-tighter opacity-[0.85] select-none text-[#4A3B31]">
+        <div className="pt-8 sm:pt-12 border-t border-wood-border">
+          <div className="text-center mb-8 sm:mb-12 overflow-hidden">
+            <h1 className="font-sangbleu-sunrise text-[12vw] xs:text-[13vw] sm:text-[14vw] leading-none tracking-tighter opacity-[0.85] select-none text-charcoal-body whitespace-nowrap">
               HEAVEN
             </h1>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[#4A3B31]/50">
-            <span className="font-hanken text-[10px] tracking-[0.2em] font-bold uppercase">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <span className="font-hanken text-[0.62rem] sm:text-[0.68rem] font-medium tracking-[0.2em] sm:tracking-[0.22em] text-slate-muted uppercase">
               AGRABAD · CHATTOGRAM · BANGLADESH
             </span>
-            <span className="font-hanken text-[10px] tracking-[0.2em] font-bold uppercase">
+            <span className="font-hanken text-[0.62rem] sm:text-[0.68rem] font-medium tracking-[0.2em] sm:tracking-[0.22em] text-slate-muted uppercase">
               © 2026 HEAVEN FURNITURE MART
             </span>
           </div>

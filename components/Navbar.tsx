@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Menu, X, Globe, MessageSquare } from "lucide-react";
+import { Menu, X, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import CenterLogoTab from "@/components/navbar/CenterLogoTab";
+import { Button } from "@/components/ui/button";
 
 interface NavbarProps {
   onOpenConsultation: () => void;
@@ -16,116 +18,104 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 h-20 sm:h-22 flex items-center overflow-visible ${
           isScrolled
-            ? "bg-[#F4F1EA]/95 backdrop-blur-md shadow-md border-b border-[#C9A882]/25 py-4"
-            : "bg-transparent py-6"
+            ? "bg-ivory/90 backdrop-blur-md border-b border-wood-border/40 shadow-sm"
+            : "bg-transparent border-b border-transparent shadow-none"
         }`}
       >
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-12 flex justify-between items-center relative">
-          {/* Desktop Left Nav Links */}
-          <nav className="hidden md:flex gap-8 items-center">
+        <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-8 lg:px-12 flex justify-between items-center relative h-full overflow-visible">
+          {/* Desktop Left Nav Links (Reduced gap under 1024px lg breakpoint) */}
+          <nav className="hidden md:flex gap-4 md:gap-5 lg:gap-8 items-center">
             <a
               href="#collections"
-              className="font-hanken text-xs tracking-[0.2em] text-[#4A3B31] hover:text-[#C9A227] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-slate-warm hover:text-brass-gold transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-brass-gold"
             >
               {t("navShop")}
             </a>
             <a
               href="#bespoke"
-              className="font-hanken text-xs tracking-[0.2em] text-[#4A3B31] hover:text-[#C9A227] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-slate-warm hover:text-brass-gold transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-brass-gold"
             >
               {t("navBespoke")}
             </a>
             <a
               href="#why-heaven"
-              className="font-hanken text-xs tracking-[0.2em] text-[#4A3B31] hover:text-[#C9A227] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-slate-warm hover:text-brass-gold transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-brass-gold"
             >
               {t("navWhyHeaven")}
-            </a>
-            <a
-              href="#showroom"
-              className="font-hanken text-xs tracking-[0.2em] text-[#4A3B31] hover:text-[#C9A227] transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
-            >
-              {t("navShowroom")}
             </a>
           </nav>
 
           {/* Mobile Hamburger Toggle */}
           <div className="md:hidden flex items-center">
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 text-[#4A3B31] focus:outline-none focus-visible:outline-2 focus-visible:outline-[#C9A227]"
               aria-label="Open Mobile Menu"
             >
               <Menu className="w-6 h-6" />
-            </button>
+            </Button>
           </div>
 
-          {/* Brand Anchor (Centered) */}
-          <div
-            id="header-logo-anchor"
-            className="absolute left-1/2 transform -translate-x-1/2 text-center flex flex-col items-center"
-          >
-            <a
-              href="#"
-              className="font-bodoni text-3xl sm:text-4xl lg:text-5xl tracking-normal text-[#4A3B31] block uppercase leading-none focus-visible:outline-2 focus-visible:outline-[#C9A227]"
-            >
-              HEAVEN
-            </a>
-            <span className="font-hanken text-[9px] sm:text-[10px] tracking-[0.25em] text-[#C9A227] uppercase mt-1 font-bold">
-              {t("brandSubtitle")}
-            </span>
-          </div>
+          {/* BESPOKE HANGING ATELIER TAB LOGO */}
+          <CenterLogoTab />
 
-          {/* Right Controls */}
-          <div className="flex gap-4 sm:gap-6 items-center">
-            {/* Language Switcher */}
-            <div className="flex items-center border border-[#C9A882]/40 rounded px-1.5 py-0.5 bg-white/60 backdrop-blur-sm relative overflow-hidden">
-              <Globe className="w-3.5 h-3.5 text-[#4A3B31] mr-1 shrink-0" />
+          {/* Right Controls Utility Cluster */}
+          <div className="flex gap-3 sm:gap-4 lg:gap-6 items-center">
+            {/* Luxury Editorial Inline Masthead Language Switcher */}
+            <div className="flex items-center text-[0.65rem] md:text-[0.68rem] tracking-[0.18em] md:tracking-[0.22em] font-hanken uppercase select-none">
               <button
-                onClick={() => setLang(lang === "en" ? "bn" : "en")}
-                className="font-hanken text-xs font-bold px-1.5 py-0.5 transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A227] flex items-center gap-1"
+                onClick={() => setLang("en")}
+                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-brass-gold ${
+                  lang === "en"
+                    ? "text-charcoal font-semibold"
+                    : "text-graphite-muted font-normal hover:text-charcoal"
+                }`}
               >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.span
-                    key={lang}
-                    initial={{ opacity: 0, y: -4, filter: "blur(2px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, y: 4, filter: "blur(2px)" }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="inline-block text-[#4A3B31]"
-                  >
-                    {lang.toUpperCase()}
-                  </motion.span>
-                </AnimatePresence>
-                <span className="text-[#4A3B31]/40 text-[9px]">▾</span>
+                EN
+              </button>
+              <span className="text-wood-border mx-2 md:mx-2.5 select-none font-normal">
+                /
+              </span>
+              <button
+                onClick={() => setLang("bn")}
+                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-brass-gold ${
+                  lang === "bn"
+                    ? "text-charcoal font-semibold"
+                    : "text-graphite-muted font-normal hover:text-charcoal"
+                }`}
+              >
+                বাংলা
               </button>
             </div>
 
-            {/* Quick Quote CTA */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={onOpenConsultation}
-              className="hidden sm:inline-flex items-center gap-2 bg-[#34494A] text-[#F4F1EA] px-4 py-2 text-xs font-hanken uppercase tracking-[0.15em] font-semibold hover:bg-[#C9A227] hover:text-[#34494A] transition-all duration-300 shadow-sm focus-visible:outline-2 focus-visible:outline-[#C9A227]"
-            >
-              <MessageSquare className="w-3.5 h-3.5" />
-              <span>{t("navQuote")}</span>
-            </motion.button>
+            {/* Quick Quote CTA with shadcn UI Button */}
+            <div className="hidden sm:block">
+              <Button
+                variant="brass"
+                size="sm"
+                onClick={onOpenConsultation}
+                className="gap-2"
+              >
+                <MessageSquare className="w-3.5 h-3.5" />
+                <span>{t("navQuote")}</span>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -138,67 +128,65 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "-100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[100] bg-[#F4F1EA] flex flex-col justify-between p-8"
+            className="fixed inset-0 z-[100] bg-ivory flex flex-col justify-between p-8"
           >
-            <div className="flex justify-between items-center border-b border-[#C9A882]/30 pb-6">
-              <div>
-                <span className="font-bodoni text-3xl text-[#4A3B31] block">HEAVEN</span>
-                <span className="font-hanken text-[10px] text-[#C9A227] tracking-widest uppercase font-bold">
-                  {t("brandSubtitle")}
+            <div className="flex justify-between items-center border-b border-wood-border/40 pb-6">
+              <div className="flex flex-col items-start">
+                <span className="font-sangbleu-sunrise font-light text-2xl text-charcoal tracking-[0.2em]">
+                  HE<span className="text-brass">A</span>VEN
+                </span>
+                <span className="font-hanken text-[0.55rem] text-brass-gold tracking-[0.32em] uppercase font-bold mt-0.5">
+                  FURNITURE MART
                 </span>
               </div>
-              <button
+              <Button
+                variant="secondary"
+                size="icon"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-[#4A3B31] border border-[#C9A882]/40 rounded-full focus-visible:outline-2 focus-visible:outline-[#C9A227]"
                 aria-label="Close Mobile Menu"
               >
-                <X className="w-6 h-6" />
-              </button>
+                <X className="w-5 h-5" />
+              </Button>
             </div>
 
             <nav className="flex flex-col gap-6 py-12">
               <a
                 href="#collections"
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-cormorant text-4xl text-[#4A3B31] hover:text-[#C9A227] transition-colors"
+                className="font-sangbleu-sunrise font-light text-4xl text-charcoal hover:text-brass-gold transition-colors"
               >
                 {t("navShop")}
               </a>
               <a
                 href="#bespoke"
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-cormorant text-4xl text-[#4A3B31] hover:text-[#C9A227] transition-colors"
+                className="font-sangbleu-sunrise font-light text-4xl text-charcoal hover:text-brass-gold transition-colors"
               >
                 {t("navBespoke")}
               </a>
               <a
                 href="#why-heaven"
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-cormorant text-4xl text-[#4A3B31] hover:text-[#C9A227] transition-colors"
+                className="font-sangbleu-sunrise font-light text-4xl text-charcoal hover:text-brass-gold transition-colors"
               >
                 {t("navWhyHeaven")}
               </a>
-              <a
-                href="#showroom"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-cormorant text-4xl text-[#4A3B31] hover:text-[#C9A227] transition-colors"
-              >
-                {t("navShowroom")}
-              </a>
             </nav>
 
-            <div className="space-y-4 pt-6 border-t border-[#C9A882]/30">
-              <button
+            <div className="space-y-4 pt-6 border-t border-wood-border/40">
+              <Button
+                variant="default"
+                size="lg"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenConsultation();
                 }}
-                className="w-full text-center bg-[#34494A] text-[#F4F1EA] py-4 font-hanken text-xs uppercase tracking-widest font-bold focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+                className="w-full"
               >
                 {t("heroCtaPrimary")}
-              </button>
+              </Button>
 
-              <div className="flex justify-between items-center text-xs text-[#4A3B31]/70">
+              <div className="flex justify-between items-center text-xs font-medium text-slate-gray">
                 <span>Agrabad Access Road, Chattogram</span>
                 <span>+880 1960-481983</span>
               </div>

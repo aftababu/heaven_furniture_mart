@@ -2,10 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
 
 export const Loader: React.FC = () => {
-  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(true);
   const [targetDeltaY, setTargetDeltaY] = useState<number>(-350);
   const [initialScale, setInitialScale] = useState<number>(2.4);
@@ -26,7 +24,7 @@ export const Loader: React.FC = () => {
         const screenCenterY = window.innerHeight / 2;
         setTargetDeltaY(targetCenterY - screenCenterY);
       } else {
-        setTargetDeltaY(-(window.innerHeight / 2 - (isMobile ? 32 : 44)));
+        setTargetDeltaY(-(window.innerHeight / 2 - (isMobile ? 40 : 48)));
       }
     };
 
@@ -52,9 +50,9 @@ export const Loader: React.FC = () => {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.4, ease: "easeOut" } }}
-          className="fixed inset-0 z-[9999] bg-[#F4F1EA] flex items-center justify-center pointer-events-none select-none overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-ivory flex items-center justify-center pointer-events-none select-none overflow-hidden"
         >
-          {/* THE SINGLE ANIMATING HEAVEN LOGO ELEMENT */}
+          {/* PURE LOGO ANIMATION (ZERO BOX, ZERO CONTAINER BACKGROUND) */}
           <motion.div
             initial={{ y: 0, scale: initialScale, opacity: 0 }}
             animate={{
@@ -69,11 +67,11 @@ export const Loader: React.FC = () => {
             }}
             className="text-center flex flex-col items-center justify-center transform-gpu origin-center"
           >
-            <h1 className="font-bodoni text-3xl sm:text-4xl lg:text-5xl tracking-normal text-[#4A3B31] block uppercase leading-none">
-              HEAVEN
+            <h1 className="font-sangbleu-sunrise font-normal not-italic uppercase text-2xl sm:text-3xl lg:text-[2.2rem] tracking-[0.16em] text-charcoal leading-none block">
+              HE<span className="text-brass">A</span>VEN
             </h1>
-            <span className="font-hanken text-[9px] sm:text-[10px] tracking-[0.25em] text-[#C9A227] uppercase mt-1 font-bold">
-              {t("brandSubtitle")}
+            <span className="font-hanken text-[0.56rem] sm:text-[0.62rem] tracking-[0.34em] font-bold text-brass uppercase mt-1.5 leading-none block">
+              FURNITURE MART
             </span>
           </motion.div>
         </motion.div>

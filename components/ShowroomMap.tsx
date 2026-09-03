@@ -3,43 +3,54 @@
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { MapPin, ExternalLink } from "lucide-react";
 
 export const ShowroomMap: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="showroom" className="max-w-[1600px] mx-auto px-6 sm:px-12 py-24 sm:py-32 bg-[#EBE5DA]">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[550px]">
+    <section
+      id="showroom"
+      className="max-w-[1600px] mx-auto px-4 xs:px-6 sm:px-12 py-16 xs:py-24 sm:py-32 bg-sand overflow-hidden"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 items-center min-h-[550px]">
         {/* Left Column: Typography & Address */}
         <div className="lg:col-span-5 flex flex-col justify-center">
-          <div className="mb-4">
-            <span className="font-hanken text-xs text-[#C9A227] uppercase tracking-[0.25em] font-bold">
+          <div className="mb-3 sm:mb-4">
+            <span className="font-hanken text-[0.7rem] text-brass uppercase tracking-[0.25em] font-bold">
               {t("visitEyebrow")}
             </span>
           </div>
 
-          <h2 className="font-cormorant text-5xl sm:text-7xl lg:text-[80px] text-[#4A3B31] leading-[1.05] mb-8">
+          <h2 className="font-sangbleu-sunrise font-light not-italic text-3xl xs:text-4xl sm:text-7xl lg:text-[80px] text-charcoal leading-[1.05] mb-6 sm:mb-8">
             <span className="block">{t("seeItTitle")}</span>
-            <span className="block text-[#C9A227] italic">{t("feelDifference")}</span>
+            <span className="block text-brass font-semibold not-italic">
+              {t("feelDifference")}
+            </span>
           </h2>
 
-          <div className="h-px w-12 bg-[#4A3B31]/20 mb-8" />
+          <div className="h-px w-12 bg-slate-gray/20 mb-6 sm:mb-8" />
 
-          <p className="font-hanken text-base sm:text-lg text-[#4A3B31]/80 mb-10 max-w-sm">
+          <p className="font-hanken text-charcoal-body text-xs xs:text-sm sm:text-base font-normal leading-relaxed mb-8 sm:mb-10 max-w-sm">
             {t("showroomDesc")}
           </p>
 
-          <div className="flex flex-col gap-4 mb-10 border-l-2 border-[#C9A227] pl-6 py-2">
+          <div className="flex flex-col gap-4 mb-8 sm:mb-10 border-l-2 border-brass pl-4 sm:pl-6 py-2">
             <div>
-              <h4 className="font-hanken text-xs text-[#4A3B31]/60 mb-1 uppercase tracking-widest font-bold">
+              <h4 className="font-hanken text-[0.7rem] sm:text-xs text-slate-muted mb-1 uppercase tracking-widest font-bold">
                 {t("showroom01Label")}
               </h4>
-              <p className="font-hanken font-bold text-[#4A3B31] text-base">Agrabad Access Road</p>
-              <p className="font-hanken text-[#4A3B31]/70 text-sm">Chattogram · Bangladesh</p>
-              <span className="inline-block font-hanken text-[10px] text-[#C9A227] mt-2 uppercase tracking-widest font-bold px-2 py-0.5 bg-[#C9A227]/10 rounded border border-[#C9A227]/20">
-                {t("openBadge")}
-              </span>
+              <p className="font-hanken font-bold text-charcoal text-sm sm:text-base">
+                Agrabad Access Road
+              </p>
+              <p className="font-hanken text-xs font-medium text-slate-gray mt-0.5">
+                Chattogram · Bangladesh
+              </p>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-charcoal text-ivory text-[0.65rem] font-bold tracking-widest uppercase mt-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-brass animate-pulse"></span>
+                <span>{t("openBadge")}</span>
+              </div>
             </div>
           </div>
 
@@ -47,16 +58,16 @@ export const ShowroomMap: React.FC = () => {
             href="https://maps.google.com/?q=Agrabad+Access+Road,+Chattogram"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 font-hanken text-xs uppercase tracking-[0.2em] font-bold text-[#4A3B31] hover:text-[#C9A227] border-b border-[#4A3B31] pb-2 hover:border-[#C9A227] transition-all self-start"
+            className="inline-flex items-center gap-3 font-hanken text-xs uppercase tracking-[0.2em] font-bold text-charcoal hover:text-brass border-b border-charcoal pb-2 hover:border-brass transition-all self-start"
           >
             <span>{t("getDirections")}</span>
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>
 
-        {/* Right Column: Visual Architectural Map Area with Clear Layering Hierarchy */}
+        {/* Right Column: Visual Architectural Map Area */}
         <div className="lg:col-span-7 h-full w-full">
-          <div className="relative w-full h-[480px] sm:h-[580px] rounded-3xl overflow-hidden shadow-xl border border-[#C9A882]/30 bg-[#F4F1EA]">
+          <div className="relative w-full h-[440px] xs:h-[480px] sm:h-[580px] lg:h-[620px] rounded-xl overflow-hidden shadow-xl border border-wood-border bg-ivory">
             {/* Layer 1: Map Grid Pattern & Road Lines */}
             <div className="absolute inset-0 map-bg-pattern opacity-60 z-0" />
             <div className="absolute top-1/2 left-0 w-[120%] h-5 bg-white shadow-sm transform -rotate-12 -translate-y-1/2 -translate-x-10 z-10" />
@@ -64,51 +75,57 @@ export const ShowroomMap: React.FC = () => {
             <div className="absolute bottom-1/4 left-1/4 w-full h-2 bg-white/70 transform rotate-12 z-10" />
 
             {/* Road Labels */}
-            <span className="absolute top-[48%] left-[18%] text-[9px] font-hanken font-bold tracking-[0.25em] text-[#4A3B31]/40 uppercase transform -rotate-12 z-15">
+            <span className="absolute top-[48%] left-[10%] xs:left-[12%] sm:left-[16%] text-[0.65rem] sm:text-[0.7rem] font-hanken font-bold tracking-[0.25em] text-slate-muted uppercase transform -rotate-12 z-15">
               Agrabad Access Road
             </span>
-            <span className="absolute top-[32%] right-[22%] text-[9px] font-hanken font-bold tracking-[0.25em] text-[#4A3B31]/40 uppercase transform rotate-45 z-15">
+            <span className="absolute top-[32%] right-[12%] sm:right-[18%] text-[0.65rem] sm:text-[0.7rem] font-hanken font-bold tracking-[0.25em] text-slate-muted uppercase transform rotate-45 z-15">
               Jubilee Road
             </span>
 
-            {/* Layer 2: Floating Showroom Photo Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="absolute top-[6%] left-[6%] sm:left-[8%] w-[220px] sm:w-[260px] bg-[#F4F1EA] p-3 sm:p-4 rounded-2xl shadow-xl border border-[#C9A882]/40 z-20"
-            >
-              <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3">
-                <img
-                  src="https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?auto=compress&cs=tinysrgb&w=2000"
-                  alt="Heaven Furniture Mart Showroom Interior"
-                  className="w-full h-full object-cover object-left"
-                />
-                <div className="absolute top-2 right-2 bg-[#34494A]/90 backdrop-blur-md px-2 py-0.5 rounded text-[8px] font-hanken font-bold tracking-widest text-[#F4F1EA] uppercase">
-                  {t("openBadge")}
+            {/* UNIFIED ANCHORED LOCATION PIN & CENTERED PREVIEW POPOVER CARD */}
+            <div className="absolute top-[62%] left-[50%] -translate-x-1/2 -translate-y-full z-40 flex flex-col items-center group select-none">
+              {/* 1. Anchored Preview Popover Card (Centered Above Pin with Pointer Stem) */}
+              <motion.div
+                initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-[210px] xs:w-[240px] sm:w-[270px] bg-ivory p-2.5 xs:p-3 sm:p-4 rounded-xl shadow-2xl border border-wood-border mb-3.5 flex flex-col items-center"
+              >
+                {/* Showroom Image */}
+                <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden mb-2 sm:mb-2.5 bg-sand">
+                  <Image
+                    src="/images/card6.jpg"
+                    alt="Heaven Furniture Mart Showroom Interior"
+                    fill
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute top-2 right-2 bg-charcoal/90 backdrop-blur-md px-2 py-0.5 rounded-sm text-[0.6rem] sm:text-[0.62rem] font-hanken font-bold tracking-widest text-ivory uppercase border border-white/10">
+                    {t("openBadge")}
+                  </div>
                 </div>
-              </div>
-              <div className="px-1 text-center">
-                <h5 className="font-hanken text-[11px] text-[#4A3B31] font-bold uppercase tracking-wider mb-0.5">
-                  Heaven Furniture Mart
-                </h5>
-                <p className="font-hanken text-[10px] text-[#4A3B31]/70">
-                  Agrabad Access Road, Chattogram
-                </p>
-              </div>
-            </motion.div>
 
-            {/* Layer 3: Interactive Location Marker Pin */}
-            <div className="absolute top-[50%] left-[58%] sm:left-[55%] transform -translate-x-1/2 -translate-y-1/2 z-40 group cursor-pointer">
-              <div className="absolute -inset-4 rounded-full bg-[#C9A227]/30 animate-ping z-40" />
+                {/* Details */}
+                <div className="text-center px-1">
+                  <h5 className="font-hanken text-[0.7rem] sm:text-xs font-bold tracking-wider text-charcoal uppercase mb-0.5">
+                    Heaven Furniture Mart
+                  </h5>
+                  <p className="font-hanken text-[0.65rem] sm:text-[0.7rem] text-slate-gray font-medium">
+                    Agrabad Access Road, Chattogram
+                  </p>
+                </div>
 
-              <div className="w-10 h-10 bg-[#34494A] text-[#C9A227] rounded-full border-2 border-white shadow-2xl relative z-45 flex items-center justify-center transition-transform group-hover:scale-115">
-                <MapPin className="w-6 h-6 fill-[#C9A227]" />
-              </div>
+                {/* Pointer Arrow Stem */}
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3.5 sm:w-4 h-3.5 sm:h-4 bg-ivory border-b border-r border-wood-border rotate-45 z-10" />
+              </motion.div>
 
-              <div className="absolute top-12 left-1/2 -translate-x-1/2 bg-[#34494A] text-[#F4F1EA] text-[9px] font-hanken font-bold tracking-widest px-3 py-1 rounded-md shadow-2xl whitespace-nowrap z-50 uppercase border border-white/20">
-                HEAVEN LOCATION PIN
+              {/* 2. Interactive Location Marker Pin */}
+              <div className="relative flex items-center justify-center cursor-pointer">
+                <div className="absolute -inset-4 rounded-full bg-brass/30 animate-ping" />
+
+                <div className="w-10 sm:w-11 h-10 sm:h-11 bg-charcoal text-brass rounded-full border-2 border-white shadow-2xl relative z-20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <MapPin className="w-5 sm:w-6 h-5 sm:h-6 fill-brass" />
+                </div>
               </div>
             </div>
           </div>

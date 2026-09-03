@@ -33,6 +33,11 @@ const sangBleuSunrise = localFont({
       style: "normal",
     },
     {
+      path: "../public/fonts/SangBleuSunriseTrial-LightItalic.woff2",
+      weight: "300",
+      style: "italic",
+    },
+    {
       path: "../public/fonts/SangBleuSunriseTrial-Regular.woff2",
       weight: "400",
       style: "normal",
@@ -48,9 +53,19 @@ const sangBleuSunrise = localFont({
       style: "normal",
     },
     {
+      path: "../public/fonts/SangBleuSunriseTrial-MediumItalic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
       path: "../public/fonts/SangBleuSunriseTrial-Bold.woff2",
       weight: "700",
       style: "normal",
+    },
+    {
+      path: "../public/fonts/SangBleuSunriseTrial-BoldItalic.woff2",
+      weight: "700",
+      style: "italic",
     },
   ],
   variable: "--font-sangbleu-sunrise",
@@ -143,12 +158,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0"
-        />
       </head>
-      <body className="min-h-full flex flex-col selection:bg-[#C9A227] selection:text-white font-moirest font-light">
+      <body className="min-h-full flex flex-col selection:bg-brass selection:text-white font-moirest font-normal">
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

@@ -3,13 +3,14 @@
 import React, { useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, ArrowDown } from "lucide-react";
 
 interface HeroProps {
   onOpenConsultation: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
+export const Hero: React.FC<HeroProps> = () => {
   const { t } = useLanguage();
   const heroRef = useRef<HTMLElement>(null);
 
@@ -48,7 +49,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
     if (typeof window === "undefined") return;
 
     // Respect reduced motion & touch devices
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     if (prefersReducedMotion || isTouch) return;
 
@@ -57,8 +60,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = heroEl.getBoundingClientRect();
-      const relX = Math.max(-1, Math.min(1, (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)));
-      const relY = Math.max(-1, Math.min(1, (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)));
+      const relX = Math.max(
+        -1,
+        Math.min(
+          1,
+          (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2),
+        ),
+      );
+      const relY = Math.max(
+        -1,
+        Math.min(
+          1,
+          (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2),
+        ),
+      );
 
       // Image 1: Organic diagonal path (Max ±12px X, ±8px Y)
       target1X.current = Math.max(-12, Math.min(12, relX * -12 + relY * 4));
@@ -93,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
 
       if (img1Ref.current) {
         img1Ref.current.style.transform = `translate3d(${current1X.current.toFixed(
-          2
+          2,
         )}px, ${current1Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -107,7 +122,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
 
       if (img2Ref.current) {
         img2Ref.current.style.transform = `translate3d(${current2X.current.toFixed(
-          2
+          2,
         )}px, ${current2Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -121,7 +136,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
 
       if (img3Ref.current) {
         img3Ref.current.style.transform = `translate3d(${current3X.current.toFixed(
-          2
+          2,
         )}px, ${current3Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -142,54 +157,57 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
   return (
     <section
       ref={heroRef}
-      className="pt-32 sm:pt-40 md:pt-48 pb-20 max-w-[1600px] mx-auto px-6 sm:px-12 relative overflow-hidden"
+      className="pt-28 xs:pt-32 sm:pt-40 md:pt-48 pb-16 sm:pb-24 max-w-[1600px] mx-auto px-4 xs:px-6 sm:px-12 relative overflow-hidden"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        {/* Left Column: Typography & CTAs (Maintained Completely Stable) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-8 xl:gap-12 items-center">
+        {/* Left Column: Architectural Luxury Editorial Typography */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: [0.2, 0.8, 0.2, 1] }}
           className="lg:col-span-5 flex flex-col justify-center"
         >
-          <div className="mb-6 flex items-center gap-3">
-            <span className="h-px w-8 bg-[#C9A227]" />
-            <span className="font-hanken text-xs text-[#C9A227] uppercase tracking-[0.25em] font-bold">
+          {/* Fine 1px Hairline Brass Accent Eyebrow */}
+          <div className="mb-4 sm:mb-6 flex items-center gap-3">
+            <span className="h-px w-6 sm:w-8 bg-brass" />
+            <span className="font-hanken text-[0.68rem] sm:text-xs text-brass uppercase tracking-[0.22em] sm:tracking-[0.25em] font-bold">
               {t("heroEyebrow")}
             </span>
           </div>
 
-          <h1 className="font-cormorant text-6xl sm:text-7xl md:text-8xl lg:text-[96px] text-[#4A3B31] leading-[1.05] tracking-tight italic mb-8">
-            {t("heroTitleLine1")}
-            <br />
-            {t("heroTitleLine2")}
-            <br />
-            <span className="text-[#C9A227] not-italic block">{t("heroTitleLine3")}</span>
+          {/* Upright Confident Architectural Display Headline (SangBleu 300 Light) */}
+          <h1 className=" font-sangbleu-sunrise font-light not-italic text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] xl:text-[5.5rem] text-charcoal/80 leading-[0.98] tracking-tight mb-6 sm:mb-8">
+            <span className="block">{t("heroTitleLine1")}</span>
+            <span className="block">{t("heroTitleLine2")}</span>
+            <div>
+              <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent  font-medium not-italic">
+                {t("heroTitleLine3")}
+              </span>
+              <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent  font-medium not-italic">
+                {t("heroTitleLine4")}
+              </span>
+            </div>
           </h1>
 
-          <p className="font-hanken text-base sm:text-lg text-[#4A3B31]/80 mb-10 max-w-md font-medium leading-relaxed">
+          {/* Crisp, Solid High-Contrast Supporting Subtext */}
+          <p className="font-hanken text-sm xs:text-base sm:text-lg text-slate-warm font-normal leading-relaxed mb-8 sm:mb-10 max-w-md">
             {t("heroSubtext")}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={onOpenConsultation}
-              className="bg-[#34494A] text-[#F4F1EA] px-8 py-4 font-hanken text-xs uppercase tracking-[0.15em] font-semibold hover:bg-[#C9A227] hover:text-[#34494A] transition-all duration-300 flex items-center gap-3 shadow-md group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
-            >
-              <span>{t("heroCtaPrimary")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-            </motion.button>
-
+          {/* Architectural Action Row */}
+          <div className="flex items-center">
             <motion.a
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
+              whileHover={{ translateX: 10 }}
+              whileTap={{ scale: 0.98 }}
               href="#collections"
-              className="font-hanken text-xs uppercase tracking-[0.15em] font-semibold text-[#4A3B31] hover:text-[#C9A227] flex items-center gap-2 border-b border-[#4A3B31] pb-1 hover:border-[#C9A227] transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+              transition={{
+                duration: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="font-hanken text-xs sm:text-sm uppercase tracking-[0.22em] font-bold text-charcoal hover:text-brass flex items-center gap-3 border-b-2 border-charcoal pb-1.5 hover:border-brass transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-brass"
             >
               <span>{t("heroCtaSecondary")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 text-brass" />
             </motion.a>
           </div>
         </motion.div>
@@ -199,17 +217,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
-          className="lg:col-span-7 relative h-[500px] sm:h-[650px] lg:h-[750px] w-full mt-8 lg:mt-0"
+          className="lg:col-span-7 relative h-[380px] xs:h-[460px] sm:h-[600px] md:h-[650px] lg:h-[720px] xl:h-[780px] w-full mt-4 lg:mt-0"
         >
           <div className="w-full h-full relative">
             {/* Top Dominant Landscape Image */}
             <div
               ref={img1Ref}
-              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-[#C9A882]/30 will-change-transform"
+              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-wood-border will-change-transform"
             >
-              <img
-                src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=2000"
+              <Image
+                src="/images/sofa.jpg"
                 alt="Luxury bespoke sofa in a minimal, sun-lit interior"
+                fill
+                priority
                 className="object-cover w-full h-full object-center pointer-events-none"
               />
             </div>
@@ -217,11 +237,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             {/* Bottom Left Portrait Image */}
             <div
               ref={img2Ref}
-              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-4 border-[#F4F1EA] will-change-transform"
+              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-2 sm:border-4 border-ivory will-change-transform"
             >
-              <img
-                src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=2000"
+              <Image
+                src="/images/tabil.jpg"
                 alt="Modern luxury dining room with custom wood table"
+                fill
                 className="object-cover w-full h-full object-[20%_50%] pointer-events-none"
               />
             </div>
@@ -229,11 +250,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             {/* Bottom Right Detail Image */}
             <div
               ref={img3Ref}
-              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-8 border-[#F4F1EA] shadow-2xl rounded-sm will-change-transform"
+              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-4 sm:border-8 border-ivory shadow-2xl rounded-sm will-change-transform"
             >
-              <img
-                src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=2000"
+              <Image
+                src="/images/chair.jpg"
                 alt="Close-up detail of handcrafted wood joinery"
+                fill
                 className="object-cover w-full h-full object-[80%_80%] pointer-events-none"
               />
             </div>
@@ -242,13 +264,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       </div>
 
       {/* Animated Scroll Indicator */}
-      <div className="flex justify-center mt-16 sm:mt-24">
+      <div className="flex justify-center mt-12 sm:mt-20 lg:mt-24">
         <a
           href="#about"
-          className="flex items-center gap-3 text-[#4A3B31]/60 hover:text-[#C9A227] transition-colors focus-visible:outline-2 focus-visible:outline-[#C9A227]"
+          className="flex items-center gap-3 text-slate-muted hover:text-brass transition-colors focus-visible:outline-2 focus-visible:outline-brass"
         >
-          <ArrowDown className="w-4 h-4 animate-bounce text-[#C9A227]" />
-          <span className="font-hanken text-[10px] uppercase tracking-[0.25em] font-semibold">
+          <ArrowDown className="w-4 h-4 animate-bounce text-brass" />
+          <span className="font-hanken text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.25em] font-medium">
             {t("scrollDiscover")}
           </span>
         </a>
