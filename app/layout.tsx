@@ -88,7 +88,7 @@ const notoSansBengali = Noto_Sans_Bengali({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://heavenfurnituremart.com"),
+  metadataBase: new URL("https://heaven-furniture-mart-aftababu.vercel.app/"),
   title:
     "HEAVEN FURNITURE MART | Bespoke Furniture & Artisan Heritage Chattogram",
   description:
@@ -106,13 +106,13 @@ export const metadata: Metadata = {
     title: "HEAVEN FURNITURE MART | Bespoke Luxury Furniture",
     description:
       "Custom furniture designed around your space, lifestyle, and taste.",
-    url: "https://heavenfurnituremart.com",
+    url: "https://heaven-furniture-mart-aftababu.vercel.app/",
     siteName: "Heaven Furniture Mart",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=2000",
+        url: "https://res.cloudinary.com/dmglab5ej/image/upload/c_thumb,w_200,g_face/v1788446445/hackathon/hero_vkxkix.webp",
         width: 1200,
         height: 630,
         alt: "Heaven Furniture Mart Bespoke Living",
@@ -135,7 +135,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FurnitureStore",
   name: "Heaven Furniture Mart",
-  image: "https://heavenfurnituremart.com/og-image.jpg",
+  image:
+    "https://res.cloudinary.com/dmglab5ej/image/upload/c_thumb,w_200,g_face/v1788446445/hackathon/hero_vkxkix.webp",
   telephone: "+8801960481983",
   email: "heavenfurnituremart@gmail.com",
   address: {
@@ -149,7 +150,7 @@ const jsonLd = {
     latitude: 22.3275,
     longitude: 91.8123,
   },
-  url: "https://heavenfurnituremart.com",
+  url: "https://heaven-furniture-mart-aftababu.vercel.app/",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -176,10 +177,14 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="en-US"
       className={`${moirest.variable} ${sangBleuSunrise.variable} ${notoSerifBengali.variable} ${notoSansBengali.variable} scroll-smooth h-full antialiased`}
     >
       <head>
+        <meta
+          name="google-site-verification"
+          content="VGbvF1AhtWU-atZCC7AlYj-YYkRvXaUsuGJSHMFAato"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

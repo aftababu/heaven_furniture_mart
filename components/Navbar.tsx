@@ -187,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
 
             <div className="space-y-4 pt-6 border-t border-border/40">
               <Button
-                variant="default"
+                variant="gradient"
                 size="lg"
                 onClick={() => {
                   setMobileMenuOpen(false);
