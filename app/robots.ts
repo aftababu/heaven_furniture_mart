@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://heavenfurnituremart.com/sitemap.xml",
+    sitemap: "https://heaven-furniture-mart-aftababu.vercel.app/sitemap.xml",
   };
 }

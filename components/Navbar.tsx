@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
   return (
     <>
       <header
-        className={`w-full z-50 h-20 sm:h-22 flex items-center overflow-visible transition-all duration-500 ease-out ${
+        className={`w-full z-50 h-16 sm:h-18 flex items-center overflow-visible transition-all duration-500 ease-out ${
           isSticky
             ? "fixed top-0 left-0 bg-primary-bg/90 backdrop-blur-md border-b border-border/40 shadow-sm translate-y-0 opacity-100"
             : "absolute top-0 left-0 bg-transparent border-b border-transparent shadow-none"

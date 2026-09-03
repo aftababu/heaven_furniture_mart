@@ -210,12 +210,12 @@ export const Hero: React.FC<HeroProps> = () => {
               className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-border will-change-transform"
             >
               <Image
-                src="/images/sofa.jpg"
+                src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/living_bccxod.webp"
                 alt={t("heroImgAlt1")}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover w-full h-full object-center pointer-events-none"
+                className="object-cover w-full h-full object-center pointer-events-none select-none"
               />
             </div>
 
@@ -225,11 +225,12 @@ export const Hero: React.FC<HeroProps> = () => {
               className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-2 sm:border-4 border-primary-bg will-change-transform"
             >
               <Image
-                src="/images/tabil.jpg"
+                src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/tabil_iabih2.webp"
                 alt={t("heroImgAlt2")}
                 fill
                 sizes="(max-width: 1024px) 48vw, 34vw"
-                className="object-cover w-full h-full object-[20%_50%] pointer-events-none"
+                className="object-cover w-full h-full object-[20%_80%] pointer-events-none select-none"
+                priority
               />
             </div>
 
@@ -239,11 +240,12 @@ export const Hero: React.FC<HeroProps> = () => {
               className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-4 sm:border-8 border-primary-bg shadow-2xl rounded-sm will-change-transform"
             >
               <Image
-                src="/images/chair.jpg"
+                src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/sofa_c2txdn.webp"
                 alt={t("heroImgAlt3")}
                 fill
+                priority
                 sizes="(max-width: 1024px) 48vw, 34vw"
-                className="object-cover w-full h-full object-[80%_80%] pointer-events-none"
+                className="object-cover w-full h-full object-[80%_80%] pointer-events-none select-none"
               />
             </div>
           </div>

@@ -29,7 +29,7 @@ const slides: SlideData[] = [
       "Work directly with our expert interior architects to bring your dream living space vision to life.",
     descBn:
       "আপনার স্বপ্নের ঘর সাজাতে অভিজ্ঞ ফার্নিচার ডিজাইনারের সরাসরি ফ্রি পরামর্শ পান।",
-    img: "/images/card1.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/design_dtfmyh.webp",
   },
   {
     num: "02",
@@ -42,7 +42,7 @@ const slides: SlideData[] = [
       "Every piece is custom-tailored to your room's exact architectural dimensions and personal aesthetic.",
     descBn:
       "ঘরের নিখুঁত মাপে এবং আপনার নিজস্ব স্টাইল ও স্বাদ অনুযায়ী তৈরি সেরা কাস্টম ফার্নিচার।",
-    img: "/images/card2.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445505/hackathon/craft_alk54q.webp",
   },
   {
     num: "03",
@@ -54,7 +54,7 @@ const slides: SlideData[] = [
       "Seasoned solid teak, mahogany, and anti-warp engineered wood with hand-polished luxury finishes.",
     descBn:
       "উন্নত মেহগনি ও সেগুন কাঠ এবং ইন-হাউজ দক্ষ কারিগরদের টেকসই হাতের নিখুঁত কাজ।",
-    img: "/images/card3.png",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445505/hackathon/wood_sumsjx.webp",
   },
   {
     num: "04",
@@ -66,7 +66,7 @@ const slides: SlideData[] = [
       "Touch, feel, and experience our handcrafted luxury furniture collections in person at Agrabad Access Road.",
     descBn:
       "আগ্রাবাদ এক্সেস রোডে সরাসরি শোরুম ভিজিট করে ফার্নিচারের ফিনিশিং ও কোয়ালিটি স্বচক্ষে দেখুন।",
-    img: "/images/card4.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp",
   },
   {
     num: "05",
@@ -78,7 +78,7 @@ const slides: SlideData[] = [
       "Seamless white-glove delivery and precision setup directly at your doorstep by our skilled team.",
     descBn:
       "ঝামেলাহীন হোম ডেলিভারি এবং অভিজ্ঞ ফিটিং টিম দিয়ে নিখুঁত ইনস্টলেশন নিশ্চয়তা।",
-    img: "/images/card5.png",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445504/hackathon/delivery_yeymeb.webp",
   },
   {
     num: "06",
@@ -90,7 +90,7 @@ const slides: SlideData[] = [
       "Flexible milestone payment plans and installment structures tailored for hassle-free home furnishing.",
     descBn:
       "বাজেট ফ্রেন্ডলি কিস্তি ও পার্ট পেমেন্ট সুবিধায় নিজের পছন্দমতো ঘর সাজান স্বাচ্ছন্দে।",
-    img: "/images/sofa.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445504/hackathon/payment_ttc5hl.webp",
   },
   {
     num: "07",
@@ -102,7 +102,7 @@ const slides: SlideData[] = [
       "Years of proven artisan excellence, structural warranty, and delighted homeowners across Bangladesh.",
     descBn:
       "চট্টগ্রামজুড়ে শত শত সন্তুষ্ট কাস্টমারের দীর্ঘদিনের বিশ্বস্ততা ও গুণগত মানের সেরা গ্যারান্টি।",
-    img: "/images/bespoke.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445504/hackathon/card4.1_usa9dm.webp",
   },
 ];
 
@@ -375,6 +375,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                             : activeSlide.titleEn
                         }
                         fill
+                        loading="lazy"
                         sizes="(max-width: 1024px) 100vw, 58vw"
                         className="w-full h-full object-cover"
                       />

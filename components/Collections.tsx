@@ -17,26 +17,26 @@ const categories: CategoryItem[] = [
   {
     id: "living",
     key: "catLiving",
-    img: "/images/living.jpg",
-    objectPos: "object-left",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/living_bccxod.webp",
+    objectPos: "object-[20%_80%]",
   },
   {
     id: "bedroom",
     key: "catBedroom",
-    img: "/images/bedroom.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443694/hackathon/bedroom_ztinrh.webp",
     objectPos: "object-bottom",
   },
   {
     id: "dining",
     key: "catDining",
-    img: "/images/din.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/din_quuemd.webp",
     objectPos: "object-[30%_50%]",
   },
   {
     id: "bespoke",
     key: "catBespoke",
-    img: "/images/bespoke.jpg",
-    objectPos: "object-[80%_80%]",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/bespoke_bhel21.webp",
+    objectPos: "object-[60%_50%]",
   },
 ];
 
@@ -52,7 +52,7 @@ export const Collections: React.FC<CollectionsProps> = ({
   return (
     <section
       id="collections"
-      className="py-16 xs:py-20 sm:py-32 bg-secondary-bg relative overflow-hidden"
+      className="py-16 xs:py-20 sm:py-32 bg-primary-bg relative overflow-hidden"
     >
       <div className="max-w-[1600px] mx-auto px-4 xs:px-6 sm:px-12">
         {/* Section Title in SangBleu 300 Light */}
@@ -78,7 +78,7 @@ export const Collections: React.FC<CollectionsProps> = ({
               href={`https://wa.me/8801960481983?text=${encodeURIComponent(
                 lang === "bn"
                   ? `হ্যালো হেভেন ফার্নিচার মার্ট, আমি আপনাদের ${t(cat.key)} কালেকশন দেখতে আগ্রহী।`
-                  : `Hello Heaven Furniture Mart, I am interested in your ${t(cat.key)} collection.`
+                  : `Hello Heaven Furniture Mart, I am interested in your ${t(cat.key)} collection.`,
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -89,8 +89,9 @@ export const Collections: React.FC<CollectionsProps> = ({
                   src={cat.img}
                   alt={t(cat.key)}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className={`w-full h-full object-cover ${cat.objectPos} transition-transform duration-1000 ease-out group-hover:scale-105`}
+                  className={`w-full h-full object-cover ${cat.objectPos} transition-transform duration-1000 ease-out group-hover:scale-105 select-none`}
                 />
                 <div className="absolute inset-0 bg-text/10 group-hover:bg-transparent transition-colors duration-500" />
               </div>

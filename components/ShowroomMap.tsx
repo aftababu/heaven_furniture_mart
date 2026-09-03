@@ -95,9 +95,10 @@ export const ShowroomMap: React.FC = () => {
                 {/* Showroom Image */}
                 <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden mb-2 sm:mb-2.5 bg-secondary-bg">
                   <Image
-                    src="/images/card6.jpg"
+                    src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp"
                     alt={t("showroomAltImg")}
                     fill
+                    loading="lazy"
                     sizes="(max-width: 640px) 210px, 270px"
                     className="w-full h-full object-cover object-center"
                   />

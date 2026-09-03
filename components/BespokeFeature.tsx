@@ -185,7 +185,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
               >
                 {/* 1. BEFORE Image (Underneath) */}
                 <Image
-                  src="/images/before.jpeg"
+                  src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/before_movvjo.webp"
                   alt={t("bespokeAltBefore")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 54vw"
@@ -194,7 +194,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
 
                 {/* 2. BESPOKE Image (Top Layer) */}
                 <Image
-                  src="/images/bespoke.jpg"
+                  src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/bespoke_bhel21.webp"
                   alt={t("bespokeAltAfter")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 54vw"

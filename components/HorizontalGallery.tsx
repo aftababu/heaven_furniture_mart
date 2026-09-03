@@ -28,7 +28,7 @@ interface MilestoneItem {
 const GALLERY_CARDS: GalleryCardItem[] = [
   {
     id: "card-1",
-    img: "/images/card1.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/card1_xhse8b.webp",
     alt: "Custom Living Room Sofa",
     capKey: "cap_1",
     aspect: "aspect-[16/11]",
@@ -38,7 +38,7 @@ const GALLERY_CARDS: GalleryCardItem[] = [
   },
   {
     id: "card-2",
-    img: "/images/card2.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/card2_ash5hh.webp",
     alt: "Craft Solid Hardwood Detail",
     capKey: "cap_2",
     aspect: "aspect-[4/5]",
@@ -49,7 +49,7 @@ const GALLERY_CARDS: GalleryCardItem[] = [
 
   {
     id: "card-4",
-    img: "/images/card4.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/card4_kjoiln.webp",
     alt: "Bespoke Timber Dining",
     capKey: "cap_4",
     aspect: "aspect-[16/10]",
@@ -59,7 +59,7 @@ const GALLERY_CARDS: GalleryCardItem[] = [
   },
   {
     id: "card-5",
-    img: "/images/card5.png",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/card5_gykt4m.webp",
     alt: "Atelier Hand-Planed Joinery",
     capKey: "cap_5",
     aspect: "aspect-[3/4]",
@@ -69,7 +69,7 @@ const GALLERY_CARDS: GalleryCardItem[] = [
   },
   {
     id: "card-6",
-    img: "/images/card6.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp",
     alt: "Executive Bespoke Interior",
     capKey: "cap_6",
     aspect: "aspect-[16/11]",
@@ -79,11 +79,11 @@ const GALLERY_CARDS: GalleryCardItem[] = [
   },
   {
     id: "card-7",
-    img: "/images/sofa.jpg",
+    img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/inside_mkpujz.webp",
     alt: "Agrabad Access Road Showroom",
     capKey: "cap_7",
-    aspect: "aspect-[1/1]",
-    widthClass: "w-[55vw] sm:w-[32vw] lg:w-[22vw]",
+    aspect: "aspect-[16/9]",
+    widthClass: "w-[55vw] sm:w-[32vw] ",
     alignClass: "self-end mb-12 sm:mb-16",
     marginClass: "ml-12 sm:ml-20 lg:ml-24",
   },
@@ -313,8 +313,9 @@ export const HorizontalGallery: React.FC = () => {
                   src={item.img}
                   alt={item.alt}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 640px) 55vw, (max-width: 1024px) 44vw, 32vw"
-                  className="card-image-inner w-full h-full object-cover block pointer-events-none transition-transform duration-1000 ease-out group-hover:scale-105"
+                  className="card-image-inner w-full h-full object-cover block select-none pointer-events-none transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
               </div>
 
