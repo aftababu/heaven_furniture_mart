@@ -13,7 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-ivory text-charcoal-body py-16 xs:py-20 sm:py-28 px-4 xs:px-6 sm:px-12 border-t border-wood-border relative overflow-hidden">
+    <footer className="bg-ivory text-charcoal py-16 xs:py-20 sm:py-28 px-4 xs:px-6 sm:px-12 border-t border-wood-border relative overflow-hidden">
       <div className="max-w-[1600px] mx-auto">
         {/* Top Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 mb-16 sm:mb-28">

@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               >
                 EN
               </button>
-              <span className="text-wood-border mx-2 md:mx-2.5 select-none font-normal">
+              <span className="text-wood-border mx-[1px] md:mx-1 select-none font-normal">
                 /
               </span>
               <button
@@ -107,12 +107,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
             {/* Quick Quote CTA with shadcn UI Button */}
             <div className="hidden sm:block">
               <Button
-                variant="brass"
+                variant="textGradient"
                 size="sm"
                 onClick={onOpenConsultation}
-                className="gap-2"
+                className="gap-1.5"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
+                <MessageSquare className="w-3.5 h-3.5 text-brass" />
                 <span>{t("navQuote")}</span>
               </Button>
             </div>

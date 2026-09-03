@@ -157,6 +157,35 @@
       );
     background-attachment: fixed;
   }
+  @keyframes shine {
+    0% {
+      background-position: 200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .heaven-button {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-brass);
+
+    background-image: linear-gradient(
+      45deg,
+      transparent 25%,
+      rgba(201, 162, 39, 0.45) 50%,
+      transparent 75%,
+      transparent
+    );
+
+    background-size: 250% 250%;
+    background-position: 200% 0;
+    animation: shine 10s linear infinite;
+
+    color: #faf7f2;
+  }
 }
 
 /* Radix Dialog Luxury Animation Keyframes */

@@ -25,8 +25,10 @@ const slides: SlideData[] = [
     tagBn: "০১ / ০৭ — পরামর্শ",
     titleEn: "Free design consultation",
     titleBn: "ফ্রি ডিজাইন পরামর্শ",
-    descEn: "Work directly with our expert interior architects to bring your dream living space vision to life.",
-    descBn: "আপনার স্বপ্নের ঘর সাজাতে অভিজ্ঞ ফার্নিচার ডিজাইনারের সরাসরি ফ্রি পরামর্শ পান।",
+    descEn:
+      "Work directly with our expert interior architects to bring your dream living space vision to life.",
+    descBn:
+      "আপনার স্বপ্নের ঘর সাজাতে অভিজ্ঞ ফার্নিচার ডিজাইনারের সরাসরি ফ্রি পরামর্শ পান।",
     img: "/images/card1.jpg",
   },
   {
@@ -34,9 +36,12 @@ const slides: SlideData[] = [
     tagEn: "02 / 07 — BESPOKE CRAFT",
     tagBn: "০২ / ০৭ — কাস্টম ফিটিং",
     titleEn: "Fully bespoke — built to your space, not mass-produced",
-    titleBn: "সম্পূর্ণ কাস্টম — প্রতিটি ফার্নিচার ঘরের মাপে তৈরি, মাস-প্রোডিউসড নয়",
-    descEn: "Every piece is custom-tailored to your room's exact architectural dimensions and personal aesthetic.",
-    descBn: "ঘরের নিখুঁত মাপে এবং আপনার নিজস্ব স্টাইল ও স্বাদ অনুযায়ী তৈরি সেরা কাস্টম ফার্নিচার।",
+    titleBn:
+      "সম্পূর্ণ কাস্টম — প্রতিটি ফার্নিচার ঘরের মাপে তৈরি, মাস-প্রোডিউসড নয়",
+    descEn:
+      "Every piece is custom-tailored to your room's exact architectural dimensions and personal aesthetic.",
+    descBn:
+      "ঘরের নিখুঁত মাপে এবং আপনার নিজস্ব স্টাইল ও স্বাদ অনুযায়ী তৈরি সেরা কাস্টম ফার্নিচার।",
     img: "/images/card2.jpg",
   },
   {
@@ -45,8 +50,10 @@ const slides: SlideData[] = [
     tagBn: "০৩ / ০৭ — কায়িক কারিগরি",
     titleEn: "Premium wood & materials, skilled in-house craftsmanship",
     titleBn: "প্রিমিয়াম কাঠ ও উপাদান, অভিজ্ঞ কারিগরদের দক্ষ হাত",
-    descEn: "Seasoned solid teak, mahogany, and anti-warp engineered wood with hand-polished luxury finishes.",
-    descBn: "উন্নত মেহগনি ও সেগুন কাঠ এবং ইন-হাউজ দক্ষ কারিগরদের টেকসই হাতের নিখুঁত কাজ।",
+    descEn:
+      "Seasoned solid teak, mahogany, and anti-warp engineered wood with hand-polished luxury finishes.",
+    descBn:
+      "উন্নত মেহগনি ও সেগুন কাঠ এবং ইন-হাউজ দক্ষ কারিগরদের টেকসই হাতের নিখুঁত কাজ।",
     img: "/images/card3.png",
   },
   {
@@ -55,8 +62,10 @@ const slides: SlideData[] = [
     tagBn: "০৪ / ০৭ — শোরুম ভিজিট",
     titleEn: "Large physical showroom in Chattogram (Agrabad)",
     titleBn: "চট্টগ্রামের আগ্রাবাদে সুবিশাল নিজস্ব শোরুম",
-    descEn: "Touch, feel, and experience our handcrafted luxury furniture collections in person at Agrabad Access Road.",
-    descBn: "আগ্রাবাদ এক্সেস রোডে সরাসরি শোরুম ভিজিট করে ফার্নিচারের ফিনিশিং ও কোয়ালিটি স্বচক্ষে দেখুন।",
+    descEn:
+      "Touch, feel, and experience our handcrafted luxury furniture collections in person at Agrabad Access Road.",
+    descBn:
+      "আগ্রাবাদ এক্সেস রোডে সরাসরি শোরুম ভিজিট করে ফার্নিচারের ফিনিশিং ও কোয়ালিটি স্বচক্ষে দেখুন।",
     img: "/images/card4.jpg",
   },
   {
@@ -65,8 +74,10 @@ const slides: SlideData[] = [
     tagBn: "০৫ / ০৭ — হোম সার্ভিস",
     titleEn: "Delivery & installation included",
     titleBn: "ডেলিভারি ও প্রফেশনাল ফিটিং ইনক্লুডেড",
-    descEn: "Seamless white-glove delivery and precision setup directly at your doorstep by our skilled team.",
-    descBn: "ঝামেলাহীন হোম ডেলিভারি এবং অভিজ্ঞ ফিটিং টিম দিয়ে নিখুঁত ইনস্টলেশন নিশ্চয়তা।",
+    descEn:
+      "Seamless white-glove delivery and precision setup directly at your doorstep by our skilled team.",
+    descBn:
+      "ঝামেলাহীন হোম ডেলিভারি এবং অভিজ্ঞ ফিটিং টিম দিয়ে নিখুঁত ইনস্টলেশন নিশ্চয়তা।",
     img: "/images/card5.png",
   },
   {
@@ -75,8 +86,10 @@ const slides: SlideData[] = [
     tagBn: "০৬ / ০৭ — সহজ পেমেন্ট",
     titleEn: "Easy payment options",
     titleBn: "সহজ ও সুবিধাজনক পেমেন্ট অপশন",
-    descEn: "Flexible milestone payment plans and installment structures tailored for hassle-free home furnishing.",
-    descBn: "বাজেট ফ্রেন্ডলি কিস্তি ও পার্ট পেমেন্ট সুবিধায় নিজের পছন্দমতো ঘর সাজান স্বাচ্ছন্দে।",
+    descEn:
+      "Flexible milestone payment plans and installment structures tailored for hassle-free home furnishing.",
+    descBn:
+      "বাজেট ফ্রেন্ডলি কিস্তি ও পার্ট পেমেন্ট সুবিধায় নিজের পছন্দমতো ঘর সাজান স্বাচ্ছন্দে।",
     img: "/images/sofa.jpg",
   },
   {
@@ -85,8 +98,10 @@ const slides: SlideData[] = [
     tagBn: "০৭ / ০৭ — বিশ্বস্ততা",
     titleEn: "Trusted by hundreds of happy homeowners",
     titleBn: "শত শত সন্তুষ্ট গৃহমালিকের বিশ্বস্ত পছন্দ",
-    descEn: "Years of proven artisan excellence, structural warranty, and delighted homeowners across Bangladesh.",
-    descBn: "চট্টগ্রামজুড়ে শত শত সন্তুষ্ট কাস্টমারের দীর্ঘদিনের বিশ্বস্ততা ও গুণগত মানের সেরা গ্যারান্টি।",
+    descEn:
+      "Years of proven artisan excellence, structural warranty, and delighted homeowners across Bangladesh.",
+    descBn:
+      "চট্টগ্রামজুড়ে শত শত সন্তুষ্ট কাস্টমারের দীর্ঘদিনের বিশ্বস্ততা ও গুণগত মানের সেরা গ্যারান্টি।",
     img: "/images/bespoke.jpg",
   },
 ];
@@ -240,11 +255,15 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                       </span>
 
                       <h2 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-sangbleu-sunrise font-light text-charcoal leading-[1.12] tracking-tight mb-3 line-clamp-2">
-                        {lang === "bn" ? activeSlide.titleBn : activeSlide.titleEn}
+                        {lang === "bn"
+                          ? activeSlide.titleBn
+                          : activeSlide.titleEn}
                       </h2>
 
                       <p className="font-hanken text-slate-warm text-xs sm:text-sm font-normal leading-relaxed max-w-md line-clamp-3">
-                        {lang === "bn" ? activeSlide.descBn : activeSlide.descEn}
+                        {lang === "bn"
+                          ? activeSlide.descBn
+                          : activeSlide.descEn}
                       </p>
                     </motion.div>
                   </AnimatePresence>
@@ -269,32 +288,12 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                         />
                       ))}
                     </div>
-
-                    {/* Left / Right Arrow Controls with shadcn UI Button */}
-                    <div className="flex items-center gap-2">
-                      <Button
-                        variant="secondary"
-                        size="icon"
-                        onClick={prevSlide}
-                        aria-label="Previous Slide"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </Button>
-                      <Button
-                        variant="secondary"
-                        size="icon"
-                        onClick={nextSlide}
-                        aria-label="Next Slide"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </Button>
-                    </div>
                   </div>
 
                   {/* Bottom SEE ALL Button to Flip Card with shadcn UI Button */}
                   <div>
                     <Button
-                      variant="default"
+                      variant="gradient"
                       size="lg"
                       onClick={triggerLookbookFlip}
                       className="w-full sm:w-auto gap-3"
@@ -328,7 +327,11 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                     >
                       <Image
                         src={activeSlide.img}
-                        alt={lang === "bn" ? activeSlide.titleBn : activeSlide.titleEn}
+                        alt={
+                          lang === "bn"
+                            ? activeSlide.titleBn
+                            : activeSlide.titleEn
+                        }
                         fill
                         className="w-full h-full object-cover"
                       />
@@ -356,7 +359,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
               <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-sm border border-wood-border self-start sm:self-auto shadow-sm">
                 <div className="w-2 h-2 rounded-full bg-brass animate-pulse" />
                 <span className="text-[0.7rem] font-mono text-slate-muted font-medium uppercase tracking-wider">
-                  HOLDING {secondsLeft.toFixed(1)}S
+                  {secondsLeft.toFixed(1)}S
                 </span>
                 <Button
                   variant="ghost"

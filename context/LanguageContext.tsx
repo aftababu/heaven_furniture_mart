@@ -228,8 +228,8 @@ export const translations: Translations = {
     bn: "সতর্কতার সাথে আপনার ঘরে পৌঁছে নিখুঁতভাবে সেট করে দেওয়া হয়।",
   },
   startProject: {
-    en: "START YOUR BESPOKE PROJECT →",
-    bn: "আপনার কাস্টম প্রজেক্ট শুরু করুন →",
+    en: "START YOUR BESPOKE PROJECT ",
+    bn: "আপনার কাস্টম প্রজেক্ট শুরু করুন ",
   },
   standardLabel: { en: "STANDARD MASS-PRODUCED", bn: "সাধারণ রেডিমেড আসবাব" },
   heavenLabel: { en: "HEAVEN BESPOKE CRAFT", bn: "হেভেনের কাস্টম কারিগরি" },

@@ -31,25 +31,9 @@ export const BrandStatement: React.FC = () => {
         {/* Dark Multi-Stop Gradient Scrim Protection Layer */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30 z-1" />
       </div>
-
       {/* Content Overlay */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-12 flex h-full items-center">
         <div className="w-full flex flex-col items-center justify-center py-8">
-          {/* Eyebrow */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center gap-4 mb-4 sm:mb-6"
-          >
-            <span className="h-px w-10 bg-brass-gold" />
-            <span className="font-hanken text-[0.7rem] font-bold tracking-[0.25em] text-brass-gold uppercase drop-shadow-sm">
-              {t("approachEyebrow")}
-            </span>
-          </motion.div> */}
-
-          {/* Section Title in SangBleu 300 Light */}
           <div className="text-center font-sangbleu-sunrise text-4xl sm:text-[90px]  text-sand leading-[1.3] mb-6 font-light not-italic drop-shadow-md">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -60,47 +44,7 @@ export const BrandStatement: React.FC = () => {
             >
               {t("approachHeading1")}
             </motion.p>
-            {/* <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="block text-brass-gold not-italic"
-            >
-              {t("approachHeading2")}
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="block"
-            >
-              {t("approachHeading3")}
-            </motion.span> */}
           </div>
-
-          {/* Subtext */}
-          {/* <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="font-hanken text-sm sm:text-base font-normal text-paper leading-relaxed max-w-lg mb-6 drop-shadow-sm hidden sm:block"
-          >
-            {t("approachSubtext")}
-          </motion.p> */}
-
-          {/* Tagline */}
-          {/* <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="font-hanken text-[0.7rem] font-bold tracking-[0.25em] text-brass-gold uppercase mb-8 drop-shadow-sm"
-          >
-            {t("approachTagline")}
-          </motion.p> */}
 
           {/* Action Link */}
           <motion.a
@@ -116,13 +60,9 @@ export const BrandStatement: React.FC = () => {
           </motion.a>
         </div>
       </div>
-
       {/* Bottom Scroll Cue */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-ivory">
-        <span className="font-hanken text-[0.7rem] uppercase tracking-[0.25em] font-medium">
-          {t("scrollDiscover")}
-        </span>
-        <ArrowDown className="w-4 h-4 animate-bounce text-brass" />
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 border border-wood-border rounded-full px-2 py-2 animate-bounce z-10">
+        <ArrowDown className="w-4 h-4  text-ivory" />
       </div>
     </section>
   );

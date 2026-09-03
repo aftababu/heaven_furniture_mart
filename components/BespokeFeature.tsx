@@ -160,7 +160,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
 
             <div className="flex items-center pt-6 sm:pt-8 border-t border-wood-border">
               <Button
-                variant="default"
+                variant="gradient"
                 size="lg"
                 onClick={onOpenConsultation}
                 className="w-full sm:w-auto gap-3"
