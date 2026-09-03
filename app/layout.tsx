@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Noto_Serif_Bengali, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 
@@ -69,6 +70,20 @@ const sangBleuSunrise = localFont({
     },
   ],
   variable: "--font-sangbleu-sunrise",
+  display: "swap",
+});
+
+const notoSerifBengali = Noto_Serif_Bengali({
+  subsets: ["bengali"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-noto-serif-bengali",
+  display: "swap",
+});
+
+const notoSansBengali = Noto_Sans_Bengali({
+  subsets: ["bengali"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-noto-sans-bengali",
   display: "swap",
 });
 
@@ -151,7 +166,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${moirest.variable} ${sangBleuSunrise.variable} scroll-smooth h-full antialiased`}
+      className={`${moirest.variable} ${sangBleuSunrise.variable} ${notoSerifBengali.variable} ${notoSansBengali.variable} scroll-smooth h-full antialiased`}
     >
       <head>
         <script

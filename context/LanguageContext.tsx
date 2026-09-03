@@ -368,6 +368,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
     setLangState(newLang);
     if (typeof window !== "undefined") {
       localStorage.setItem("hfm_lang", newLang);
+      document.documentElement.lang = newLang;
     }
   };
 
@@ -376,6 +377,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
       const savedLang = localStorage.getItem("hfm_lang") as Language;
       if (savedLang === "en" || savedLang === "bn") {
         setLangState(savedLang);
+        document.documentElement.lang = savedLang;
+      } else {
+        document.documentElement.lang = "en";
       }
     }
   }, []);

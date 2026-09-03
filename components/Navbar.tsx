@@ -13,29 +13,41 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
   const { lang, setLang, t } = useLanguage();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      const threshold = window.innerHeight * 1.2;
+      setIsSticky(window.scrollY >= threshold);
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 h-20 sm:h-22 flex items-center overflow-visible ${
-          isScrolled
-            ? "bg-ivory/90 backdrop-blur-md border-b border-wood-border/40 shadow-sm"
-            : "bg-transparent border-b border-transparent shadow-none"
+        className={`w-full z-50 h-20 sm:h-22 flex items-center overflow-visible transition-all duration-500 ease-out ${
+          isSticky
+            ? "fixed top-0 left-0 bg-ivory/90 backdrop-blur-md border-b border-wood-border/40 shadow-sm translate-y-0 opacity-100"
+            : "absolute top-0 left-0 bg-transparent border-b border-transparent shadow-none"
         }`}
+        style={
+          isSticky
+            ? {
+                animation:
+                  "headerSlideDown 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              }
+            : undefined
+        }
       >
         <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-8 lg:px-12 flex justify-between items-center relative h-full overflow-visible">
           {/* Desktop Left Nav Links (Reduced gap under 1024px lg breakpoint) */}

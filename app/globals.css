@@ -26,8 +26,7 @@
   --color-slate-gray: #4a463f; /* Secondary Warm Slate Gray */
   --color-slate-muted: #5c574f; /* Muted Slate Gray */
   --color-graphite-muted: #8c857b; /* Muted Graphite */
-  --color-brass: #4a3b31; /* Deepened Antique Brass (Accessible > 4.5:1) */
-  --color-brass-gold: #34494a; /* Accessible Bright Brass */
+  --color-brass: #a88432; /* Deepened Antique Brass (Accessible > 4.5:1) */
   --color-gold: #c9a227; /* Micro Accent Gold */
   --color-wood-border: #d1c9bc; /* Fine Architectural Divider */
   --color-border-divider: #e8e2d5; /* Subtle Divider */
@@ -237,6 +236,17 @@
   }
 }
 
+@keyframes headerSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .animate-dialog-overlay-show {
   animation: dialogOverlayShow 380ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -253,20 +263,20 @@
   animation: dialogContentHide 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Strict Typography Mapping to public/fonts/ */
+/* Strict Typography Mapping with Dedicated Bengali Font System */
 .font-sangbleu-air,
 .font-sangbleu-sunrise,
 .font-cormorant,
 .font-bodoni,
 .font-serif {
-  font-family: var(--font-sangbleu-sunrise), "SangBleu Sunrise", serif;
+  font-family: var(--font-sangbleu-sunrise), var(--font-noto-serif-bengali), "SangBleu Sunrise", serif;
 }
 
 .font-hanken,
 .font-jakarta,
 .font-sans,
 .font-moirest {
-  font-family: var(--font-moirest), "Moirest", sans-serif;
+  font-family: var(--font-moirest), var(--font-noto-sans-bengali), "Moirest", sans-serif;
 }
 
 button,
@@ -274,7 +284,33 @@ button,
 input,
 select,
 textarea {
-  font-family: var(--font-moirest), "Moirest", sans-serif;
+  font-family: var(--font-moirest), var(--font-noto-sans-bengali), "Moirest", sans-serif;
+}
+
+/* Explicit Bengali Font Overrides (Noto Serif Bengali for Headings, Noto Sans Bengali for Body/Nav) */
+html[lang="bn"] .font-sangbleu-air,
+html[lang="bn"] .font-sangbleu-sunrise,
+html[lang="bn"] .font-cormorant,
+html[lang="bn"] .font-bodoni,
+html[lang="bn"] .font-serif,
+:lang(bn) .font-sangbleu-sunrise,
+:lang(bn) .font-serif {
+  font-family: var(--font-noto-serif-bengali), var(--font-sangbleu-sunrise), serif;
+}
+
+html[lang="bn"] .font-hanken,
+html[lang="bn"] .font-jakarta,
+html[lang="bn"] .font-sans,
+html[lang="bn"] .font-moirest,
+html[lang="bn"] button,
+html[lang="bn"] .btn-ui,
+html[lang="bn"] input,
+html[lang="bn"] select,
+html[lang="bn"] textarea,
+:lang(bn) .font-hanken,
+:lang(bn) .font-sans,
+:lang(bn) body {
+  font-family: var(--font-noto-sans-bengali), var(--font-moirest), sans-serif;
 }
 
 /* Fine Editorial Borders */
@@ -315,6 +351,7 @@ textarea {
   -webkit-transform-style: preserve-3d;
   transition:
     transform 0.95s cubic-bezier(0.65, 0, 0.35, 1),
+    height 0.95s cubic-bezier(0.65, 0, 0.35, 1),
     box-shadow 0.95s ease;
   box-shadow:
     0 25px 70px -15px rgba(24, 23, 21, 0.08),
@@ -334,22 +371,25 @@ textarea {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   width: 100%;
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: var(--color-ivory);
 }
 
 .page-front {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 2;
 }
 
 .page-back {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
   z-index: 1;
-  overflow-y: auto;
+  overflow: visible;
 }
 
 .map-bg-pattern {

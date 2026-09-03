@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -121,8 +121,44 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
   const [direction, setDirection] = useState(1);
   const [secondsLeft, setSecondsLeft] = useState(25.0);
 
+  const frontRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
+  const [frontHeight, setFrontHeight] = useState<number | null>(null);
+  const [backHeight, setBackHeight] = useState<number | null>(null);
+
   const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
   const countdownIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Dynamic height observer to support independent heights for front & back faces
+  const updateHeights = useCallback(() => {
+    if (frontRef.current) {
+      setFrontHeight(frontRef.current.offsetHeight);
+    }
+    if (backRef.current) {
+      setBackHeight(backRef.current.offsetHeight);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateHeights();
+
+    const handleResize = () => updateHeights();
+    window.addEventListener("resize", handleResize);
+
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => {
+        updateHeights();
+      });
+      if (frontRef.current) ro.observe(frontRef.current);
+      if (backRef.current) ro.observe(backRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (ro) ro.disconnect();
+    };
+  }, [updateHeights, lang]);
 
   useEffect(() => {
     if (isFlipped) return;
@@ -214,6 +250,8 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
     }),
   };
 
+  const currentCardHeight = isFlipped ? backHeight : frontHeight;
+
   return (
     <section
       id="why-heaven"
@@ -224,9 +262,15 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
           className={`lookbook-page border border-wood-border rounded-xl bg-ivory relative ${
             isFlipped ? "flipped" : ""
           }`}
+          style={
+            currentCardHeight ? { height: `${currentCardHeight}px` } : undefined
+          }
         >
           {/* FRONT FACE: SYNCHRONIZED SLIDE CAROUSEL SPREAD */}
-          <div className="page-front p-6 sm:p-10 lg:p-14 rounded-xl">
+          <div
+            ref={frontRef}
+            className="page-front p-6 sm:p-10 lg:p-14 rounded-xl"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-stretch min-h-[480px] sm:min-h-[520px]">
               {/* LEFT COLUMN: CAROUSEL SLIDE STAGE */}
               <div className="lg:col-span-5 flex flex-col justify-between h-full py-1">
@@ -290,7 +334,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                     </div>
                   </div>
 
-                  {/* Bottom SEE ALL Button to Flip Card with shadcn UI Button */}
+                  {/* Bottom SEE ALL Button to Flip Card */}
                   <div>
                     <Button
                       variant="gradient"
@@ -342,8 +386,11 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
             </div>
           </div>
 
-          {/* REVERSE FACE: COMPLETE LOOKBOOK MANIFESTO & TRUST ARCHITECTURE */}
-          <div className="page-back p-6 sm:p-10 lg:p-16 flex flex-col justify-between bg-ivory rounded-xl">
+          {/* REVERSE FACE: COMPLETE LOOKBOOK MANIFESTO & TRUST ARCHITECTURE (Dynamic Auto-Height, No Internal Scrollbars) */}
+          <div
+            ref={backRef}
+            className="page-back p-6 sm:p-10 lg:p-16 flex flex-col justify-between bg-ivory rounded-xl"
+          >
             {/* Reverse Header with 25s Return Progress Indicator */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-wood-border pb-6 mb-10 gap-4">
               <div>

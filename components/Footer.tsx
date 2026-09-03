@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
             </div>
             <div className="flex flex-wrap gap-4 sm:gap-6 font-hanken text-[0.65rem] sm:text-[0.68rem] font-semibold tracking-[0.2em] text-slate-gray">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/heaven_furniture_ltd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-charcoal transition-colors uppercase"
@@ -37,7 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 INSTAGRAM
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/HeavenFurnitureMart"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-charcoal transition-colors uppercase"
@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 FACEBOOK
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@HeavenFurnitureMart"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-charcoal transition-colors uppercase"
