@@ -86,7 +86,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       if (img1Ref.current) {
         img1Ref.current.style.transform = `translate3d(${current1X.current.toFixed(
-          2
+          2,
         )}px, ${current1Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -100,7 +100,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       if (img2Ref.current) {
         img2Ref.current.style.transform = `translate3d(${current2X.current.toFixed(
-          2
+          2,
         )}px, ${current2Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -114,7 +114,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       if (img3Ref.current) {
         img3Ref.current.style.transform = `translate3d(${current3X.current.toFixed(
-          2
+          2,
         )}px, ${current3Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -147,14 +147,14 @@ export const Hero: React.FC<HeroProps> = () => {
         >
           {/* Fine 1px Hairline Brass Accent Eyebrow */}
           <div className="mb-4 sm:mb-6 flex items-center gap-3">
-            <span className="h-px w-6 sm:w-8 bg-brass" />
-            <span className="font-hanken text-[0.68rem] sm:text-xs text-brass uppercase tracking-[0.22em] sm:tracking-[0.25em] font-bold">
+            <span className="h-px w-6 sm:w-8 bg-accent" />
+            <span className="font-hanken text-[0.68rem] sm:text-xs text-accent uppercase tracking-[0.22em] sm:tracking-[0.25em] font-bold">
               {t("heroEyebrow")}
             </span>
           </div>
 
           {/* Upright Confident Architectural Display Headline (SangBleu 300 Light) */}
-          <h1 className="font-sangbleu-sunrise font-light not-italic text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] xl:text-[5.5rem] text-charcoal/80 leading-[0.98] tracking-tight mb-6 sm:mb-8">
+          <h1 className="font-sangbleu-sunrise font-light not-italic text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] xl:text-[5.5rem] text-text/80 leading-[0.98] tracking-tight mb-6 sm:mb-8">
             {lang === "bn" ? (
               <span className="block">{t("heroTitle")}</span>
             ) : (
@@ -162,10 +162,10 @@ export const Hero: React.FC<HeroProps> = () => {
                 <span className="block">{t("heroTitleLine1")}</span>
                 <span className="block">{t("heroTitleLine2")}</span>
                 <div>
-                  <span className="block bg-linear-to-b from-brass-gold to-brass bg-clip-text text-transparent font-medium not-italic">
+                  <span className="block bg-linear-to-b from-accent via-accent/90  to-text-highlight bg-clip-text text-transparent font-medium not-italic">
                     {t("heroTitleLine3")}
                   </span>
-                  <span className="block bg-linear-to-b from-brass-gold to-brass bg-clip-text text-transparent font-medium not-italic">
+                  <span className="block bg-linear-to-b from-accent via-accent/90 to-text-highlight bg-clip-text text-transparent font-medium not-italic">
                     {t("heroTitleLine4")}
                   </span>
                 </div>
@@ -174,7 +174,7 @@ export const Hero: React.FC<HeroProps> = () => {
           </h1>
 
           {/* Crisp, Solid High-Contrast Supporting Subtext */}
-          <p className="font-hanken text-sm xs:text-base sm:text-lg text-slate-warm font-normal leading-relaxed mb-8 sm:mb-10 max-w-md">
+          <p className="font-hanken text-sm xs:text-base sm:text-lg text-text-muted font-normal leading-relaxed mb-8 sm:mb-10 max-w-md">
             {t("heroSubtext")}
           </p>
 
@@ -188,10 +188,10 @@ export const Hero: React.FC<HeroProps> = () => {
                 duration: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="font-hanken text-xs sm:text-sm uppercase tracking-[0.22em] font-bold text-charcoal hover:text-brass flex items-center gap-3 border-b-2 border-charcoal pb-1.5 hover:border-brass transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-brass"
+              className="font-hanken text-xs sm:text-sm uppercase tracking-[0.22em] font-bold text-text hover:text-accent flex items-center gap-3 border-b-2 border-text pb-1.5 hover:border-accent transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-accent"
             >
               <span>{t("heroCtaSecondary")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 text-brass" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 text-accent" />
             </motion.a>
           </div>
         </motion.div>
@@ -207,7 +207,7 @@ export const Hero: React.FC<HeroProps> = () => {
             {/* Top Dominant Landscape Image */}
             <div
               ref={img1Ref}
-              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-wood-border will-change-transform"
+              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-border will-change-transform"
             >
               <Image
                 src="/images/sofa.jpg"
@@ -222,7 +222,7 @@ export const Hero: React.FC<HeroProps> = () => {
             {/* Bottom Left Portrait Image */}
             <div
               ref={img2Ref}
-              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-2 sm:border-4 border-ivory will-change-transform"
+              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-2 sm:border-4 border-primary-bg will-change-transform"
             >
               <Image
                 src="/images/tabil.jpg"
@@ -236,7 +236,7 @@ export const Hero: React.FC<HeroProps> = () => {
             {/* Bottom Right Detail Image */}
             <div
               ref={img3Ref}
-              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-4 sm:border-8 border-ivory shadow-2xl rounded-sm will-change-transform"
+              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-4 sm:border-8 border-primary-bg shadow-2xl rounded-sm will-change-transform"
             >
               <Image
                 src="/images/chair.jpg"
@@ -254,9 +254,9 @@ export const Hero: React.FC<HeroProps> = () => {
       <div className="flex justify-center mt-12 sm:mt-20 lg:mt-24">
         <a
           href="#about"
-          className="flex items-center gap-3 text-slate-muted hover:text-brass transition-colors focus-visible:outline-2 focus-visible:outline-brass"
+          className="flex items-center gap-3 text-text-muted hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-accent"
         >
-          <ArrowDown className="w-4 h-4 animate-bounce text-brass" />
+          <ArrowDown className="w-4 h-4 animate-bounce text-accent" />
           <span className="font-hanken text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.25em] font-medium">
             {t("scrollDiscover")}
           </span>

@@ -254,7 +254,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
     >
       <div className="lookbook-stage max-w-[1520px] w-full">
         <div
-          className={`lookbook-page border border-wood-border rounded-xl bg-ivory relative ${
+          className={`lookbook-page border border-border rounded-xl bg-primary-bg relative ${
             isFlipped ? "flipped" : ""
           }`}
           style={
@@ -271,7 +271,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
               <div className="lg:col-span-5 flex flex-col justify-between h-full py-1">
                 {/* Header Eyebrow */}
                 <div>
-                  <span className="text-[0.7rem] font-bold uppercase tracking-[0.28em] text-brass block mb-2 font-hanken">
+                  <span className="text-[0.7rem] font-bold uppercase tracking-[0.28em] text-accent block mb-2 font-hanken">
                     {t("whyEyebrow")}
                   </span>
                 </div>
@@ -289,17 +289,17 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className="w-full"
                     >
-                      <span className="text-4xl sm:text-5xl font-sangbleu-sunrise font-light text-brass block mb-2 leading-none">
+                      <span className="text-4xl sm:text-5xl font-sangbleu-sunrise font-light text-accent block mb-2 leading-none">
                         {activeSlide.num}
                       </span>
 
-                      <h2 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-sangbleu-sunrise font-light text-charcoal/70 leading-[1.12] tracking-tight mb-3 line-clamp-2">
+                      <h2 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-sangbleu-sunrise font-light text-text/70 leading-[1.12] tracking-tight mb-3 line-clamp-2">
                         {lang === "bn"
                           ? activeSlide.titleBn
                           : activeSlide.titleEn}
                       </h2>
 
-                      <p className="font-hanken text-slate-warm text-xs sm:text-sm font-normal leading-relaxed max-w-md line-clamp-3">
+                      <p className="font-hanken text-text-muted text-xs sm:text-sm font-normal leading-relaxed max-w-md line-clamp-3">
                         {lang === "bn"
                           ? activeSlide.descBn
                           : activeSlide.descEn}
@@ -309,7 +309,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                 </div>
 
                 {/* Carousel Controls & SEE ALL Button at Bottom */}
-                <div className="space-y-5 pt-4 border-t border-wood-border">
+                <div className="space-y-5 pt-4 border-t border-border">
                   {/* Navigation Row: Dots */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -324,8 +324,8 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                           }
                           className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                             idx === currentSlide
-                              ? "w-8 bg-brass"
-                              : "w-2 bg-wood-border hover:bg-slate-gray"
+                              ? "w-8 bg-accent"
+                              : "w-2 bg-border hover:bg-text-muted"
                           }`}
                         />
                       ))}
@@ -349,8 +349,8 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
 
               {/* RIGHT COLUMN: CAROUSEL PHOTOGRAPH STAGE */}
               <div className="lg:col-span-7 flex flex-col justify-center h-full min-h-[340px] sm:min-h-[400px] lg:min-h-[460px]">
-                <div className="relative w-full h-full min-h-[340px] sm:min-h-[400px] lg:min-h-[460px] rounded-xl overflow-hidden shadow-md bg-sand">
-                  <div className="absolute top-5 left-5 z-20 bg-charcoal/90 backdrop-blur-md px-3.5 py-1.5 rounded-sm text-[0.7rem] uppercase tracking-[0.22em] font-semibold text-ivory border border-ivory/20 pointer-events-none font-hanken">
+                <div className="relative w-full h-full min-h-[340px] sm:min-h-[400px] lg:min-h-[460px] rounded-xl overflow-hidden shadow-md bg-secondary-bg">
+                  <div className="absolute top-5 left-5 z-20 bg-text/90 backdrop-blur-md px-3.5 py-1.5 rounded-sm text-[0.7rem] uppercase tracking-[0.22em] font-semibold text-primary-bg border border-primary-bg/20 pointer-events-none font-hanken">
                     <span>
                       {lang === "bn" ? activeSlide.tagBn : activeSlide.tagEn}
                     </span>
@@ -388,30 +388,30 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
           {/* REVERSE FACE: COMPLETE LOOKBOOK MANIFESTO & TRUST ARCHITECTURE (Dynamic Auto-Height, No Internal Scrollbars) */}
           <div
             ref={backRef}
-            className="page-back p-6 sm:p-10 lg:p-16 flex flex-col justify-between bg-ivory rounded-xl"
+            className="page-back p-6 sm:p-10 lg:p-16 flex flex-col justify-between bg-primary-bg rounded-xl"
           >
             {/* Reverse Header with 30s Return Progress Indicator */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-wood-border pb-6 mb-10 gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border pb-6 mb-10 gap-4">
               <div>
-                <span className="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-brass block mb-1 font-hanken">
+                <span className="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-accent block mb-1 font-hanken">
                   {t("revEyebrow")}
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sangbleu-sunrise font-light text-charcoal tracking-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sangbleu-sunrise font-light text-text tracking-tight">
                   {t("revTitle")}
                 </h2>
               </div>
 
               {/* 30s Hold Visual Countdown Badge */}
-              <div className="flex items-center gap-3 bg-paper px-4 py-2 rounded-sm border border-wood-border self-start sm:self-auto shadow-sm">
-                <div className="w-2 h-2 rounded-full bg-brass animate-pulse" />
-                <span className="text-[0.7rem] font-mono text-slate-muted font-medium uppercase tracking-wider">
+              <div className="flex items-center gap-3 bg-primary-bg px-4 py-2 rounded-sm border border-border self-start sm:self-auto shadow-sm">
+                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                <span className="text-[0.7rem] font-mono text-text-muted font-medium uppercase tracking-wider">
                   {secondsLeft.toFixed(1)}S
                 </span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={returnFromFlip}
-                  className="pl-2 border-l border-wood-border text-[0.7rem]"
+                  className="pl-2 border-l border-border text-[0.7rem]"
                 >
                   {t("revReturnBtn")}
                 </Button>
@@ -419,42 +419,42 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
             </div>
 
             {/* Reverse Grid: 7 Core Pillars (Left) + 8 Trust Pillars (Right) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-start">
+            <div className="grid grid-cols-1  gap-10 lg:gap-14 xl:gap-20 items-start">
               {/* Left: 7 Pillars with Large Faded Numbers & Full Descriptions */}
-              <div className="lg:col-span-6 space-y-5">
+              {/* <div className="lg:col-span-6 space-y-5">
                 {slides.map((s) => (
                   <div
                     key={s.num}
-                    className="flex items-start gap-4 pb-3.5 border-b border-wood-border"
+                    className="flex items-start gap-4 pb-3.5 border-b border-border"
                   >
-                    <span className="text-2xl sm:text-3xl font-sangbleu-sunrise font-light text-brass w-8 shrink-0 leading-none">
+                    <span className="text-2xl sm:text-3xl font-sangbleu-sunrise font-light text-accent w-8 shrink-0 leading-none">
                       {s.num}
                     </span>
                     <div>
-                      <h4 className="text-xs uppercase tracking-[0.18em] font-bold text-charcoal mb-0.5 font-hanken">
+                      <h4 className="text-xs uppercase tracking-[0.18em] font-bold text-text mb-0.5 font-hanken">
                         {lang === "bn" ? s.titleBn : s.titleEn}
                       </h4>
-                      <p className="text-xs text-slate-gray font-normal leading-relaxed font-hanken">
+                      <p className="text-xs text-text-muted font-normal leading-relaxed font-hanken">
                         {lang === "bn" ? s.descBn : s.descEn}
                       </p>
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               {/* Right: 8 Editorial Trust Verification Points */}
-              <div className="lg:col-span-6 bg-paper rounded-xl p-6 sm:p-8 border border-wood-border shadow-sm">
-                <span className="text-[0.7rem] uppercase tracking-[0.25em] font-bold text-charcoal block mb-6 font-hanken">
+              <div className=" bg-primary-bg rounded-xl p-6 sm:p-8 border border-border shadow-sm">
+                <span className="text-[0.7rem] uppercase tracking-[0.25em] font-bold text-text block mb-6 font-hanken">
                   {t("revTrustLabel")}
                 </span>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 text-xs text-slate-gray font-normal">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 text-xs text-text-muted font-normal">
                   {trustPointsKeys.map((key) => (
                     <div key={key} className="flex items-start gap-2.5">
-                      <span className="text-brass font-bold leading-none">
+                      <span className="text-accent font-bold leading-none">
                         ✦
                       </span>
-                      <span className="font-semibold text-charcoal-body font-hanken">
+                      <span className="font-semibold text-text font-hanken">
                         {t(key)}
                       </span>
                     </div>
@@ -462,12 +462,12 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                 </div>
 
                 {/* Managing Director Sign-off */}
-                <div className="mt-8 pt-6 border-t border-wood-border flex items-center justify-between">
+                <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
                   <div>
-                    <p className="text-[0.7rem] uppercase tracking-widest font-semibold text-charcoal font-hanken">
+                    <p className="text-[0.7rem] uppercase tracking-widest font-semibold text-text font-hanken">
                       {t("mdName")}
                     </p>
-                    <p className="text-[0.7rem] uppercase tracking-wider text-slate-muted font-medium font-hanken">
+                    <p className="text-[0.7rem] uppercase tracking-wider text-text-muted font-medium font-hanken">
                       {t("mdRole")}
                     </p>
                   </div>
@@ -485,7 +485,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
             </div>
 
             {/* Reverse Page Footer Rule */}
-            <div className="pt-8 mt-6 border-t border-wood-border flex justify-between items-center text-[0.7rem] uppercase tracking-[0.2em] text-slate-muted font-medium font-hanken">
+            <div className="pt-8 mt-6 border-t border-border flex justify-between items-center text-[0.7rem] uppercase tracking-[0.2em] text-text-muted font-medium font-hanken">
               <span>{t("revFooterLocation")}</span>
               <span>{t("revFooterArchive")}</span>
             </div>

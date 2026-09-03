@@ -6,3 +6,5 @@
 - Uses premium fonts (e.g., Sangbleu in public/fonts) as part of the brand's luxury identity. Confidence: 0.8
 - Prefers Tailwind CSS v4-style theming with shadcn/ui components and Motion (framer-motion) animations. Confidence: 0.85
 - Prefers all theme colors centralized in globals.css as design tokens; avoids hardcoding colors (hex/white/black) directly in components. Confidence: 0.9
+- Prefers a minimal, restrained color palette (e.g., ~6 semantic tokens) rather than a large number of color tokens. Confidence: 0.85
+- Prefers role-based design token naming: --color-primary-bg, --color-secondary-bg, --color-text, --color-text-muted, --color-text-highlight, --color-accent, --color-border. Confidence: 0.85

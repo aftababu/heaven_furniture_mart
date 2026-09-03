@@ -20,12 +20,12 @@ export default function CenterLogoTab() {
       >
         <Link href="/" className="flex flex-col items-center justify-center group">
           {/* HEAVEN with Gold Accent A (Reduced size under 1024px lg breakpoint) */}
-          <h1 className="font-sangbleu-sunrise font-normal not-italic uppercase text-base xs:text-lg sm:text-2xl lg:text-[2.2rem] tracking-[0.08em] xs:tracking-[0.12em] sm:tracking-[0.15em] text-charcoal leading-none block transition-colors group-hover:text-brass whitespace-nowrap">
-            HE<span className="text-brass">A</span>VEN
+          <h1 className="font-sangbleu-sunrise font-normal not-italic uppercase text-base xs:text-lg sm:text-2xl lg:text-[2.2rem] tracking-[0.08em] xs:tracking-[0.12em] sm:tracking-[0.15em] text-text leading-none block transition-colors group-hover:text-accent whitespace-nowrap">
+            HE<span className="text-accent">A</span>VEN
           </h1>
 
           {/* Subtitle */}
-          <span className="font-hanken text-[0.4rem] xs:text-[0.46rem] sm:text-[0.54rem] lg:text-[0.62rem] tracking-[0.18em] xs:tracking-[0.22em] sm:tracking-[0.3em] font-bold text-brass uppercase mt-0.5 sm:mt-1.5 leading-none block whitespace-nowrap">
+          <span className="font-hanken text-[0.4rem] xs:text-[0.46rem] sm:text-[0.54rem] lg:text-[0.62rem] tracking-[0.18em] xs:tracking-[0.22em] sm:tracking-[0.3em] font-bold text-accent uppercase mt-0.5 sm:mt-1.5 leading-none block whitespace-nowrap">
             {t("brandSubtitle")}
           </span>
         </Link>

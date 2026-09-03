@@ -5,7 +5,9 @@
       "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); const i=s.indexOf('\"z\"'); console.log(s.slice(i, i+1200));)",
       "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); for (const m of s.matchAll(/const _t=([^;]+);|_t=([^;]+);/g)){ console.log(m[0]); })",
       "Shell(pnpm:*)",
-      "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); const i=s.indexOf('function _t'); console.log('_t idx', i); if(i<0){ const j=s.search(/_t\\(/); console.log(s.slice(Math.max(0,j-400), j+200)); } else { console.log(s.slice(i, i+300)); })"
+      "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); const i=s.indexOf('function _t'); console.log('_t idx', i); if(i<0){ const j=s.search(/_t\\(/); console.log(s.slice(Math.max(0,j-400), j+200)); } else { console.log(s.slice(i, i+300)); })",
+      "Shell(cd /home/aftababu/Projects/Active/heaven-furniture-mart && perl -pi -e 's/-charcoal\\b/-text/g; s/-slate\\b/-text-muted/g; s/-brass\\b/-accent/g; s/-ivory\\b/-primary-bg/g; s/-sand\\b/-secondary-bg/g; s/(bg|border|text|from|to|via|fill)-line\\b/$1-border/g' $(find components app -name '*.tsx') && echo \"done\")",
+      "Shell(perl -pi -e s/var\\(--color-ivory\\)/var(--color-primary-bg)/g; s/var\\(--color-sand\\)/var(--color-secondary-bg)/g; s/var\\(--color-charcoal\\)/var(--color-text)/g; s/var\\(--color-slate\\)/var(--color-text-muted)/g; s/var\\(--color-brass\\)/var(--color-accent)/g; s/var\\(--color-line\\)/var(--color-border)/g app/globals.css)"
     ],
     "deny": [],
     "defaultMode": "default"

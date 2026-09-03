@@ -16,7 +16,16 @@ interface GalleryCardItem {
   marginClass: string;
 }
 
-const cards: GalleryCardItem[] = [
+interface MilestoneItem {
+  year: string;
+  titleKey: string;
+  tagKey: string;
+  defaultTitle: string;
+  defaultTag: string;
+  isHighlighted?: boolean;
+}
+
+const GALLERY_CARDS: GalleryCardItem[] = [
   {
     id: "card-1",
     img: "/images/card1.jpg",
@@ -37,16 +46,7 @@ const cards: GalleryCardItem[] = [
     alignClass: "self-end mb-8 sm:mb-14",
     marginClass: "ml-16 sm:ml-24 lg:ml-28",
   },
-  {
-    id: "card-3",
-    img: "/images/card3.png",
-    alt: "Bespoke Bedroom Suite",
-    capKey: "cap_3",
-    aspect: "aspect-[4/3]",
-    widthClass: "w-[65vw] sm:w-[38vw] lg:w-[26vw]",
-    alignClass: "self-center",
-    marginClass: "ml-12 sm:ml-20 lg:ml-24",
-  },
+
   {
     id: "card-4",
     img: "/images/card4.jpg",
@@ -89,8 +89,47 @@ const cards: GalleryCardItem[] = [
   },
 ];
 
+const MILESTONES: MilestoneItem[] = [
+  {
+    year: "2020",
+    titleKey: "milestone2020Title",
+    tagKey: "milestone2020Tag",
+    defaultTitle: "Founded by Abul Kalam Bhuiyan",
+    defaultTag: "Inception · Chattogram",
+  },
+  {
+    year: "2021",
+    titleKey: "milestone2021Title",
+    tagKey: "milestone2021Tag",
+    defaultTitle: "Opened the Flagship Agrabad Showroom",
+    defaultTag: "Retail Expansion",
+  },
+  {
+    year: "2024–25",
+    titleKey: "milestone2024Title",
+    tagKey: "milestone2024Tag",
+    defaultTitle: "Exhibited at the International Furniture Fair",
+    defaultTag: "Exhibition · Pavilion",
+  },
+  {
+    year: "2025",
+    titleKey: "milestone2025Title",
+    tagKey: "milestone2025Tag",
+    defaultTitle: "Inducted into the Chamber of Commerce",
+    defaultTag: "Trade Alliance",
+  },
+  {
+    year: "2026",
+    titleKey: "milestone2026Title",
+    tagKey: "milestone2026Tag",
+    defaultTitle: "Received Nationwide BFIOA Recognition",
+    defaultTag: "National Honor",
+    isHighlighted: true,
+  },
+];
+
 export const HorizontalGallery: React.FC = () => {
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLDivElement>(null);
@@ -98,11 +137,11 @@ export const HorizontalGallery: React.FC = () => {
   const progressFillRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // 1. Viewport IntersectionObserver for Entrance Reveals with 0.5s Delay
+  // 1. Viewport IntersectionObserver for Entrance Reveals
   useEffect(() => {
     const observerOptions = {
-      root: null, // Viewport
-      rootMargin: "0px -5% 0px 0px", // Triggers as right edge enters viewport
+      root: null,
+      rootMargin: "0px -5% 0px 0px",
       threshold: 0.15,
     };
 
@@ -147,9 +186,7 @@ export const HorizontalGallery: React.FC = () => {
       const sectionHeight = section.offsetHeight - window.innerHeight;
       if (sectionHeight <= 0) return;
 
-      // Normalized progress 0.0 to 1.0
-      let progress = -rect.top / sectionHeight;
-      progress = Math.max(0, Math.min(1, progress));
+      const progress = Math.max(0, Math.min(1, -rect.top / sectionHeight));
 
       // 1. Horizontal track translation
       const currentX = progress * maxScrollX;
@@ -160,7 +197,7 @@ export const HorizontalGallery: React.FC = () => {
         progressFill.style.width = `${(progress * 100).toFixed(1)}%`;
       }
 
-      // 3. Calibrated Quote Fade (Solid 0-15%, exit fade 15-30%)
+      // 3. Calibrated Quote Fade
       if (quote) {
         let quoteOpacity = 1;
         if (progress > 0.15) {
@@ -179,7 +216,7 @@ export const HorizontalGallery: React.FC = () => {
         }
         const finalOpacity = Math.min(1, ctaOpacity);
         finalCta.style.opacity = finalOpacity.toFixed(3);
-        finalCta.style.transform = `translate3d(0, ${((1 - finalOpacity) * 25).toFixed(2)}px, 0)`;
+        finalCta.style.transform = `translate3d(0, ${((1 - finalOpacity) * 20).toFixed(2)}px, 0)`;
       }
 
       isTicking = false;
@@ -209,65 +246,58 @@ export const HorizontalGallery: React.FC = () => {
     };
   }, []);
 
+  const resolveText = (key: string, fallback: string): string => {
+    const val = t(key);
+    return val && val !== key ? val : fallback;
+  };
+
   return (
     <section
       ref={sectionRef}
       id="social-proof"
-      className="relative h-[420vh] w-full bg-ivory"
+      className="relative h-[480vh] w-full bg-primary-bg"
     >
-      {/* STICKY VIEWPORT (locked full-screen) */}
+      {/* STICKY VIEWPORT */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
-        {/* HORIZONTAL MOVING TRACK WITH ASYMMETRIC VERTICAL SCATTER */}
+        {/* HORIZONTAL MOVING TRACK */}
         <div
           ref={trackRef}
-          className="flex flex-nowrap items-stretch h-full will-change-transform pl-6 sm:pl-12 lg:pl-20 pr-24 lg:pr-40 py-16 sm:py-24 bg-sand"
+          className="flex flex-nowrap items-stretch h-full will-change-transform pl-6 sm:pl-12 lg:pl-20 pr-24 lg:pr-40 py-16 sm:py-24 bg-secondary-bg"
         >
-          {/* STAGE 1: MANAGING DIRECTOR'S QUOTE & TRUST (0–30%) */}
+          {/* STAGE 1: MANAGING DIRECTOR'S QUOTE & TRUST */}
           <div
             ref={quoteRef}
             className="quote-block shrink-0 w-[88vw] sm:w-[70vw] lg:w-[46vw] max-w-3xl pr-8 sm:pr-16 flex flex-col justify-center self-center select-none"
           >
             {/* Eyebrow */}
             <div className="flex items-center gap-4 mb-6">
-              <span className="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-brass font-hanken">
+              <span className="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-accent font-hanken">
                 {t("eyebrow")}
               </span>
-              <span className="flex-1 h-px bg-wood-border" />
+              <span className="flex-1 h-px bg-border" />
             </div>
 
-            {/* Main Serif Quote (SangBleu 300 Light) */}
-            <blockquote className="text-2xl sm:text-3xl lg:text-[2.6rem] font-sangbleu-sunrise font-light not-italic text-charcoal/70 leading-[1.12] tracking-tight">
+            {/* Main Serif Quote */}
+            <blockquote className="text-2xl sm:text-3xl lg:text-[2.6rem] font-sangbleu-sunrise font-light not-italic text-text leading-[1.14] tracking-tight">
               <span>{t("quote_p1")}</span>
-              <span className="block mt-2 text-charcoal/70">
-                {t("quote_p2")}
-              </span>
+              <span className="block mt-2 text-text/90">{t("quote_p2")}</span>
             </blockquote>
 
-            <div className="w-[60px] h-[2px] bg-brass my-[1.2rem]" />
+            <div className="w-[60px] h-[2px] bg-accent my-6" />
 
             {/* Author Signature */}
             <div>
-              <p className="text-[0.75rem] uppercase tracking-[0.2em] font-bold text-charcoal font-hanken">
+              <p className="text-[0.75rem] uppercase tracking-[0.2em] font-bold text-text font-hanken">
                 {t("quote_author")}
               </p>
-              <p className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-gray font-medium mt-1 font-hanken">
+              <p className="text-[0.7rem] uppercase tracking-[0.2em] text-text-muted font-medium mt-1 font-hanken">
                 {t("quote_role")}
-              </p>
-            </div>
-
-            {/* Trust Badge */}
-            <div className="mt-8 pt-6 border-t border-wood-border">
-              <span className="text-[0.7rem] uppercase tracking-[0.2em] font-bold text-charcoal block font-hanken">
-                {t("trust_title")}
-              </span>
-              <p className="text-[0.75rem] text-charcoal-body font-normal leading-relaxed mt-1 font-hanken">
-                {t("trust_desc")}
               </p>
             </div>
           </div>
 
-          {/* STAGE 2: ASYMMETRIC VERTICAL FLOATING SCATTER GALLERY WITH UNWARPED CLIP-PATH REVEAL FROM RIGHT SIDE (0.5s DELAY) */}
-          {cards.map((item, idx) => (
+          {/* STAGE 2: ASYMMETRIC SCATTER GALLERY */}
+          {GALLERY_CARDS.map((item, idx) => (
             <div
               key={item.id}
               ref={(el) => {
@@ -275,9 +305,9 @@ export const HorizontalGallery: React.FC = () => {
               }}
               className={`scatter-card shrink-0 ${item.marginClass} ${item.alignClass} flex flex-col group`}
             >
-              {/* Outer Image Mask Container (Unrolls from Right Side after 0.5s delay) */}
+              {/* Outer Image Mask Container */}
               <div
-                className={`image-card ${item.widthClass} ${item.aspect} relative rounded-xl overflow-hidden bg-sand shadow-sm border border-wood-border transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[500ms] [clip-path:inset(0_0_0_100%_round_0.85rem)] opacity-0 group-[.is-revealed]:[clip-path:inset(0_0_0_0%_round_0.85rem)] group-[.is-revealed]:opacity-100`}
+                className={`image-card ${item.widthClass} ${item.aspect} relative rounded-xl overflow-hidden bg-primary-bg shadow-sm border border-border transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[300ms] [clip-path:inset(0_0_0_100%_round_0.85rem)] opacity-0 group-[.is-revealed]:[clip-path:inset(0_0_0_0%_round_0.85rem)] group-[.is-revealed]:opacity-100`}
               >
                 <Image
                   src={item.img}
@@ -289,55 +319,101 @@ export const HorizontalGallery: React.FC = () => {
               </div>
 
               {/* Caption Reveal */}
-              <p className="image-caption text-[0.68rem] font-semibold tracking-[0.22em] text-slate-gray font-hanken uppercase pt-2.5 border-t border-wood-border block transition-opacity duration-1000 delay-[800ms] mt-2 select-none opacity-0 group-[.is-revealed]:opacity-100">
+              <p className="image-caption text-[0.68rem] font-semibold tracking-[0.22em] text-text-muted font-hanken uppercase pt-2.5 border-t border-border block transition-opacity duration-1000 delay-[600ms] mt-2 select-none opacity-0 group-[.is-revealed]:opacity-100">
                 {t(item.capKey)}
               </p>
             </div>
           ))}
 
-          {/* STAGE 3: CLOSING INVITATION (85–100%) */}
+          {/* STAGE 3: CHRONOLOGY MILESTONES (Integrated Horizontal Ledger) */}
+          <div className="shrink-0 w-[90vw] sm:w-[76vw] lg:w-[48vw] max-w-2xl self-center ml-16 sm:ml-28 lg:ml-36 flex flex-col justify-center select-none py-6">
+            <div className="mb-8">
+              <span className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-accent font-hanken block mb-2">
+                {resolveText("chronologyEyebrow", "CHRONOLOGY")}
+              </span>
+              <h3 className="font-sangbleu-sunrise text-3xl sm:text-4xl text-text font-normal tracking-tight">
+                {resolveText("chronologyTitle", "Milestones of Craft")}
+              </h3>
+              <div className="w-12 h-[2px] bg-accent/40 mt-3" />
+            </div>
+
+            {/* Ledger List */}
+            <div className="divide-y divide-border border-t border-b border-border">
+              {MILESTONES.map((item) => (
+                <div
+                  key={item.year}
+                  className="group py-4 sm:py-5 px-3 -mx-3 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline transition-colors hover:bg-primary-bg/50 rounded-lg"
+                >
+                  <span
+                    className={`sm:col-span-3 font-sangbleu-sunrise text-2xl sm:text-3xl tracking-tight transition-colors ${
+                      item.isHighlighted
+                        ? "text-accent font-normal"
+                        : "text-text font-light group-hover:text-accent"
+                    }`}
+                  >
+                    {item.year}
+                  </span>
+                  <div className="sm:col-span-9 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                    <p className="text-sm sm:text-base text-text font-medium font-hanken">
+                      {resolveText(item.titleKey, item.defaultTitle)}
+                    </p>
+                    <span
+                      className={`text-[0.65rem] uppercase tracking-[0.2em] shrink-0 font-hanken ${
+                        item.isHighlighted
+                          ? "text-accent font-bold"
+                          : "text-text-muted"
+                      }`}
+                    >
+                      {resolveText(item.tagKey, item.defaultTag)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-[0.62rem] uppercase tracking-[0.22em] text-text-muted font-hanken mt-6 text-center">
+              {resolveText(
+                "chronologyFooter",
+                "— A Legacy of Custom Joinery —",
+              )}
+            </p>
+          </div>
+
+          {/* STAGE 4: CLOSING INVITATION CTA (Refined Final Slide) */}
           <div
             ref={finalCtaRef}
-            className="final-cta-block shrink-0 w-[80vw] sm:w-[50vw] lg:w-[34vw] ml-16 sm:ml-24 pr-8 flex flex-col justify-center self-center"
+            className="final-cta shrink-0 w-[84vw] sm:w-[55vw] lg:w-[34vw] max-w-lg self-center ml-16 sm:ml-28 lg:ml-36 pr-8 flex flex-col justify-center select-none opacity-20"
           >
-            <span className="text-brass text-3xl font-light font-sangbleu-sunrise mb-6 block">
-              ✦
+            <span className="text-accent text-2xl font-light font-sangbleu-sunrise mb-4 block">
+              ✧
             </span>
-
-            <h3 className="text-3xl sm:text-4xl lg:text-[2.8rem] font-sangbleu-sunrise font-light not-italic text-charcoal/70 leading-[1.12] mb-6">
-              {lang === "bn" ? (
-                <span>{t("end_title")}</span>
-              ) : (
-                <>
-                  Made for homes that{" "}
-                  <span className="text-brass">feel like yours.</span>
-                </>
-              )}
+            <h3 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-sangbleu-sunrise font-normal text-text leading-[1.15] mb-6">
+              {t("end_title")}
             </h3>
 
-            <div className="w-12 h-px bg-brass mb-6" />
+            <div className="w-12 h-[1px] bg-border mb-6" />
 
             <a
               href="#showroom"
-              className="group inline-flex items-center gap-3 text-[0.75rem] font-bold tracking-[0.2em] uppercase text-charcoal hover:text-brass transition-colors duration-300 pb-1.5 border-b-2 border-charcoal hover:border-brass w-fit font-hanken"
+              className="group inline-flex items-center gap-3 text-xs font-bold tracking-[0.22em] uppercase text-text hover:text-accent transition-colors duration-300 pb-1.5 border-b border-border hover:border-accent w-fit font-hanken"
             >
               <span>{t("end_cta")}</span>
-              <ArrowRight className="w-4 h-4 text-brass transform group-hover:translate-x-2 transition-transform duration-300" />
+              <ArrowRight className="w-4 h-4 text-accent transition-transform duration-300 group-hover:translate-x-1.5" />
             </a>
 
-            <p className="text-[0.7rem] text-slate-muted font-medium mt-4 font-hanken">
+            <p className="text-[0.68rem] text-text-muted font-medium mt-4 tracking-wider uppercase font-hanken">
               {t("end_sub")}
             </p>
           </div>
         </div>
 
-        {/* SCROLL PROGRESS INDICATOR (Bottom Right) */}
-        <div className="absolute bottom-10 right-12 hidden sm:flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-slate-muted pointer-events-none z-30 font-hanken">
-          <span>{t("labelExplore")}</span>
-          <div className="w-20 h-[1.5px] bg-wood-border rounded overflow-hidden">
+        {/* SCROLL PROGRESS INDICATOR */}
+        <div className="absolute bottom-10 right-12 hidden sm:flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-text-muted pointer-events-none z-30 font-hanken">
+          <span>{resolveText("labelExplore", "EXPLORE")}</span>
+          <div className="w-20 h-[1.5px] bg-border rounded overflow-hidden">
             <div
               ref={progressFillRef}
-              className="h-full w-0 bg-brass rounded"
+              className="h-full w-0 bg-accent rounded transition-[width] duration-75 ease-out"
             />
           </div>
         </div>
@@ -345,3 +421,5 @@ export const HorizontalGallery: React.FC = () => {
     </section>
   );
 };
+
+export default HorizontalGallery;

@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-ivory text-charcoal relative">
+    <main className="min-h-screen bg-primary-bg text-text relative">
       <SmoothScroll />
       <Loader />
       <Navbar onOpenConsultation={() => handleOpenConsultation()} />

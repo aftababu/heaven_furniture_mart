@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
       <header
         className={`w-full z-50 h-20 sm:h-22 flex items-center overflow-visible transition-all duration-500 ease-out ${
           isSticky
-            ? "fixed top-0 left-0 bg-ivory/90 backdrop-blur-md border-b border-wood-border/40 shadow-sm translate-y-0 opacity-100"
+            ? "fixed top-0 left-0 bg-primary-bg/90 backdrop-blur-md border-b border-border/40 shadow-sm translate-y-0 opacity-100"
             : "absolute top-0 left-0 bg-transparent border-b border-transparent shadow-none"
         }`}
         style={
@@ -54,19 +54,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
           <nav className="hidden md:flex gap-4 md:gap-5 lg:gap-8 items-center">
             <a
               href="#collections"
-              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-slate-warm hover:text-brass-gold transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-brass-gold"
+              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-text-muted hover:text-accent transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-accent"
             >
               {t("navShop")}
             </a>
             <a
               href="#bespoke"
-              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-slate-warm hover:text-brass-gold transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-brass-gold"
+              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-text-muted hover:text-accent transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-accent"
             >
               {t("navBespoke")}
             </a>
             <a
               href="#why-heaven"
-              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-slate-warm hover:text-brass-gold transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-brass-gold"
+              className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-text-muted hover:text-accent transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-accent"
             >
               {t("navWhyHeaven")}
             </a>
@@ -93,23 +93,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
             <div className="flex items-center text-[0.65rem] md:text-[0.68rem] tracking-[0.18em] md:tracking-[0.22em] font-hanken uppercase select-none">
               <button
                 onClick={() => setLang("en")}
-                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-brass-gold ${
+                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent ${
                   lang === "en"
-                    ? "text-charcoal font-semibold"
-                    : "text-graphite-muted font-normal hover:text-charcoal"
+                    ? "text-text font-semibold"
+                    : "text-text-muted font-normal hover:text-text"
                 }`}
               >
                 EN
               </button>
-              <span className="text-wood-border mx-[1px] md:mx-1 select-none font-normal">
+              <span className="text-border mx-[1px] md:mx-1 select-none font-normal">
                 /
               </span>
               <button
                 onClick={() => setLang("bn")}
-                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-brass-gold ${
+                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent ${
                   lang === "bn"
-                    ? "text-charcoal font-semibold"
-                    : "text-graphite-muted font-normal hover:text-charcoal"
+                    ? "text-text font-semibold"
+                    : "text-text-muted font-normal hover:text-text"
                 }`}
               >
                 বাংলা
@@ -124,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
                 onClick={onOpenConsultation}
                 className="gap-1.5"
               >
-                <MessageSquare className="w-3.5 h-3.5 text-brass" />
+                <MessageSquare className="w-3.5 h-3.5 text-accent" />
                 <span>{t("navQuote")}</span>
               </Button>
             </div>
@@ -140,14 +140,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "-100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[100] bg-ivory flex flex-col justify-between p-8"
+            className="fixed inset-0 z-[100] bg-primary-bg flex flex-col justify-between p-8"
           >
-            <div className="flex justify-between items-center border-b border-wood-border/40 pb-6">
+            <div className="flex justify-between items-center border-b border-border/40 pb-6">
               <div className="flex flex-col items-start">
-                <span className="font-sangbleu-sunrise font-light text-2xl text-charcoal tracking-[0.2em]">
-                  HE<span className="text-brass">A</span>VEN
+                <span className="font-sangbleu-sunrise font-light text-2xl text-text tracking-[0.2em]">
+                  HE<span className="text-accent">A</span>VEN
                 </span>
-                <span className="font-hanken text-[0.55rem] text-brass-gold tracking-[0.32em] uppercase font-bold mt-0.5">
+                <span className="font-hanken text-[0.55rem] text-accent tracking-[0.32em] uppercase font-bold mt-0.5">
                   {t("brandSubtitle")}
                 </span>
               </div>
@@ -165,27 +165,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               <a
                 href="#collections"
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-sangbleu-sunrise font-light text-4xl text-charcoal hover:text-brass-gold transition-colors"
+                className="font-sangbleu-sunrise font-light text-4xl text-text hover:text-accent transition-colors"
               >
                 {t("navShop")}
               </a>
               <a
                 href="#bespoke"
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-sangbleu-sunrise font-light text-4xl text-charcoal hover:text-brass-gold transition-colors"
+                className="font-sangbleu-sunrise font-light text-4xl text-text hover:text-accent transition-colors"
               >
                 {t("navBespoke")}
               </a>
               <a
                 href="#why-heaven"
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-sangbleu-sunrise font-light text-4xl text-charcoal hover:text-brass-gold transition-colors"
+                className="font-sangbleu-sunrise font-light text-4xl text-text hover:text-accent transition-colors"
               >
                 {t("navWhyHeaven")}
               </a>
             </nav>
 
-            <div className="space-y-4 pt-6 border-t border-wood-border/40">
+            <div className="space-y-4 pt-6 border-t border-border/40">
               <Button
                 variant="default"
                 size="lg"
@@ -198,7 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
                 {t("heroCtaPrimary")}
               </Button>
 
-              <div className="flex justify-between items-center text-xs font-medium text-slate-gray">
+              <div className="flex justify-between items-center text-xs font-medium text-text-muted">
                 <span>{t("navAddressShort")}</span>
                 <span>+880 1960-481983</span>
               </div>

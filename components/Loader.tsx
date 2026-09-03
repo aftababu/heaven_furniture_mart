@@ -52,7 +52,7 @@ export const Loader: React.FC = () => {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.4, ease: "easeOut" } }}
-          className="fixed inset-0 z-[9999] bg-ivory flex items-center justify-center pointer-events-none select-none overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-primary-bg flex items-center justify-center pointer-events-none select-none overflow-hidden"
         >
           {/* PURE LOGO ANIMATION (ZERO BOX, ZERO CONTAINER BACKGROUND) */}
           <motion.div
@@ -69,10 +69,10 @@ export const Loader: React.FC = () => {
             }}
             className="text-center flex flex-col items-center justify-center transform-gpu origin-center"
           >
-            <h1 className="font-sangbleu-sunrise font-normal not-italic uppercase text-2xl sm:text-3xl lg:text-[2.2rem] tracking-[0.16em] text-charcoal leading-none block">
-              HE<span className="text-brass">A</span>VEN
+            <h1 className="font-sangbleu-sunrise font-normal not-italic uppercase text-2xl sm:text-3xl lg:text-[2.2rem] tracking-[0.16em] text-text leading-none block">
+              HE<span className="text-accent">A</span>VEN
             </h1>
-            <span className="font-hanken text-[0.56rem] sm:text-[0.62rem] tracking-[0.34em] font-bold text-brass uppercase mt-1.5 leading-none block">
+            <span className="font-hanken text-[0.56rem] sm:text-[0.62rem] tracking-[0.34em] font-bold text-accent uppercase mt-1.5 leading-none block">
               {t("brandSubtitle")}
             </span>
           </motion.div>

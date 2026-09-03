@@ -11,7 +11,7 @@ export const BrandStatement: React.FC = () => {
   return (
     <section
       id="about"
-      className="relative w-full aspect-[21/9] min-h-[420px] sm:min-h-[520px] lg:min-h-[680px] flex items-center overflow-hidden group bg-charcoal"
+      className="relative w-full aspect-[21/9] min-h-[420px] sm:min-h-[520px] lg:min-h-[680px] flex items-center overflow-hidden group bg-text"
     >
       {/* 21:9 Full-Screen Edge-to-Edge Cloudinary Showcase Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -29,12 +29,12 @@ export const BrandStatement: React.FC = () => {
           />
         </video>
         {/* Dark Multi-Stop Gradient Scrim Protection Layer */}
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/60 to-charcoal/30 z-1" />
+        <div className="absolute inset-0 bg-gradient-to-r from-text/60 via-text/30 to-text/10 z-1" />
       </div>
       {/* Content Overlay */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-12 flex h-full items-center">
         <div className="w-full flex flex-col items-center justify-center py-8">
-          <div className="text-center font-sangbleu-sunrise text-4xl sm:text-6xl md:text-7xl lg:text-[90px] text-sand leading-[1.3] mb-6 font-light not-italic drop-shadow-md">
+          <div className="text-center font-sangbleu-sunrise text-4xl sm:text-6xl md:text-7xl lg:text-[90px] text-secondary-bg leading-[1.3] mb-6 font-light not-italic drop-shadow-md">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export const BrandStatement: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 1.2 }}
             href="#collections"
-            className=" font-hanken text-xs font-semibold tracking-[0.22em] text-ivory hover:text-brass-gold border-b border-ivory/40 pb-1 hover:border-brass transition-all group focus-visible:outline-2 focus-visible:outline-brass flex items-center gap-3"
+            className=" font-hanken text-xs font-semibold tracking-[0.22em] text-primary-bg hover:text-accent border-b border-primary-bg/40 pb-1 hover:border-accent transition-all group focus-visible:outline-2 focus-visible:outline-accent flex items-center gap-3"
           >
             <span>{t("approachCta")}</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -60,8 +60,8 @@ export const BrandStatement: React.FC = () => {
         </div>
       </div>
       {/* Bottom Scroll Cue */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 border border-wood-border rounded-full px-2 py-2 animate-bounce z-10">
-        <ArrowDown className="w-4 h-4  text-ivory" />
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 border border-border rounded-full px-2 py-2 animate-bounce z-10">
+        <ArrowDown className="w-4 h-4  text-primary-bg" />
       </div>
     </section>
   );
