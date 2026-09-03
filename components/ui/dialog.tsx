@@ -33,7 +33,9 @@ const DialogOverlay = React.forwardRef<
   // If asChild is true, we need to render the child with the className
   // and ref passed through via React.cloneElement.
   if (asChild) {
-    const child = React.Children.only(props.children) as React.ReactElement;
+    const child = React.Children.only(props.children) as React.ReactElement<{
+      className?: string;
+    }>;
     return (
       <DialogPrimitive.Overlay
         ref={ref}
@@ -75,7 +77,9 @@ const DialogContent = React.forwardRef<
 
   // If asChild is true, render the child with merged props and className
   if (asChild) {
-    const child = React.Children.only(children) as React.ReactElement;
+    const child = React.Children.only(children) as React.ReactElement<{
+      className?: string;
+    }>;
     return (
       <DialogPortal>
         <DialogOverlay asChild>
