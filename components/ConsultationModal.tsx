@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Phone, MessageCircleCheck } from "lucide-react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -31,7 +30,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   onClose,
   initialCategory = "Living / Sofa",
 }) => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [category, setCategory] = useState(initialCategory);
@@ -42,12 +41,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const handleWhatsAppSend = (e: React.FormEvent) => {
     e.preventDefault();
     const message = `Hello Heaven Furniture Mart,%0A%0A*Design Consultation Request*%0A*Name:* ${encodeURIComponent(
-      name || "Not provided"
-    )}%0A*Phone:* ${encodeURIComponent(phone || "Not provided")}%0A*Category:* ${encodeURIComponent(
+      name || (lang === "bn" ? "দেওয়া হয়নি" : "Not provided")
+    )}%0A*Phone:* ${encodeURIComponent(phone || (lang === "bn" ? "দেওয়া হয়নি" : "Not provided"))}%0A*Category:* ${encodeURIComponent(
       category
     )}%0A*Material Preference:* ${encodeURIComponent(
       material
-    )}%0A*Requirements:* ${encodeURIComponent(notes || "None")}`;
+    )}%0A*Requirements:* ${encodeURIComponent(notes || (lang === "bn" ? "নেই" : "None"))}`;
 
     window.open(`https://wa.me/8801960481983?text=${message}`, "_blank");
     setSubmitted(true);
@@ -64,10 +63,10 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
           <div className="text-center py-12 flex flex-col items-center">
             <MessageCircleCheck className="w-16 h-16 text-brass mb-4 animate-bounce" />
             <h3 className="font-sangbleu-sunrise font-light text-4xl text-charcoal mb-2">
-              Thank You!
+              {t("modalThankYou")}
             </h3>
             <p className="font-hanken text-sm text-slate-gray">
-              Opening WhatsApp to connect directly with our design artisan...
+              {t("modalOpeningWhatsApp")}
             </p>
           </div>
         ) : (
@@ -90,7 +89,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Abul Kalam"
+                  placeholder={t("placeholderName")}
                   className="w-full px-4 py-3 bg-white/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
                 />
               </div>
@@ -116,7 +115,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </label>
                   <Select value={category} onValueChange={setCategory}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select Category" />
+                      <SelectValue placeholder={t("placeholderCategory")} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Living / Sofa">Living / Sofa</SelectItem>
@@ -134,7 +133,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </label>
                   <Select value={material} onValueChange={setMaterial}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select Material" />
+                      <SelectValue placeholder={t("placeholderMaterial")} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Solid Teak Wood (সেগুন)">Solid Teak Wood (সেগুন)</SelectItem>
@@ -154,7 +153,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   rows={3}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Tell us about room dimensions or custom design preferences..."
+                  placeholder={t("placeholderNotes")}
                   className="w-full px-4 py-3 bg-white/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
                 />
               </div>

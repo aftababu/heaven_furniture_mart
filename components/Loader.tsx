@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const Loader: React.FC = () => {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(true);
   const [targetDeltaY, setTargetDeltaY] = useState<number>(-350);
   const [initialScale, setInitialScale] = useState<number>(2.4);
@@ -71,7 +73,7 @@ export const Loader: React.FC = () => {
               HE<span className="text-brass">A</span>VEN
             </h1>
             <span className="font-hanken text-[0.56rem] sm:text-[0.62rem] tracking-[0.34em] font-bold text-brass uppercase mt-1.5 leading-none block">
-              FURNITURE MART
+              {t("brandSubtitle")}
             </span>
           </motion.div>
         </motion.div>

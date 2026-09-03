@@ -1,91 +1,69 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, ArrowDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface HeroProps {
-  onOpenConsultation: () => void;
+  onOpenConsultation?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = () => {
-  const { t } = useLanguage();
-  const heroRef = useRef<HTMLElement>(null);
+  const { lang, t } = useLanguage();
 
-  // Refs for individual floating editorial image layers
+  const heroRef = useRef<HTMLElement>(null);
   const img1Ref = useRef<HTMLDivElement>(null);
   const img2Ref = useRef<HTMLDivElement>(null);
   const img3Ref = useRef<HTMLDivElement>(null);
 
-  // Physics state for Image 1 (Top Landscape — Heavy, Slower floating response)
-  const target1X = useRef(0);
-  const target1Y = useRef(0);
+  // Physics Animation Frame Refs for High-Performance Smooth Interpolation
   const current1X = useRef(0);
   const current1Y = useRef(0);
+  const target1X = useRef(0);
+  const target1Y = useRef(0);
   const vx1 = useRef(0);
   const vy1 = useRef(0);
 
-  // Physics state for Image 2 (Bottom Left Portrait — Medium floating response, wider amplitude)
-  const target2X = useRef(0);
-  const target2Y = useRef(0);
   const current2X = useRef(0);
   const current2Y = useRef(0);
+  const target2X = useRef(0);
+  const target2Y = useRef(0);
   const vx2 = useRef(0);
   const vy2 = useRef(0);
 
-  // Physics state for Image 3 (Bottom Right Detail — Faster, floating response)
-  const target3X = useRef(0);
-  const target3Y = useRef(0);
   const current3X = useRef(0);
   const current3Y = useRef(0);
+  const target3X = useRef(0);
+  const target3Y = useRef(0);
   const vx3 = useRef(0);
   const vy3 = useRef(0);
 
   const rafId = useRef<number | null>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // Respect reduced motion & touch devices
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (prefersReducedMotion || isTouch) return;
-
     const heroEl = heroRef.current;
     if (!heroEl) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = heroEl.getBoundingClientRect();
-      const relX = Math.max(
-        -1,
-        Math.min(
-          1,
-          (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2),
-        ),
-      );
-      const relY = Math.max(
-        -1,
-        Math.min(
-          1,
-          (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2),
-        ),
-      );
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
 
-      // Image 1: Organic diagonal path (Max ±12px X, ±8px Y)
-      target1X.current = Math.max(-12, Math.min(12, relX * -12 + relY * 4));
-      target1Y.current = Math.max(-8, Math.min(8, relY * -8 - relX * 3));
+      // Mouse distance from hero center normalized (-1 to 1)
+      const normX = (e.clientX - centerX) / (rect.width / 2);
+      const normY = (e.clientY - centerY) / (rect.height / 2);
 
-      // Image 2: Cross diagonal path (Max ±18px X, ±12px Y)
-      target2X.current = Math.max(-18, Math.min(18, relX * -18 - relY * 6));
-      target2Y.current = Math.max(-12, Math.min(12, relY * 12 + relX * 5));
+      // Calibrated target offsets for layered multi-depth parallax
+      target1X.current = normX * 18;
+      target1Y.current = normY * 18;
 
-      // Image 3: Counter diagonal path (Max ±10px X, ±14px Y)
-      target3X.current = Math.max(-10, Math.min(10, relX * 10 - relY * 5));
-      target3Y.current = Math.max(-14, Math.min(14, relY * -14 + relX * 4));
+      target2X.current = normX * -32;
+      target2Y.current = normY * -32;
+
+      target3X.current = normX * 42;
+      target3Y.current = normY * 42;
     };
 
     const handleMouseLeave = () => {
@@ -108,7 +86,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       if (img1Ref.current) {
         img1Ref.current.style.transform = `translate3d(${current1X.current.toFixed(
-          2,
+          2
         )}px, ${current1Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -122,7 +100,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       if (img2Ref.current) {
         img2Ref.current.style.transform = `translate3d(${current2X.current.toFixed(
-          2,
+          2
         )}px, ${current2Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -136,7 +114,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
       if (img3Ref.current) {
         img3Ref.current.style.transform = `translate3d(${current3X.current.toFixed(
-          2,
+          2
         )}px, ${current3Y.current.toFixed(2)}px, 0)`;
       }
 
@@ -176,17 +154,23 @@ export const Hero: React.FC<HeroProps> = () => {
           </div>
 
           {/* Upright Confident Architectural Display Headline (SangBleu 300 Light) */}
-          <h1 className=" font-sangbleu-sunrise font-light not-italic text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] xl:text-[5.5rem] text-charcoal/80 leading-[0.98] tracking-tight mb-6 sm:mb-8">
-            <span className="block">{t("heroTitleLine1")}</span>
-            <span className="block">{t("heroTitleLine2")}</span>
-            <div>
-              <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent  font-medium not-italic">
-                {t("heroTitleLine3")}
-              </span>
-              <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent  font-medium not-italic">
-                {t("heroTitleLine4")}
-              </span>
-            </div>
+          <h1 className="font-sangbleu-sunrise font-light not-italic text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] xl:text-[5.5rem] text-charcoal/80 leading-[0.98] tracking-tight mb-6 sm:mb-8">
+            {lang === "bn" ? (
+              <span className="block">{t("heroTitle")}</span>
+            ) : (
+              <>
+                <span className="block">{t("heroTitleLine1")}</span>
+                <span className="block">{t("heroTitleLine2")}</span>
+                <div>
+                  <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent font-medium not-italic">
+                    {t("heroTitleLine3")}
+                  </span>
+                  <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent font-medium not-italic">
+                    {t("heroTitleLine4")}
+                  </span>
+                </div>
+              </>
+            )}
           </h1>
 
           {/* Crisp, Solid High-Contrast Supporting Subtext */}
@@ -227,9 +211,10 @@ export const Hero: React.FC<HeroProps> = () => {
             >
               <Image
                 src="/images/sofa.jpg"
-                alt="Luxury bespoke sofa in a minimal, sun-lit interior"
+                alt={t("heroImgAlt1")}
                 fill
                 priority
+                sizes="(max-width: 1024px) 100vw, 58vw"
                 className="object-cover w-full h-full object-center pointer-events-none"
               />
             </div>
@@ -241,8 +226,9 @@ export const Hero: React.FC<HeroProps> = () => {
             >
               <Image
                 src="/images/tabil.jpg"
-                alt="Modern luxury dining room with custom wood table"
+                alt={t("heroImgAlt2")}
                 fill
+                sizes="(max-width: 1024px) 48vw, 34vw"
                 className="object-cover w-full h-full object-[20%_50%] pointer-events-none"
               />
             </div>
@@ -254,8 +240,9 @@ export const Hero: React.FC<HeroProps> = () => {
             >
               <Image
                 src="/images/chair.jpg"
-                alt="Close-up detail of handcrafted wood joinery"
+                alt={t("heroImgAlt3")}
                 fill
+                sizes="(max-width: 1024px) 48vw, 34vw"
                 className="object-cover w-full h-full object-[80%_80%] pointer-events-none"
               />
             </div>

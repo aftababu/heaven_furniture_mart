@@ -8,15 +8,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-charcoal text-ivory hover:bg-brass hover:text-ivory border border-charcoal hover:border-brass shadow-sm",
+          "bg-linear-to-b from-brass to-charcoal/70 text-ivory hover:bg-brass hover:text-ivory border border-charcoal hover:border-brass shadow-sm",
         secondary:
           "bg-white text-charcoal border border-wood-border hover:border-brass hover:bg-brass hover:text-white shadow-sm",
         outline:
           "border border-charcoal text-charcoal hover:bg-brass hover:border-brass hover:text-white",
-        gradient: "heaven-button bg-brass text-ivory shadow-sm hover:scale-95",
+        gradient:
+          "heaven-button bg-brass text-ivory hover:bg-charcoal/80 hover:text-ivory  shadow-sm rounded-xs",
         textGradient:
-          "bg-charcoal hover:bg-brass  bg-clip-text text-transparent font-medium",
-        ghost: "text-charcoal hover:bg-wood-border/30 hover:text-brass",
+          "bg-clip-text text-transparent bg-linear-to-b from-brass to-charcoal/70 hover:text-brass  shadow-none rounded-xs ",
+        ghost: " text-charcoal hover:bg-wood-border/30 hover:text-brass",
         link: "text-charcoal hover:text-brass underline-offset-4 hover:underline border-none shadow-none p-0 uppercase tracking-[0.2em] font-bold",
       },
       size: {

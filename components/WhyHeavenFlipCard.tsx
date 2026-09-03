@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface SlideData {
@@ -172,14 +172,14 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
 
   useEffect(() => {
     if (!isFlipped) {
-      setSecondsLeft(25.0);
+      setSecondsLeft(30.0);
       return;
     }
     const timer = setInterval(() => {
       setSecondsLeft((prev) => {
         if (prev <= 0.1) {
           returnFromFlip();
-          return 25.0;
+          return 30.0;
         }
         return Number((prev - 0.1).toFixed(1));
       });
@@ -190,11 +190,6 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
   const nextSlide = () => {
     setDirection(1);
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setDirection(-1);
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const goToSlide = (index: number) => {
@@ -212,12 +207,12 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
     setIsFlipped(true);
 
     holdTimerRef.current = setTimeout(() => {
-      setSecondsLeft(25.0);
+      setSecondsLeft(30.0);
       countdownIntervalRef.current = setInterval(() => {
         setSecondsLeft((prev) => {
           if (prev <= 0.1) {
             returnFromFlip();
-            return 25.0;
+            return 30.0;
           }
           return Number((prev - 0.1).toFixed(1));
         });
@@ -298,7 +293,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                         {activeSlide.num}
                       </span>
 
-                      <h2 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-sangbleu-sunrise font-light text-charcoal leading-[1.12] tracking-tight mb-3 line-clamp-2">
+                      <h2 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-sangbleu-sunrise font-light text-charcoal/70 leading-[1.12] tracking-tight mb-3 line-clamp-2">
                         {lang === "bn"
                           ? activeSlide.titleBn
                           : activeSlide.titleEn}
@@ -315,15 +310,18 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
 
                 {/* Carousel Controls & SEE ALL Button at Bottom */}
                 <div className="space-y-5 pt-4 border-t border-wood-border">
-                  {/* Navigation Row: Arrows & Dots */}
+                  {/* Navigation Row: Dots */}
                   <div className="flex items-center justify-between">
-                    {/* Pagination Indicators */}
                     <div className="flex items-center gap-2">
                       {slides.map((s, idx) => (
                         <button
                           key={s.num}
                           onClick={() => goToSlide(idx)}
-                          aria-label={`Go to slide ${idx + 1}`}
+                          aria-label={
+                            lang === "bn"
+                              ? `স্লাইড ${idx + 1}-এ যান`
+                              : `Go to slide ${idx + 1}`
+                          }
                           className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                             idx === currentSlide
                               ? "w-8 bg-brass"
@@ -377,6 +375,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                             : activeSlide.titleEn
                         }
                         fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
                         className="w-full h-full object-cover"
                       />
                     </motion.div>
@@ -391,7 +390,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
             ref={backRef}
             className="page-back p-6 sm:p-10 lg:p-16 flex flex-col justify-between bg-ivory rounded-xl"
           >
-            {/* Reverse Header with 25s Return Progress Indicator */}
+            {/* Reverse Header with 30s Return Progress Indicator */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-wood-border pb-6 mb-10 gap-4">
               <div>
                 <span className="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-brass block mb-1 font-hanken">
@@ -402,7 +401,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                 </h2>
               </div>
 
-              {/* 25s Hold Visual Countdown Badge */}
+              {/* 30s Hold Visual Countdown Badge */}
               <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-sm border border-wood-border self-start sm:self-auto shadow-sm">
                 <div className="w-2 h-2 rounded-full bg-brass animate-pulse" />
                 <span className="text-[0.7rem] font-mono text-slate-muted font-medium uppercase tracking-wider">
@@ -478,7 +477,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
                     onClick={onOpenConsultation}
                     className="gap-1 text-[0.7rem]"
                   >
-                    <span>DIRECT INQUIRY</span>
+                    <span>{t("btnDirectInquiry")}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Button>
                 </div>
@@ -487,8 +486,8 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
 
             {/* Reverse Page Footer Rule */}
             <div className="pt-8 mt-6 border-t border-wood-border flex justify-between items-center text-[0.7rem] uppercase tracking-[0.2em] text-slate-muted font-medium font-hanken">
-              <span>AGRABAD ACCESS ROAD · CHATTOGRAM</span>
-              <span>HEAVEN EDITORIAL ARCHIVE</span>
+              <span>{t("revFooterLocation")}</span>
+              <span>{t("revFooterArchive")}</span>
             </div>
           </div>
         </div>

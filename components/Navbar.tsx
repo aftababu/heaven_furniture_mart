@@ -78,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               variant="ghost"
               size="icon"
               onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open Mobile Menu"
+              aria-label={t("ariaOpenMenu")}
             >
               <Menu className="w-6 h-6" />
             </Button>
@@ -148,14 +148,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
                   HE<span className="text-brass">A</span>VEN
                 </span>
                 <span className="font-hanken text-[0.55rem] text-brass-gold tracking-[0.32em] uppercase font-bold mt-0.5">
-                  FURNITURE MART
+                  {t("brandSubtitle")}
                 </span>
               </div>
               <Button
                 variant="secondary"
                 size="icon"
                 onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close Mobile Menu"
+                aria-label={t("ariaCloseMenu")}
               >
                 <X className="w-5 h-5" />
               </Button>
@@ -199,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               </Button>
 
               <div className="flex justify-between items-center text-xs font-medium text-slate-gray">
-                <span>Agrabad Access Road, Chattogram</span>
+                <span>{t("navAddressShort")}</span>
                 <span>+880 1960-481983</span>
               </div>
             </div>

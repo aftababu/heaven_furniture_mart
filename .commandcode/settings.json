@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); const idx=s.indexOf('grid-cols'); console.log(s.slice(idx, idx+2000));)",
+      "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); const i=s.indexOf('\"z\"'); console.log(s.slice(i, i+1200));)",
+      "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); for (const m of s.matchAll(/const _t=([^;]+);|_t=([^;]+);/g)){ console.log(m[0]); })",
+      "Shell(pnpm:*)",
+      "Shell(node -e const fs=require('fs'); const s=fs.readFileSync('node_modules/tailwindcss/dist/lib.mjs','utf8'); const i=s.indexOf('function _t'); console.log('_t idx', i); if(i<0){ const j=s.search(/_t\\(/); console.log(s.slice(Math.max(0,j-400), j+200)); } else { console.log(s.slice(i, i+300)); })"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

@@ -89,7 +89,8 @@ const notoSansBengali = Noto_Sans_Bengali({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://heavenfurnituremart.com"),
-  title: "HEAVEN FURNITURE MART | Bespoke Furniture & Artisan Heritage Chattogram",
+  title:
+    "HEAVEN FURNITURE MART | Bespoke Furniture & Artisan Heritage Chattogram",
   description:
     "Custom furniture designed around your space, lifestyle, and taste. Handcrafted luxury living, bedroom, dining, and bespoke furniture in Chattogram, Bangladesh.",
   keywords: [
@@ -103,7 +104,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Heaven Furniture Mart" }],
   openGraph: {
     title: "HEAVEN FURNITURE MART | Bespoke Luxury Furniture",
-    description: "Custom furniture designed around your space, lifestyle, and taste.",
+    description:
+      "Custom furniture designed around your space, lifestyle, and taste.",
     url: "https://heavenfurnituremart.com",
     siteName: "Heaven Furniture Mart",
     locale: "en_US",
@@ -120,7 +122,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "HEAVEN FURNITURE MART | Bespoke Luxury Furniture",
-    description: "Custom furniture designed around your space, lifestyle, and taste.",
+    description:
+      "Custom furniture designed around your space, lifestyle, and taste.",
   },
   robots: {
     index: true,
@@ -150,7 +153,15 @@ const jsonLd = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
       opens: "10:00",
       closes: "21:00",
     },
@@ -174,7 +185,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col selection:bg-brass selection:text-white font-moirest font-normal">
+      <body className="min-h-full flex flex-col text-charcoal/70 selection:bg-brass selection:text-white font-moirest font-normal">
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

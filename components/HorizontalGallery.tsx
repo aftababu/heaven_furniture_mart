@@ -90,7 +90,7 @@ const cards: GalleryCardItem[] = [
 ];
 
 export const HorizontalGallery: React.FC = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLDivElement>(null);
@@ -283,6 +283,7 @@ export const HorizontalGallery: React.FC = () => {
                   src={item.img}
                   alt={item.alt}
                   fill
+                  sizes="(max-width: 640px) 55vw, (max-width: 1024px) 44vw, 32vw"
                   className="card-image-inner w-full h-full object-cover block pointer-events-none transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
               </div>
@@ -304,8 +305,14 @@ export const HorizontalGallery: React.FC = () => {
             </span>
 
             <h3 className="text-3xl sm:text-4xl lg:text-[2.8rem] font-sangbleu-sunrise font-light not-italic text-charcoal/70 leading-[1.12] mb-6">
-              Made for homes that{" "}
-              <span className="text-brass">feel like yours.</span>
+              {lang === "bn" ? (
+                <span>{t("end_title")}</span>
+              ) : (
+                <>
+                  Made for homes that{" "}
+                  <span className="text-brass">feel like yours.</span>
+                </>
+              )}
             </h3>
 
             <div className="w-12 h-px bg-brass mb-6" />
@@ -326,7 +333,7 @@ export const HorizontalGallery: React.FC = () => {
 
         {/* SCROLL PROGRESS INDICATOR (Bottom Right) */}
         <div className="absolute bottom-10 right-12 hidden sm:flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-slate-muted pointer-events-none z-30 font-hanken">
-          <span>Explore</span>
+          <span>{t("labelExplore")}</span>
           <div className="w-20 h-[1.5px] bg-wood-border rounded overflow-hidden">
             <div
               ref={progressFillRef}

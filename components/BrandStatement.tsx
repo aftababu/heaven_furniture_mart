@@ -34,13 +34,12 @@ export const BrandStatement: React.FC = () => {
       {/* Content Overlay */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-12 flex h-full items-center">
         <div className="w-full flex flex-col items-center justify-center py-8">
-          <div className="text-center font-sangbleu-sunrise text-4xl sm:text-[90px]  text-sand leading-[1.3] mb-6 font-light not-italic drop-shadow-md">
+          <div className="text-center font-sangbleu-sunrise text-4xl sm:text-6xl md:text-7xl lg:text-[90px] text-sand leading-[1.3] mb-6 font-light not-italic drop-shadow-md">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="sm:text-[90px] "
             >
               {t("approachHeading1")}
             </motion.p>

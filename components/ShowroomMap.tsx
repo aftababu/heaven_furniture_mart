@@ -47,7 +47,7 @@ export const ShowroomMap: React.FC = () => {
               <p className="font-hanken text-xs font-medium text-slate-gray mt-0.5">
                 Chattogram · Bangladesh
               </p>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-charcoal text-ivory text-[0.65rem] font-bold tracking-widest uppercase mt-2">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-charcoal/70 text-ivory text-[0.65rem] font-bold tracking-widest uppercase mt-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-brass animate-pulse"></span>
                 <span>{t("openBadge")}</span>
               </div>
@@ -96,8 +96,9 @@ export const ShowroomMap: React.FC = () => {
                 <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden mb-2 sm:mb-2.5 bg-sand">
                   <Image
                     src="/images/card6.jpg"
-                    alt="Heaven Furniture Mart Showroom Interior"
+                    alt={t("showroomAltImg")}
                     fill
+                    sizes="(max-width: 640px) 210px, 270px"
                     className="w-full h-full object-cover object-center"
                   />
                   <div className="absolute top-2 right-2 bg-charcoal/90 backdrop-blur-md px-2 py-0.5 rounded-sm text-[0.6rem] sm:text-[0.62rem] font-hanken font-bold tracking-widest text-ivory uppercase border border-white/10">

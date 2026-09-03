@@ -92,7 +92,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
                   <Armchair className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
-                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal">
+                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal/80">
                     {t("diff1Title")}
                   </h4>
                   <p className="font-hanken text-xs sm:text-sm font-normal text-slate-gray mt-0.5">
@@ -106,7 +106,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
                   <Box className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
-                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal">
+                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal/80">
                     {t("diff2Title")}
                   </h4>
                   <p className="font-hanken text-xs sm:text-sm font-normal text-slate-gray mt-0.5">
@@ -120,7 +120,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
                   <Leaf className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
-                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal">
+                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal/80">
                     {t("diff3Title")}
                   </h4>
                   <p className="font-hanken text-xs sm:text-sm font-normal text-slate-gray mt-0.5">
@@ -134,7 +134,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
                   <Compass className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
-                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal">
+                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal/80">
                     {t("diff4Title")}
                   </h4>
                   <p className="font-hanken text-xs sm:text-sm font-normal text-slate-gray mt-0.5">
@@ -148,7 +148,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
                   <Truck className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
-                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal">
+                  <h4 className="font-hanken text-base sm:text-lg font-bold text-charcoal/80">
                     {t("diff5Title")}
                   </h4>
                   <p className="font-hanken text-xs sm:text-sm font-normal text-slate-gray mt-0.5">
@@ -186,16 +186,18 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
                 {/* 1. BEFORE Image (Underneath) */}
                 <Image
                   src="/images/before.jpeg"
-                  alt="Standard Mass Produced Furniture (BEFORE)"
+                  alt={t("bespokeAltBefore")}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 54vw"
                   className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                 />
 
                 {/* 2. BESPOKE Image (Top Layer) */}
                 <Image
                   src="/images/bespoke.jpg"
-                  alt="Heaven Bespoke Furniture (BESPOKE)"
+                  alt={t("bespokeAltAfter")}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 54vw"
                   style={{
                     clipPath: `polygon(${sliderPos}% 0, 100% 0, 100% 100%, ${sliderPos}% 100%)`,
                     WebkitClipPath: `polygon(${sliderPos}% 0, 100% 0, 100% 100%, ${sliderPos}% 100%)`,
@@ -216,21 +218,21 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
                 {/* 4. Labels */}
                 <div className="absolute top-3 xs:top-4 left-3 xs:left-4 bg-white/90 backdrop-blur-md px-2.5 xs:px-3 py-1 rounded-sm z-30 shadow-sm border border-wood-border pointer-events-none">
                   <span className="font-hanken text-[0.65rem] xs:text-[0.7rem] text-charcoal-body tracking-widest font-bold uppercase">
-                    BEFORE
+                    {t("labelBefore")}
                   </span>
                 </div>
                 <div className="absolute top-3 xs:top-4 right-3 xs:right-4 bg-charcoal/90 backdrop-blur-md px-2.5 xs:px-3 py-1 rounded-sm z-30 shadow-sm border border-white/20 pointer-events-none">
                   <span className="font-hanken text-[0.65rem] xs:text-[0.7rem] text-ivory tracking-widest font-bold uppercase">
-                    BESPOKE
+                    {t("labelBespoke")}
                   </span>
                 </div>
               </div>
             </div>
 
             <div className="flex justify-between mt-3 xs:mt-4 px-2 text-[0.7rem] xs:text-xs font-hanken text-slate-gray">
-              <span className="italic font-normal">Mass-produced standard</span>
+              <span className="italic font-normal">{t("subLabelBefore")}</span>
               <span className="font-bold text-charcoal">
-                Bespoke Craftsmanship
+                {t("subLabelBespoke")}
               </span>
             </div>
           </div>

@@ -3,8 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CenterLogoTab() {
+  const { t } = useLanguage();
+
   return (
     <div
       id="header-logo-anchor"
@@ -23,7 +26,7 @@ export default function CenterLogoTab() {
 
           {/* Subtitle */}
           <span className="font-hanken text-[0.4rem] xs:text-[0.46rem] sm:text-[0.54rem] lg:text-[0.62rem] tracking-[0.18em] xs:tracking-[0.22em] sm:tracking-[0.3em] font-bold text-brass uppercase mt-0.5 sm:mt-1.5 leading-none block whitespace-nowrap">
-            FURNITURE MART
+            {t("brandSubtitle")}
           </span>
         </Link>
       </motion.div>

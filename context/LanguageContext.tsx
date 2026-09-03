@@ -20,6 +20,12 @@ export const translations: Translations = {
   navShowroom: { en: "Showroom", bn: "শোরুম" },
   navQuote: { en: "Get Quote", bn: "কোটেশন নিন" },
   brandSubtitle: { en: "FURNITURE MART", bn: "ফার্নিচার মার্ট" },
+  ariaOpenMenu: { en: "Open Mobile Menu", bn: "মোবাইল মেনু খুলুন" },
+  ariaCloseMenu: { en: "Close Mobile Menu", bn: "মোবাইল মেনু বন্ধ করুন" },
+  navAddressShort: {
+    en: "Agrabad Access Road, Chattogram",
+    bn: "আগ্রাবাদ এক্সেস রোড, চট্টগ্রাম",
+  },
 
   // Hero Section
   heroEyebrow: {
@@ -46,6 +52,18 @@ export const translations: Translations = {
   scrollDiscover: {
     en: "Scroll to discover",
     bn: "আরও দেখতে নিচে স্ক্রোল করুন",
+  },
+  heroImgAlt1: {
+    en: "Luxury bespoke sofa in a minimal, sun-lit interior",
+    bn: "আধুনিক আলোঝলমলে ড্রয়িংরুমে বিলাসবহুল কাস্টম সোফা",
+  },
+  heroImgAlt2: {
+    en: "Modern luxury dining room with custom wood table",
+    bn: "কাস্টম কাঠের ডাইনিং টেবিলসহ আধুনিক ডাইনিং রুম",
+  },
+  heroImgAlt3: {
+    en: "Close-up detail of handcrafted wood joinery",
+    bn: "নিপুণ কাঠের খোদাই ও জয়েন্টের সূক্ষ্ম কাজ",
   },
 
   // Brand Statement
@@ -75,6 +93,10 @@ export const translations: Translations = {
   catBedroom: { en: "BEDROOM", bn: "বেডরুম" },
   catDining: { en: "DINING", bn: "ডাইনিং" },
   catBespoke: { en: "BESPOKE", bn: "কাস্টমাইজড" },
+  waCollectionInterest: {
+    en: "Hello Heaven Furniture Mart, I am interested in your collection.",
+    bn: "হ্যালো হেভেন ফার্নিচার মার্ট, আমি আপনাদের কালেকশন দেখতে আগ্রহী।",
+  },
 
   // Why Choose Heaven Section (5 Synced Reasons)
   whyEyebrow: { en: "WHY CHOOSE HEAVEN", bn: "কেন হেভেন বেছে নেবেন" },
@@ -167,6 +189,15 @@ export const translations: Translations = {
     en: "STANDARDS & COMMITMENTS",
     bn: "আমাদের মান ও প্রতিশ্রুতি",
   },
+  btnDirectInquiry: { en: "DIRECT INQUIRY", bn: "ইনকোয়ারি পাঠান" },
+  revFooterLocation: {
+    en: "AGRABAD ACCESS ROAD · CHATTOGRAM",
+    bn: "আগ্রাবাদ এক্সেস রোড · চট্টগ্রাম",
+  },
+  revFooterArchive: {
+    en: "HEAVEN EDITORIAL ARCHIVE",
+    bn: "হেভেন কালেকশন আর্কাইভ",
+  },
 
   // 8 Trust Verification Points
   t1: { en: "FREE DESIGN CONSULTATION", bn: "ফ্রি ডিজাইন পরামর্শ" },
@@ -233,6 +264,18 @@ export const translations: Translations = {
   },
   standardLabel: { en: "STANDARD MASS-PRODUCED", bn: "সাধারণ রেডিমেড আসবাব" },
   heavenLabel: { en: "HEAVEN BESPOKE CRAFT", bn: "হেভেনের কাস্টম কারিগরি" },
+  bespokeAltBefore: {
+    en: "Standard Mass Produced Furniture (BEFORE)",
+    bn: "সাধারণ রেডিমেড আসবাব (পূর্বে)",
+  },
+  bespokeAltAfter: {
+    en: "Heaven Bespoke Furniture (BESPOKE)",
+    bn: "হেভেন কাস্টমাইজড আসবাব (কাস্টম)",
+  },
+  labelBefore: { en: "BEFORE", bn: "পূর্বে" },
+  labelBespoke: { en: "BESPOKE", bn: "কাস্টম" },
+  subLabelBefore: { en: "Mass-produced standard", bn: "সাধারণ রেডিমেড" },
+  subLabelBespoke: { en: "Bespoke Craftsmanship", bn: "কাস্টম কারিগরি" },
 
   // Horizontal Scroll / Social Proof
   eyebrow: { en: "SOCIAL PROOF", bn: "আস্থা ও অভিজ্ঞতা" },
@@ -295,6 +338,7 @@ export const translations: Translations = {
     en: "Agrabad Access Road, Chattogram",
     bn: "আগ্রাবাদ এক্সেস রোড, চট্টগ্রাম",
   },
+  labelExplore: { en: "Explore", bn: "আবিষ্কার করুন" },
 
   // Showroom Section
   visitEyebrow: { en: "VISIT HEAVEN", bn: "হেভেন দর্শন" },
@@ -310,6 +354,10 @@ export const translations: Translations = {
   showroom01Label: { en: "SHOWROOM 01", bn: "শোরুম ০১" },
   getDirections: { en: "GET DIRECTIONS", bn: "ম্যাপে পথ দেখুন" },
   openBadge: { en: "OPEN NOW", bn: "খোলা আছে" },
+  showroomAltImg: {
+    en: "Heaven Furniture Mart Showroom Interior",
+    bn: "হেভেন ফার্নিচার মার্টের নিজস্ব শোরুম",
+  },
 
   // Consultation Modal
   modalTitle: {
@@ -336,6 +384,18 @@ export const translations: Translations = {
     bn: "হোয়াটসঅ্যাপে পাঠান (+৮৮০ ১৯৬০-৪৮১৯৮৩)",
   },
   sendEmail: { en: "Send Direct Inquiry", bn: "ইনকোয়ারি পাঠান" },
+  modalThankYou: { en: "Thank You!", bn: "ধন্যবাদ!" },
+  modalOpeningWhatsApp: {
+    en: "Opening WhatsApp to connect directly with our design artisan...",
+    bn: "আমাদের ফার্নিচার ডিজাইনারের সাথে সরাসরি যোগাযোগ করতে হোয়াটসঅ্যাপ চালু হচ্ছে...",
+  },
+  placeholderName: { en: "Abul Kalam", bn: "আবুল কালাম" },
+  placeholderCategory: { en: "Select Category", bn: "ক্যাটাগরি নির্বাচন করুন" },
+  placeholderMaterial: { en: "Select Material", bn: "উপাদান নির্বাচন করুন" },
+  placeholderNotes: {
+    en: "Tell us about room dimensions or custom design preferences...",
+    bn: "ঘরের মাপ বা আপনার বিশেষ পছন্দের বিস্তারিত বিবরণ লিখুন...",
+  },
 
   // Footer
   footerTagline: {
@@ -347,6 +407,27 @@ export const translations: Translations = {
     bn: "যোগাযোগ ও হোয়াটসঅ্যাপ",
   },
   requestQuoteFooter: { en: "REQUEST A QUOTE", bn: "কোটেশন অনুরোধ করুন" },
+  footerCompany: { en: "Company", bn: "প্রতিষ্ঠান" },
+  footerAboutUs: { en: "About Us", bn: "আমাদের সম্পর্কে" },
+  footerOurCraft: { en: "Our Craft", bn: "আমাদের কারিগরি" },
+  footerShowroom: { en: "Showroom", bn: "শোরুম" },
+  footerVisit: { en: "Visit", bn: "ভিজিট করুন" },
+  footerAddressLine1: {
+    en: "Agrabad Access Road",
+    bn: "আগ্রাবাদ এক্সেস রোড",
+  },
+  footerAddressLine2: {
+    en: "Chattogram, Bangladesh",
+    bn: "চট্টগ্রাম, বাংলাদেশ",
+  },
+  footerBottomLocation: {
+    en: "AGRABAD · CHATTOGRAM · BANGLADESH",
+    bn: "আগ্রাবাদ · চট্টগ্রাম · বাংলাদেশ",
+  },
+  footerCopyright: {
+    en: "© 2026 HEAVEN FURNITURE MART",
+    bn: "© ২০২৬ হেভেন ফার্নিচার মার্ট",
+  },
 };
 
 interface LanguageContextType {

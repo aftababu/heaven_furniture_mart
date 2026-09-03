@@ -47,7 +47,7 @@ interface CollectionsProps {
 export const Collections: React.FC<CollectionsProps> = ({
   onOpenConsultationWithCategory,
 }) => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <section
@@ -61,7 +61,7 @@ export const Collections: React.FC<CollectionsProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-sangbleu-sunrise  font-light not-italic text-3xl xs:text-4xl  md:text-6xl  text-center text-charcoal/70 mb-10 xs:mb-14 sm:mb-18 tracking-tight leading-[1.05]"
+          className="font-sangbleu-sunrise font-light not-italic text-3xl xs:text-4xl md:text-6xl text-center text-charcoal/70 mb-10 xs:mb-14 sm:mb-18 tracking-tight leading-[1.05]"
         >
           {t("collectionsHeadline")}
         </motion.h2>
@@ -75,7 +75,11 @@ export const Collections: React.FC<CollectionsProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.15 }}
-              href={`https://wa.me/8801960481983?text=Hello%20Heaven%20Furniture%20Mart,%20I%20am%20interested%20in%20your%20${cat.id}%20collection.`}
+              href={`https://wa.me/8801960481983?text=${encodeURIComponent(
+                lang === "bn"
+                  ? `হ্যালো হেভেন ফার্নিচার মার্ট, আমি আপনাদের ${t(cat.key)} কালেকশন দেখতে আগ্রহী।`
+                  : `Hello Heaven Furniture Mart, I am interested in your ${t(cat.key)} collection.`
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center cursor-pointer"
@@ -85,6 +89,7 @@ export const Collections: React.FC<CollectionsProps> = ({
                   src={cat.img}
                   alt={t(cat.key)}
                   fill
+                  sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className={`w-full h-full object-cover ${cat.objectPos} transition-transform duration-1000 ease-out group-hover:scale-105`}
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
