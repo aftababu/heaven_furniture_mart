@@ -349,8 +349,8 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
 
               {/* RIGHT COLUMN: CAROUSEL PHOTOGRAPH STAGE */}
               <div className="lg:col-span-7 flex flex-col justify-center h-full min-h-[340px] sm:min-h-[400px] lg:min-h-[460px]">
-                <div className="relative w-full h-full min-h-[340px] sm:min-h-[400px] lg:min-h-[460px] rounded-xl overflow-hidden shadow-md bg-stone-200">
-                  <div className="absolute top-5 left-5 z-20 bg-charcoal/90 backdrop-blur-md px-3.5 py-1.5 rounded-sm text-[0.7rem] uppercase tracking-[0.22em] font-semibold text-ivory border border-white/20 pointer-events-none font-hanken">
+                <div className="relative w-full h-full min-h-[340px] sm:min-h-[400px] lg:min-h-[460px] rounded-xl overflow-hidden shadow-md bg-sand">
+                  <div className="absolute top-5 left-5 z-20 bg-charcoal/90 backdrop-blur-md px-3.5 py-1.5 rounded-sm text-[0.7rem] uppercase tracking-[0.22em] font-semibold text-ivory border border-ivory/20 pointer-events-none font-hanken">
                     <span>
                       {lang === "bn" ? activeSlide.tagBn : activeSlide.tagEn}
                     </span>
@@ -402,7 +402,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
               </div>
 
               {/* 30s Hold Visual Countdown Badge */}
-              <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-sm border border-wood-border self-start sm:self-auto shadow-sm">
+              <div className="flex items-center gap-3 bg-paper px-4 py-2 rounded-sm border border-wood-border self-start sm:self-auto shadow-sm">
                 <div className="w-2 h-2 rounded-full bg-brass animate-pulse" />
                 <span className="text-[0.7rem] font-mono text-slate-muted font-medium uppercase tracking-wider">
                   {secondsLeft.toFixed(1)}S
@@ -443,7 +443,7 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenFlipCardProps> = ({
               </div>
 
               {/* Right: 8 Editorial Trust Verification Points */}
-              <div className="lg:col-span-6 bg-white rounded-xl p-6 sm:p-8 border border-wood-border shadow-sm">
+              <div className="lg:col-span-6 bg-paper rounded-xl p-6 sm:p-8 border border-wood-border shadow-sm">
                 <span className="text-[0.7rem] uppercase tracking-[0.25em] font-bold text-charcoal block mb-6 font-hanken">
                   {t("revTrustLabel")}
                 </span>

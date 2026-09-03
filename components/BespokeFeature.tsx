@@ -102,7 +102,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
               </div>
 
               <div className="flex gap-4 sm:gap-5 items-start">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-white/60">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-paper/60">
                   <Box className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
@@ -116,7 +116,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
               </div>
 
               <div className="flex gap-4 sm:gap-5 items-start">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-white/60">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-paper/60">
                   <Leaf className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
@@ -130,7 +130,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
               </div>
 
               <div className="flex gap-4 sm:gap-5 items-start">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-white/60">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-paper/60">
                   <Compass className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
@@ -144,7 +144,7 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
               </div>
 
               <div className="flex gap-4 sm:gap-5 items-start">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-white/60">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg border border-wood-border flex items-center justify-center flex-shrink-0 bg-paper/60">
                   <Truck className="w-5 sm:w-6 h-5 sm:h-6 text-charcoal" />
                 </div>
                 <div>
@@ -207,21 +207,21 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
 
                 {/* 3. Draggable Vertical Divider & Handle */}
                 <div
-                  className="absolute inset-y-0 w-0.5 bg-white shadow-2xl z-20 pointer-events-none"
+                  className="absolute inset-y-0 w-0.5 bg-ivory shadow-2xl z-20 pointer-events-none"
                   style={{ left: `${sliderPos}%` }}
                 >
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 xs:w-10 sm:w-12 h-9 xs:h-10 sm:h-12 rounded-full bg-charcoal border-2 border-white flex items-center justify-center shadow-2xl">
-                    <Sliders className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 xs:w-10 sm:w-12 h-9 xs:h-10 sm:h-12 rounded-full bg-charcoal border-2 border-ivory flex items-center justify-center shadow-2xl">
+                    <Sliders className="w-4 sm:w-5 h-4 sm:h-5 text-ivory" />
                   </div>
                 </div>
 
                 {/* 4. Labels */}
-                <div className="absolute top-3 xs:top-4 left-3 xs:left-4 bg-white/90 backdrop-blur-md px-2.5 xs:px-3 py-1 rounded-sm z-30 shadow-sm border border-wood-border pointer-events-none">
+                <div className="absolute top-3 xs:top-4 left-3 xs:left-4 bg-paper/90 backdrop-blur-md px-2.5 xs:px-3 py-1 rounded-sm z-30 shadow-sm border border-wood-border pointer-events-none">
                   <span className="font-hanken text-[0.65rem] xs:text-[0.7rem] text-charcoal-body tracking-widest font-bold uppercase">
                     {t("labelBefore")}
                   </span>
                 </div>
-                <div className="absolute top-3 xs:top-4 right-3 xs:right-4 bg-charcoal/90 backdrop-blur-md px-2.5 xs:px-3 py-1 rounded-sm z-30 shadow-sm border border-white/20 pointer-events-none">
+                <div className="absolute top-3 xs:top-4 right-3 xs:right-4 bg-charcoal/90 backdrop-blur-md px-2.5 xs:px-3 py-1 rounded-sm z-30 shadow-sm border border-ivory/20 pointer-events-none">
                   <span className="font-hanken text-[0.65rem] xs:text-[0.7rem] text-ivory tracking-widest font-bold uppercase">
                     {t("labelBespoke")}
                   </span>

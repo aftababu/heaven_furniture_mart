@@ -1,3 +1,4 @@
+# - Prefers preserving existing design and layout when making responsiveness or optimization changes; avoid visual redesign or layout shifts. Confidence: 0.9
 - Prefers preserving existing design and layout when making responsiveness or optimization changes; avoid visual redesign or layout shifts. Confidence: 0.9
 - Prefers implementing responsive design using Tailwind CSS breakpoint utilities. Confidence: 0.85
 - Values site performance optimization (e.g., responsive image delivery) alongside responsiveness work. Confidence: 0.7

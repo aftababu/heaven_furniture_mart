@@ -70,9 +70,9 @@ export const ShowroomMap: React.FC = () => {
           <div className="relative w-full h-[440px] xs:h-[480px] sm:h-[580px] lg:h-[620px] rounded-xl overflow-hidden shadow-xl border border-wood-border bg-ivory">
             {/* Layer 1: Map Grid Pattern & Road Lines */}
             <div className="absolute inset-0 map-bg-pattern opacity-60 z-0" />
-            <div className="absolute top-1/2 left-0 w-[120%] h-5 bg-white shadow-sm transform -rotate-12 -translate-y-1/2 -translate-x-10 z-10" />
-            <div className="absolute top-0 right-1/4 w-4 h-[150%] bg-white shadow-sm transform rotate-45 -translate-y-10 z-10" />
-            <div className="absolute bottom-1/4 left-1/4 w-full h-2 bg-white/70 transform rotate-12 z-10" />
+            <div className="absolute top-1/2 left-0 w-[120%] h-5 bg-paper shadow-sm transform -rotate-12 -translate-y-1/2 -translate-x-10 z-10" />
+            <div className="absolute top-0 right-1/4 w-4 h-[150%] bg-paper shadow-sm transform rotate-45 -translate-y-10 z-10" />
+            <div className="absolute bottom-1/4 left-1/4 w-full h-2 bg-paper/70 transform rotate-12 z-10" />
 
             {/* Road Labels */}
             <span className="absolute top-[48%] left-[10%] xs:left-[12%] sm:left-[16%] text-[0.65rem] sm:text-[0.7rem] font-hanken font-bold tracking-[0.25em] text-slate-muted uppercase transform -rotate-12 z-15">
@@ -101,7 +101,7 @@ export const ShowroomMap: React.FC = () => {
                     sizes="(max-width: 640px) 210px, 270px"
                     className="w-full h-full object-cover object-center"
                   />
-                  <div className="absolute top-2 right-2 bg-charcoal/90 backdrop-blur-md px-2 py-0.5 rounded-sm text-[0.6rem] sm:text-[0.62rem] font-hanken font-bold tracking-widest text-ivory uppercase border border-white/10">
+                  <div className="absolute top-2 right-2 bg-charcoal/90 backdrop-blur-md px-2 py-0.5 rounded-sm text-[0.6rem] sm:text-[0.62rem] font-hanken font-bold tracking-widest text-ivory uppercase border border-ivory/10">
                     {t("openBadge")}
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export const ShowroomMap: React.FC = () => {
               <div className="relative flex items-center justify-center cursor-pointer">
                 <div className="absolute -inset-4 rounded-full bg-brass/30 animate-ping" />
 
-                <div className="w-10 sm:w-11 h-10 sm:h-11 bg-charcoal text-brass rounded-full border-2 border-white shadow-2xl relative z-20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <div className="w-10 sm:w-11 h-10 sm:h-11 bg-charcoal text-brass rounded-full border-2 border-ivory shadow-2xl relative z-20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                   <MapPin className="w-5 sm:w-6 h-5 sm:h-6 fill-brass" />
                 </div>
               </div>

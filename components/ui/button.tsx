@@ -10,9 +10,9 @@ const buttonVariants = cva(
         default:
           "bg-linear-to-b from-brass to-charcoal/70 text-ivory hover:bg-brass hover:text-ivory border border-charcoal hover:border-brass shadow-sm",
         secondary:
-          "bg-white text-charcoal border border-wood-border hover:border-brass hover:bg-brass hover:text-white shadow-sm",
+          "bg-paper text-charcoal border border-wood-border hover:border-brass hover:bg-brass hover:text-ivory shadow-sm",
         outline:
-          "border border-charcoal text-charcoal hover:bg-brass hover:border-brass hover:text-white",
+          "border border-charcoal text-charcoal hover:bg-brass hover:border-brass hover:text-ivory",
         gradient:
           "heaven-button bg-brass text-ivory hover:bg-charcoal/80 hover:text-ivory  shadow-sm rounded-xs",
         textGradient:

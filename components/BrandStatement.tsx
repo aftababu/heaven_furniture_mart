@@ -29,7 +29,7 @@ export const BrandStatement: React.FC = () => {
           />
         </video>
         {/* Dark Multi-Stop Gradient Scrim Protection Layer */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30 z-1" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/60 to-charcoal/30 z-1" />
       </div>
       {/* Content Overlay */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-12 flex h-full items-center">
@@ -52,7 +52,7 @@ export const BrandStatement: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 1.2 }}
             href="#collections"
-            className=" font-hanken text-xs font-semibold tracking-[0.22em] text-ivory hover:text-brass border-b border-white/40 pb-1 hover:border-brass transition-all group focus-visible:outline-2 focus-visible:outline-brass flex items-center gap-3"
+            className=" font-hanken text-xs font-semibold tracking-[0.22em] text-ivory hover:text-brass-gold border-b border-ivory/40 pb-1 hover:border-brass transition-all group focus-visible:outline-2 focus-visible:outline-brass flex items-center gap-3"
           >
             <span>{t("approachCta")}</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />

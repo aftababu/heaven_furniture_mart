@@ -90,7 +90,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={t("placeholderName")}
-                  className="w-full px-4 py-3 bg-white/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
+                  className="w-full px-4 py-3 bg-paper/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
                 />
               </div>
 
@@ -104,7 +104,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+880 1700-000000"
-                  className="w-full px-4 py-3 bg-white/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
+                  className="w-full px-4 py-3 bg-paper/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
                 />
               </div>
 
@@ -154,7 +154,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder={t("placeholderNotes")}
-                  className="w-full px-4 py-3 bg-white/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
+                  className="w-full px-4 py-3 bg-paper/80 border border-wood-border rounded-sm font-hanken text-sm text-charcoal-body placeholder:text-slate-muted focus:outline-none focus:border-brass"
                 />
               </div>
 

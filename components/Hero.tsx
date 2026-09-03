@@ -162,10 +162,10 @@ export const Hero: React.FC<HeroProps> = () => {
                 <span className="block">{t("heroTitleLine1")}</span>
                 <span className="block">{t("heroTitleLine2")}</span>
                 <div>
-                  <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent font-medium not-italic">
+                  <span className="block bg-linear-to-b from-brass-gold to-brass bg-clip-text text-transparent font-medium not-italic">
                     {t("heroTitleLine3")}
                   </span>
-                  <span className="block bg-linear-to-b from-brass to-brass/70 bg-clip-text text-transparent font-medium not-italic">
+                  <span className="block bg-linear-to-b from-brass-gold to-brass bg-clip-text text-transparent font-medium not-italic">
                     {t("heroTitleLine4")}
                   </span>
                 </div>

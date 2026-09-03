@@ -17,23 +17,21 @@
   --font-moirest: var(--font-moirest), "Moirest", sans-serif;
   --font-hanken: var(--font-moirest), "Moirest", sans-serif;
 
-  /* Architectural Color Tokens */
-  /* --color-ivory: #faf7f2; Warm Ivory Canvas */
-  --color-ivory: #f0e8e4;
-  --color-charcoal: #181715; /* Obsidian Primary Ink Charcoal */
-  --color-charcoal-body: #24221f; /* Deep High-Contrast Body Charcoal */
-  --color-slate-warm: #383531; /* Primary Warm Slate Gray */
-  --color-slate-gray: #4a463f; /* Secondary Warm Slate Gray */
-  --color-slate-muted: #5c574f; /* Muted Slate Gray */
-  --color-graphite-muted: #8c857b; /* Muted Graphite */
-  --color-brass: #a88432; /* Deepened Antique Brass (Accessible > 4.5:1) */
-  --color-brass-gold: #c9a227; /* Brass Gold Accent */
-  --color-gold: #c9a227; /* Micro Accent Gold */
-  --color-wood-border: #d1c9bc; /* Fine Architectural Divider */
-  --color-border-divider: #e8e2d5; /* Subtle Divider */
-  /* --color-sand: #ebe5da; Sand Surface */
-  --color-sand: #faf7f6; /* Sand Surface */
-  --color-paper: #f4f1ea; /* Paper Surface */
+  /* Architectural Color Tokens — Ebony, Ivory & Champagne Luxury */
+  --color-ivory: #f6f2ec; /* Warm Ivory Canvas */
+  --color-charcoal: #16140f; /* Obsidian Ebony Primary Ink */
+  --color-charcoal-body: #2a2721; /* Deep High-Contrast Body Charcoal */
+  --color-slate-warm: #3b362e; /* Primary Warm Slate Gray */
+  --color-slate-gray: #514b41; /* Secondary Warm Slate Gray */
+  --color-slate-muted: #6b645a; /* Muted Slate Gray */
+  --color-graphite-muted: #9a9183; /* Muted Graphite */
+  --color-brass: #a5813c; /* Deepened Antique Brass (Accessible > 4.5:1) */
+  --color-brass-gold: #c8a45c; /* Champagne Brass Accent */
+  --color-gold: #d8b978; /* Soft Champagne Gold */
+  --color-wood-border: #d8d0c2; /* Fine Architectural Divider */
+  --color-border-divider: #eae4d8; /* Subtle Divider */
+  --color-sand: #f1ece4; /* Sand Surface */
+  --color-paper: #f8f5ef; /* Paper Surface */
   --color-logo-bg: #2b4542; /* Exact Slate-Pine Green matching /public/logo.jpg */
 }
 
@@ -127,15 +125,15 @@
 
 @layer base {
   :root {
-    --background: #faf7f2; /* Warm Ivory Canvas */
-    --foreground: #181715; /* Primary Ink Charcoal */
-    --body-charcoal: #24221f; /* Deep Body Charcoal */
-    --slate-gray: #4a463f; /* Secondary Warm Slate */
-    --brass-accent: #947116; /* Accessible Deepened Brass */
-    --gold-accent: #c9a227; /* Micro-accent Gold */
-    --border-muted: #d1c9bc; /* Fine Architectural Divider */
-    --card-surface: #f4f1ea; /* Warm Surface Card */
-    --card-alt: #ebe5da; /* Warm Natural Sand Surface */
+    --background: #f6f2ec; /* Warm Ivory Canvas */
+    --foreground: #16140f; /* Primary Ebony Charcoal */
+    --body-charcoal: #2a2721; /* Deep Body Charcoal */
+    --slate-gray: #514b41; /* Secondary Warm Slate */
+    --brass-accent: #a5813c; /* Accessible Deepened Brass */
+    --gold-accent: #d8b978; /* Soft Champagne Gold */
+    --border-muted: #d8d0c2; /* Fine Architectural Divider */
+    --card-surface: #f8f5ef; /* Warm Surface Card */
+    --card-alt: #f1ece4; /* Warm Natural Sand Surface */
   }
 
   body {
@@ -143,16 +141,17 @@
     color: var(--color-charcoal-body);
     font-family: var(--font-moirest), "Moirest", sans-serif;
     font-weight: 400;
+    letter-spacing: 0.01em;
     overflow-x: hidden;
     background-image:
       radial-gradient(
         circle at 12% 18%,
-        rgba(148, 113, 22, 0.035) 0%,
+        rgba(165, 129, 60, 0.05) 0%,
         transparent 45%
       ),
       radial-gradient(
         circle at 88% 82%,
-        rgba(148, 113, 22, 0.025) 0%,
+        rgba(200, 164, 92, 0.04) 0%,
         transparent 50%
       );
     background-attachment: fixed;
@@ -175,7 +174,7 @@
     background-image: linear-gradient(
       45deg,
       transparent 25%,
-      rgba(201, 162, 39, 0.45) 50%,
+      rgba(216, 185, 120, 0.5) 50%,
       transparent 75%,
       transparent
     );
@@ -184,7 +183,7 @@
     background-position: 200% 0;
     animation: shine 10s linear infinite;
 
-    color: #faf7f2;
+    color: var(--color-ivory);
   }
 }
 
@@ -316,15 +315,15 @@ html[lang="bn"] textarea,
 
 /* Fine Editorial Borders */
 .border-thin-brass {
-  border: 0.5px solid #947116;
+  border: 0.5px solid var(--color-brass);
 }
 
 .border-thin-charcoal {
-  border: 0.5px solid #181715;
+  border: 0.5px solid var(--color-charcoal);
 }
 
 .border-thin-wood {
-  border: 0.5px solid #d1c9bc;
+  border: 0.5px solid var(--color-wood-border);
 }
 
 /* Editorial Image Zoom & Card Transitions */
@@ -373,7 +372,7 @@ html[lang="bn"] textarea,
   -webkit-backface-visibility: hidden;
   width: 100%;
   border-radius: 1rem;
-  background-color: var(--color-ivory);
+  background-color: var(--color-paper);
 }
 
 .page-front {
@@ -399,29 +398,29 @@ html[lang="bn"] textarea,
     linear-gradient(
       45deg,
       transparent 48%,
-      rgba(209, 201, 188, 0.4) 49%,
-      rgba(209, 201, 188, 0.4) 51%,
+      rgba(216, 208, 194, 0.45) 49%,
+      rgba(216, 208, 194, 0.45) 51%,
       transparent 52%
     ),
     linear-gradient(
       -45deg,
       transparent 48%,
-      rgba(209, 201, 188, 0.4) 49%,
-      rgba(209, 201, 188, 0.4) 51%,
+      rgba(216, 208, 194, 0.45) 49%,
+      rgba(216, 208, 194, 0.45) 51%,
       transparent 52%
     ),
     linear-gradient(
       20deg,
       transparent 48%,
-      rgba(209, 201, 188, 0.25) 49%,
-      rgba(209, 201, 188, 0.25) 51%,
+      rgba(216, 208, 194, 0.3) 49%,
+      rgba(216, 208, 194, 0.3) 51%,
       transparent 52%
     ),
     linear-gradient(
       -20deg,
       transparent 48%,
-      rgba(209, 201, 188, 0.25) 49%,
-      rgba(209, 201, 188, 0.25) 51%,
+      rgba(216, 208, 194, 0.3) 49%,
+      rgba(216, 208, 194, 0.3) 51%,
       transparent 52%
     );
   background-size:

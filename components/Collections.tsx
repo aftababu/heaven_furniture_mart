@@ -92,7 +92,7 @@ export const Collections: React.FC<CollectionsProps> = ({
                   sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className={`w-full h-full object-cover ${cat.objectPos} transition-transform duration-1000 ease-out group-hover:scale-105`}
                 />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 bg-charcoal/10 group-hover:bg-transparent transition-colors duration-500" />
               </div>
 
               <div className="flex items-center gap-2 text-charcoal group-hover:text-brass transition-colors duration-300">
