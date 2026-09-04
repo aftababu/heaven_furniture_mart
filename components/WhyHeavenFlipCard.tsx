@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 interface SlideData {
   num: string;
@@ -15,7 +15,6 @@ interface SlideData {
   descEn: string;
   descBn: string;
   img: string;
-  frameClass: string;
 }
 
 const SLIDES: SlideData[] = [
@@ -30,7 +29,6 @@ const SLIDES: SlideData[] = [
     descBn:
       "আপনার স্বপ্নের ঘর সাজাতে অভিজ্ঞ ফার্নিচার ডিজাইনারের সরাসরি ফ্রি পরামর্শ পান।",
     img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/design_dtfmyh.webp",
-    frameClass: "max-w-4xl h-[48vh] sm:h-[54vh] ml-auto mr-0 sm:mr-6",
   },
   {
     num: "02",
@@ -44,7 +42,6 @@ const SLIDES: SlideData[] = [
     descBn:
       "ঘরের নিখুঁত মাপে এবং আপনার নিজস্ব স্টাইল ও স্বাদ অনুযায়ী তৈরি সেরা কাস্টম ফার্নিচার।",
     img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445505/hackathon/craft_alk54q.webp",
-    frameClass: "max-w-3xl h-[52vh] sm:h-[58vh] mr-auto ml-0 sm:ml-4",
   },
   {
     num: "03",
@@ -57,7 +54,6 @@ const SLIDES: SlideData[] = [
     descBn:
       "উন্নত মেহগনি ও সেগুন কাঠ এবং ইন-হাউজ দক্ষ কারিগরদের টেকসই হাতের নিখুঁত কাজ।",
     img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445505/hackathon/wood_sumsjx.webp",
-    frameClass: "max-w-3xl h-[54vh] sm:h-[60vh] mx-auto",
   },
   {
     num: "04",
@@ -70,7 +66,6 @@ const SLIDES: SlideData[] = [
     descBn:
       "আগ্রাবাদ এক্সেস রোডে সরাসরি শোরুম ভিজিট করে ফার্নিচারের ফিনিশিং ও কোয়ালিটি স্বচক্ষে দেখুন।",
     img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp",
-    frameClass: "max-w-5xl h-[46vh] sm:h-[52vh] mx-auto",
   },
   {
     num: "05",
@@ -83,7 +78,6 @@ const SLIDES: SlideData[] = [
     descBn:
       "ঝামেলাহীন হোম ডেলিভারি এবং অভিজ্ঞ ফিটিং টিম দিয়ে নিখুঁত ইনস্টলেশন নিশ্চয়তা।",
     img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445504/hackathon/delivery_yeymeb.webp",
-    frameClass: "max-w-4xl h-[49vh] sm:h-[55vh] ml-auto mr-0 sm:mr-8",
   },
   {
     num: "06",
@@ -96,7 +90,6 @@ const SLIDES: SlideData[] = [
     descBn:
       "বাজেট ফ্রেন্ডলি কিস্তি ও পার্ট পেমেন্ট সুবিধায় নিজের পছন্দমতো ঘর সাজান স্বাচ্ছন্দে।",
     img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445504/hackathon/payment_ttc5hl.webp",
-    frameClass: "max-w-3xl h-[48vh] sm:h-[54vh] mr-auto ml-0 sm:ml-8",
   },
   {
     num: "07",
@@ -109,34 +102,88 @@ const SLIDES: SlideData[] = [
     descBn:
       "চট্টগ্রামজুড়ে শত শত সন্তুষ্ট কাস্টমারের দীর্ঘদিনের বিশ্বস্ততা ও গুণগত মানের সেরা গ্যারান্টি।",
     img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445504/hackathon/card4.1_usa9dm.webp",
-    frameClass: "max-w-4xl h-[52vh] sm:h-[58vh] mx-auto",
   },
 ];
+
+const EASE_LUXURY = [0.16, 1, 0.3, 1] as const;
+
+// Luxury Refined Editorial Motion Variants
+const imageVariants: Variants = {
+  enter: (dir: number) => ({
+    opacity: 0,
+    scale: 1.015,
+    x: dir > 0 ? 8 : -8,
+  }),
+  center: {
+    opacity: 1,
+    scale: 1,
+    x: 0,
+    transition: {
+      duration: 0.55,
+      ease: EASE_LUXURY,
+    },
+  },
+  exit: (dir: number) => ({
+    opacity: 0,
+    scale: 1.015,
+    x: dir > 0 ? -8 : 8,
+    transition: {
+      duration: 0.35,
+      ease: EASE_LUXURY,
+    },
+  }),
+};
+
+const textContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.04,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: EASE_LUXURY,
+    },
+  },
+};
+
+const textItemVariants: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: EASE_LUXURY,
+    },
+  },
+};
 
 interface WhyHeavenProps {
   onOpenConsultation?: () => void;
 }
 
-export const WhyHeavenFlipCard: React.FC<WhyHeavenProps> = ({
-  onOpenConsultation,
-}) => {
+export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
   const { lang } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
-
   const [activeStage, setActiveStage] = useState(0);
+  const prevStageRef = useRef(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
 
-  // Gesture stream and lock synchronization refs
-  const activeStageRef = useRef(0);
-  const isGestureActiveRef = useRef(false);
-  const quietTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const touchStartYRef = useRef<number | null>(null);
-  const touchSwipedRef = useRef(false);
-
+  // Direction tracker for directional 8px movement
   useEffect(() => {
-    activeStageRef.current = activeStage;
+    if (activeStage !== prevStageRef.current) {
+      setDirection(activeStage > prevStageRef.current ? 1 : -1);
+      prevStageRef.current = activeStage;
+    }
   }, [activeStage]);
 
-  // 1. IN-MEMORY IMAGE PRELOAD (Clean background caching)
+  // Image preload
   useEffect(() => {
     if (typeof window === "undefined") return;
     SLIDES.forEach((slide) => {
@@ -145,218 +192,51 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenProps> = ({
     });
   }, []);
 
-  // 2. HEADER SUPPRESSION (Hides only while inside section, restores cleanly)
+  // Sticky Scroll Sync Controller
   useEffect(() => {
-    const getHeaders = () =>
-      document.querySelectorAll<HTMLElement>("header, nav, [data-navbar]");
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
 
-    const hideHeader = () => {
-      getHeaders().forEach((h) => {
-        h.style.setProperty("transform", "translateY(-120%)", "important");
-        h.style.setProperty("opacity", "0", "important");
-        h.style.setProperty("pointer-events", "none", "important");
-        h.style.setProperty(
-          "transition",
-          "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease",
-          "important",
-        );
-      });
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const totalScrollable = section.clientHeight - vh;
+
+      if (totalScrollable <= 0) return;
+
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
+
+      const newIndex = Math.min(
+        SLIDES.length - 1,
+        Math.floor(progress * SLIDES.length)
+      );
+
+      setActiveStage(newIndex);
     };
 
-    const restoreHeader = () => {
-      getHeaders().forEach((h) => {
-        h.style.setProperty("transform", "translateY(0)", "important");
-        h.style.setProperty("opacity", "1", "important");
-        h.style.setProperty("pointer-events", "auto", "important");
-      });
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const goToStage = useCallback((index: number) => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-          hideHeader();
-        } else {
-          restoreHeader();
-        }
-      },
-      { threshold: [0.1, 0.3, 0.6] },
-    );
+    const clampedIndex = Math.max(0, Math.min(SLIDES.length - 1, index));
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const totalScrollable = section.clientHeight - vh;
+    const sectionTop = window.scrollY + rect.top;
 
-    observer.observe(section);
+    const targetProgress = (clampedIndex + 0.5) / SLIDES.length;
+    const targetY = sectionTop + targetProgress * totalScrollable;
 
-    return () => {
-      observer.disconnect();
-      restoreHeader();
-    };
-  }, []);
-
-  // 3. DIRECT CLICK STAGE JUMP
-  const goToStage = useCallback((index: number) => {
-    if (index === activeStageRef.current) return;
-    if (quietTimerRef.current) clearTimeout(quietTimerRef.current);
-    isGestureActiveRef.current = true;
-    activeStageRef.current = index;
-    setActiveStage(index);
-
-    quietTimerRef.current = setTimeout(() => {
-      isGestureActiveRef.current = false;
-    }, 300);
-  }, []);
-
-  // 4. STREAM-LOCKED PHYSICAL GESTURE CONTROLLER
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-
-      // The section is engaged when occupying the viewport
-      const isVisibleInViewport = rect.top < vh && rect.bottom > 0;
-      if (!isVisibleInViewport) return;
-
-      const deltaY = e.deltaY;
-      if (Math.abs(deltaY) < 10) return; // Filter trackpad micro-jitter
-
-      const isDown = deltaY > 0;
-      const isUp = deltaY < 0;
-      const currentIdx = activeStageRef.current;
-      const lastIndex = SLIDES.length - 1;
-
-      // Check if user is at boundary and scrolling away to an adjacent section
-      const isLeavingDownward = isDown && currentIdx === lastIndex;
-      const isLeavingUpward = isUp && currentIdx === 0;
-
-      // While engaged inside stages 01 through 07, section is locked to viewport
-      const isInsideSectionFlow =
-        (rect.top <= 80 && rect.bottom >= vh * 0.4) ||
-        (currentIdx > 0 && currentIdx < lastIndex);
-
-      if (!isInsideSectionFlow) return;
-
-      // BOUNDARY EXIT: Release native browser scroll cleanly
-      if (isLeavingDownward && !isGestureActiveRef.current) {
-        return; // Natural downward scroll to next section
-      }
-      if (isLeavingUpward && !isGestureActiveRef.current) {
-        return; // Natural upward scroll to previous section
-      }
-
-      // SECTION IS LOCKED: Intercept all wheel events to eliminate native window movement
-      e.preventDefault();
-
-      // If a physical gesture is in flight, consume every trailing event of the momentum burst
-      if (isGestureActiveRef.current) {
-        if (quietTimerRef.current) clearTimeout(quietTimerRef.current);
-        // Trackpad silence detection: lock clears only after hand stops and events pause
-        quietTimerRef.current = setTimeout(() => {
-          isGestureActiveRef.current = false;
-        }, 180);
-        return;
-      }
-
-      // First qualifying event of an intentional physical gesture: advance/retreat exactly ONE stage
-      if (isDown && currentIdx < lastIndex) {
-        isGestureActiveRef.current = true;
-        const next = currentIdx + 1;
-        activeStageRef.current = next;
-        setActiveStage(next);
-      } else if (isUp && currentIdx > 0) {
-        isGestureActiveRef.current = true;
-        const prev = currentIdx - 1;
-        activeStageRef.current = prev;
-        setActiveStage(prev);
-      }
-
-      if (quietTimerRef.current) clearTimeout(quietTimerRef.current);
-      quietTimerRef.current = setTimeout(() => {
-        isGestureActiveRef.current = false;
-      }, 180);
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      if (quietTimerRef.current) clearTimeout(quietTimerRef.current);
-    };
-  }, []);
-
-  // 5. TOUCH GESTURE CONTROLLER (One Swipe = Exactly One Stage, Re-arms on Finger Lift)
-  useEffect(() => {
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartYRef.current = e.touches[0].clientY;
-      touchSwipedRef.current = false;
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (touchStartYRef.current === null) return;
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const isVisible = rect.top < vh && rect.bottom > 0;
-      if (!isVisible) return;
-
-      const currentIdx = activeStageRef.current;
-      const lastIndex = SLIDES.length - 1;
-      const currentY = e.touches[0].clientY;
-      const diffY = touchStartYRef.current - currentY; // Positive = Swipe Up (scroll down)
-
-      const isDown = diffY > 0;
-      const isUp = diffY < 0;
-
-      const isInsideFlow =
-        (rect.top <= 80 && rect.bottom >= vh * 0.4) ||
-        (currentIdx > 0 && currentIdx < lastIndex);
-
-      if (!isInsideFlow) return;
-
-      // Allow natural boundary exit
-      if (isDown && currentIdx === lastIndex && !touchSwipedRef.current) return;
-      if (isUp && currentIdx === 0 && !touchSwipedRef.current) return;
-
-      // Intercept touch within section stages
-      if (e.cancelable) e.preventDefault();
-
-      // If this swipe stroke already triggered a stage, consume the rest of the drag
-      if (touchSwipedRef.current) return;
-
-      if (Math.abs(diffY) > 28) {
-        if (isDown && currentIdx < lastIndex) {
-          touchSwipedRef.current = true;
-          const next = currentIdx + 1;
-          activeStageRef.current = next;
-          setActiveStage(next);
-        } else if (isUp && currentIdx > 0) {
-          touchSwipedRef.current = true;
-          const prev = currentIdx - 1;
-          activeStageRef.current = prev;
-          setActiveStage(prev);
-        }
-      }
-    };
-
-    const handleTouchEnd = () => {
-      touchStartYRef.current = null;
-      touchSwipedRef.current = false; // Strictly re-arms only on finger lift
-    };
-
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
-    window.addEventListener("touchcancel", handleTouchEnd, { passive: true });
-
-    return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
-      window.removeEventListener("touchcancel", handleTouchEnd);
-    };
+    window.scrollTo({ top: targetY, behavior: "smooth" });
   }, []);
 
   const current = SLIDES[activeStage] || SLIDES[0];
@@ -366,152 +246,142 @@ export const WhyHeavenFlipCard: React.FC<WhyHeavenProps> = ({
     <section
       ref={sectionRef}
       id="why-heaven"
-      className="relative h-screen w-full bg-[var(--color-primary-bg,#f6f4ee)] text-[var(--color-text,#4a3b31)] overflow-hidden select-none z-40"
+      className="relative h-[650vh] w-full bg-primary-bg text-text z-30"
     >
-      {/* 100vh EDITORIAL COMPOSITION FRAME */}
-      <div className="h-full w-full max-w-[1580px] mx-auto px-6 sm:px-12 lg:px-16 py-6 sm:py-9 flex flex-col justify-between">
-        {/* ==============================================================
-             TOP BAR: Quiet Luxury Editorial Heading
-        ============================================================== */}
-        <div className="flex items-baseline justify-between border-b border-[var(--color-border,#d6cfc3)]/70 pb-3">
-          <div className="flex items-center gap-3">
-            <span className="text-[0.68rem] sm:text-xs font-sans font-semibold uppercase tracking-[0.26em] text-[var(--color-accent,#c9a227)]">
+      {/* Sticky Fullscreen Viewport Container */}
+      <div className="sticky top-0 h-screen h-[100dvh] w-full overflow-hidden select-none py-5 sm:py-7 lg:py-8 flex flex-col justify-between pointer-events-auto">
+        <div className="h-full w-full max-w-[1480px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col justify-between">
+          
+          {/* ================= TOP BAR ================= */}
+          <div className="flex items-center justify-between border-b border-border/70 pb-2.5 sm:pb-3">
+            <span className="text-[0.68rem] sm:text-xs font-hanken font-semibold uppercase tracking-[0.25em] text-accent">
               {lang === "bn" ? current.tagBn : current.tagEn}
             </span>
+
+            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-hanken font-medium text-text-muted">
+              <span className="text-text font-semibold tracking-wider">
+                {current.num}
+              </span>
+              <span className="text-border">/</span>
+              <span className="text-text-muted/60 font-normal tracking-wider">
+                {totalCount}
+              </span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="font-serif text-sm sm:text-base text-[var(--color-text,#4a3b31)] tracking-widest font-normal">
-              {current.num}
-            </span>
-            <span className="text-[var(--color-border,#d6cfc3)] text-xs">
-              /
-            </span>
-            <span className="font-serif text-sm sm:text-base text-[var(--color-text,#4a3b31)]/50 tracking-widest font-light">
-              {totalCount}
-            </span>
+          {/* ================= CENTER LARGER STATIC IMAGE CONTAINER ================= */}
+          <div className="relative w-full my-auto flex items-center justify-center py-2 sm:py-3">
+            {/* Enlarged Static Image Frame Container */}
+            <div className="relative w-full max-w-6xl h-[46vh] sm:h-[54vh] lg:h-[58vh] rounded-none overflow-hidden bg-secondary-bg border border-border shadow-sm">
+              <AnimatePresence mode="popLayout" custom={direction}>
+                <motion.div
+                  key={current.num}
+                  custom={direction}
+                  variants={imageVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <Image
+                    src={current.img}
+                    alt={lang === "bn" ? current.titleBn : current.titleEn}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 96vw, 1400px"
+                    className="object-cover object-center w-full h-full rounded-none"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
 
-        {/* ==============================================================
-             CENTER: Persistent Multi-Layer Canvas (Zero Delay, No Jump)
-        ============================================================== */}
-        <div className="relative w-full my-auto flex items-center justify-center">
-          <motion.div
-            layout
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={`relative w-full overflow-hidden rounded-xl bg-[var(--color-secondary-bg,#f4ede6)] border border-[var(--color-border,#d6cfc3)] shadow-[0_20px_50px_-20px_rgba(74,59,49,0.12)] transition-all ${current.frameClass}`}
-          >
-            {/* All slides mounted simultaneously in GPU memory to eliminate image loading lag */}
-            <div className="relative w-full h-full">
-              {SLIDES.map((slide, idx) => {
+          {/* ================= BOTTOM NARRATIVE & STAGGERED TEXT ================= */}
+          <div className="pt-2 sm:pt-3 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
+            
+            {/* Left Staggered Narrative Deck */}
+            <div className="max-w-xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.num}
+                  variants={textContainerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="space-y-1.5"
+                >
+                  <motion.h3
+                    variants={textItemVariants}
+                    className="font-sangbleu-sunrise text-2xl sm:text-3xl lg:text-[2.6rem] text-text font-normal leading-tight tracking-tight"
+                  >
+                    {lang === "bn" ? current.titleBn : current.titleEn}
+                  </motion.h3>
+
+                  <motion.p
+                    variants={textItemVariants}
+                    className="font-hanken text-xs sm:text-sm text-text-muted font-normal leading-relaxed max-w-lg"
+                  >
+                    {lang === "bn" ? current.descBn : current.descEn}
+                  </motion.p>
+
+                  {onOpenConsultation && (
+                    <motion.div variants={textItemVariants} className="pt-1.5">
+                      <button
+                        onClick={onOpenConsultation}
+                        className="group inline-flex items-center gap-1.5 text-[0.68rem] sm:text-[0.72rem] font-hanken font-bold uppercase tracking-[0.22em] text-text hover:text-accent transition-colors border-b border-text/40 hover:border-accent pb-0.5 cursor-pointer"
+                      >
+                        <span>
+                          {lang === "bn"
+                            ? "পরামর্শের জন্য আবেদন"
+                            : "INQUIRE BESPOKE"}
+                        </span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-text group-hover:text-accent transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </button>
+                    </motion.div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right Horizontal Chapter Bar Selector */}
+            <div className="flex items-center gap-3 sm:gap-5 self-start sm:self-end pb-1 overflow-x-auto max-w-full">
+              {SLIDES.map((s, idx) => {
                 const isActive = idx === activeStage;
                 return (
-                  <motion.div
-                    key={slide.num}
-                    initial={false}
-                    animate={{
-                      opacity: isActive ? 1 : 0,
-                      scale: isActive ? 1 : 1.035,
-                      x: isActive ? 0 : idx < activeStage ? -12 : 12,
-                      zIndex: isActive ? 2 : 1,
-                    }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute inset-0 w-full h-full pointer-events-none"
-                    style={{ willChange: "opacity, transform" }}
+                  <button
+                    key={s.num}
+                    onClick={() => goToStage(idx)}
+                    className="group flex flex-col items-center gap-1.5 focus:outline-none cursor-pointer py-1"
+                    aria-label={`Go to chapter ${s.num}`}
                   >
-                    <Image
-                      src={slide.img}
-                      alt={lang === "bn" ? slide.titleBn : slide.titleEn}
-                      fill
-                      priority={idx === 0}
-                      sizes="(max-width: 1024px) 90vw, 1200px"
-                      className="object-cover object-center w-full h-full"
+                    <span
+                      className={`font-hanken text-[0.7rem] sm:text-[0.75rem] transition-colors duration-200 ${
+                        isActive
+                          ? "text-text font-bold"
+                          : "text-text-muted/60 group-hover:text-text/80"
+                      }`}
+                    >
+                      {s.num}
+                    </span>
+                    <span
+                      className={`h-[2px] transition-all duration-300 ${
+                        isActive
+                          ? "w-8 sm:w-10 bg-accent"
+                          : "w-8 sm:w-10 bg-border group-hover:bg-text-muted/40"
+                      }`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-text,#4a3b31)]/15 via-transparent to-transparent pointer-events-none" />
-                  </motion.div>
+                  </button>
                 );
               })}
             </div>
-          </motion.div>
-        </div>
 
-        {/* ==============================================================
-             BOTTOM: Editorial Information & Subtle Hairline Index
-        ============================================================== */}
-        <div className="border-t border-[var(--color-border,#d6cfc3)]/70 pt-5 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-          {/* Narrative Typography Deck */}
-          <div className="max-w-xl sm:max-w-2xl">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.num}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-1.5"
-              >
-                <h3 className="font-serif text-2xl sm:text-3xl lg:text-[2.2rem] text-[var(--color-text,#4a3b31)] font-normal leading-snug tracking-tight">
-                  {lang === "bn" ? current.titleBn : current.titleEn}
-                </h3>
-                <p className="font-sans text-xs sm:text-sm text-[var(--color-text,#4a3b31)]/75 font-normal leading-relaxed max-w-lg">
-                  {lang === "bn" ? current.descBn : current.descEn}
-                </p>
-
-                {onOpenConsultation && (
-                  <div className="pt-2">
-                    <button
-                      onClick={onOpenConsultation}
-                      className="group inline-flex items-center gap-2 text-[0.68rem] font-sans font-semibold uppercase tracking-[0.2em] text-[var(--color-text,#4a3b31)] hover:text-[var(--color-accent,#c9a227)] transition-colors border-b border-[var(--color-border,#d6cfc3)] hover:border-[var(--color-accent,#c9a227)] pb-0.5 cursor-pointer"
-                    >
-                      <span>
-                        {lang === "bn"
-                          ? "পরামর্শের জন্য আবেদন"
-                          : "Inquire Bespoke"}
-                      </span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[var(--color-accent,#c9a227)] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </button>
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
           </div>
 
-          {/* Discreet Horizontal Chapter Index */}
-          <div className="flex items-center gap-3 sm:gap-4 self-start sm:self-end pb-1 overflow-x-auto max-w-full">
-            {SLIDES.map((s, idx) => {
-              const isActive = idx === activeStage;
-              return (
-                <button
-                  key={s.num}
-                  onClick={() => goToStage(idx)}
-                  className="group flex flex-col items-start gap-1 focus:outline-none cursor-pointer py-1"
-                  aria-label={`Go to chapter ${s.num}`}
-                >
-                  <span
-                    className={`font-sans text-[0.62rem] tracking-wider transition-colors duration-300 ${
-                      isActive
-                        ? "text-[var(--color-text,#4a3b31)] font-bold"
-                        : "text-[var(--color-text,#4a3b31)]/35 group-hover:text-[var(--color-text,#4a3b31)]/70"
-                    }`}
-                  >
-                    {s.num}
-                  </span>
-                  <span
-                    className={`h-[1.5px] transition-all duration-400 ${
-                      isActive
-                        ? "w-7 sm:w-9 bg-[var(--color-accent,#c9a227)]"
-                        : "w-3 sm:w-4 bg-[var(--color-border,#d6cfc3)] group-hover:bg-[var(--color-text,#4a3b31)]/40"
-                    }`}
-                  />
-                </button>
-              );
-            })}
-          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default WhyHeavenFlipCard;
+export const WhyHeavenFlipCard = WhyHeaven;
+export default WhyHeaven;

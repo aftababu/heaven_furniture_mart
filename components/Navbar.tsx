@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Menu, X, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,21 +14,34 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
   const { lang, setLang, t } = useLanguage();
   const [isSticky, setIsSticky] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const threshold = window.innerHeight * 1.2;
-      setIsSticky(window.scrollY >= threshold);
+      const currentScrollY = window.scrollY;
+      setIsSticky(currentScrollY > 80);
+
+      if (currentScrollY <= 80) {
+        // At the very top of the page (Hero)
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current + 8) {
+        // Scrolling DOWN -> Hide header smoothly everywhere
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current - 8) {
+        // Scrolling UP -> Reveal header smoothly everywhere
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -36,21 +49,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
     <>
       <header
         className={`w-full z-50 h-16 sm:h-18 flex items-center overflow-visible transition-all duration-500 ease-out ${
-          isSticky
+          !isVisible
+            ? "fixed top-0 left-0 -translate-y-full opacity-0 pointer-events-none"
+            : isSticky
             ? "fixed top-0 left-0 bg-primary-bg/90 backdrop-blur-md border-b border-border/40 shadow-sm translate-y-0 opacity-100"
-            : "absolute top-0 left-0 bg-transparent border-b border-transparent shadow-none"
+            : "absolute top-0 left-0 bg-transparent border-b border-transparent shadow-none translate-y-0 opacity-100"
         }`}
-        style={
-          isSticky
-            ? {
-                animation:
-                  "headerSlideDown 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
-              }
-            : undefined
-        }
       >
         <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-8 lg:px-12 flex justify-between items-center relative h-full overflow-visible">
-          {/* Desktop Left Nav Links (Reduced gap under 1024px lg breakpoint) */}
+          {/* Desktop Left Nav Links */}
           <nav className="hidden md:flex gap-4 md:gap-5 lg:gap-8 items-center">
             <a
               href="#collections"
@@ -89,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
 
           {/* Right Controls Utility Cluster */}
           <div className="flex gap-3 sm:gap-4 lg:gap-6 items-center">
-            {/* Luxury Editorial Inline Masthead Language Switcher */}
+            {/* Language Switcher */}
             <div className="flex items-center text-[0.65rem] md:text-[0.68rem] tracking-[0.18em] md:tracking-[0.22em] font-hanken uppercase select-none">
               <button
                 onClick={() => setLang("en")}
@@ -116,7 +123,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               </button>
             </div>
 
-            {/* Quick Quote CTA with shadcn UI Button */}
+            {/* Quick Quote CTA */}
             <div className="hidden sm:block">
               <Button
                 variant="textGradient"

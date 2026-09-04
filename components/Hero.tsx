@@ -207,7 +207,7 @@ export const Hero: React.FC<HeroProps> = () => {
             {/* Top Dominant Landscape Image */}
             <div
               ref={img1Ref}
-              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-sm shadow-xl border border-border will-change-transform"
+              className="absolute top-0 left-0 w-full h-[62%] editorial-img-container z-10 rounded-none shadow-xl border border-border will-change-transform"
             >
               <Image
                 src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/living_bccxod.webp"
@@ -222,7 +222,7 @@ export const Hero: React.FC<HeroProps> = () => {
             {/* Bottom Left Portrait Image */}
             <div
               ref={img2Ref}
-              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-sm shadow-2xl border-2 sm:border-4 border-primary-bg will-change-transform"
+              className="absolute bottom-0 left-0 w-[48%] h-[40%] editorial-img-container z-20 rounded-none shadow-2xl border-2 sm:border-4 border-primary-bg will-change-transform"
             >
               <Image
                 src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/tabil_iabih2.webp"
@@ -237,7 +237,7 @@ export const Hero: React.FC<HeroProps> = () => {
             {/* Bottom Right Detail Image */}
             <div
               ref={img3Ref}
-              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-4 sm:border-8 border-primary-bg shadow-2xl rounded-sm will-change-transform"
+              className="absolute bottom-[6%] right-0 w-[48%] h-[46%] editorial-img-container z-30 border-4 sm:border-8 border-primary-bg shadow-2xl rounded-none will-change-transform"
             >
               <Image
                 src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/sofa_c2txdn.webp"

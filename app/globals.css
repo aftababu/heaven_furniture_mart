@@ -454,3 +454,21 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Universal Architectural Zero-Radius Design System Enforcement */
+img,
+button,
+input,
+select,
+textarea,
+.editorial-img-container,
+.image-card,
+.rounded-xs,
+.rounded-sm,
+.rounded-md,
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl {
+  border-radius: 0 !important;
+}

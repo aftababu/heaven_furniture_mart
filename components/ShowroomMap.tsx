@@ -90,10 +90,10 @@ export const ShowroomMap: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-[210px] xs:w-[240px] sm:w-[270px] bg-primary-bg p-2.5 xs:p-3 sm:p-4 rounded-xl shadow-2xl border border-border mb-3.5 flex flex-col items-center"
+                className="relative w-[210px] xs:w-[240px] sm:w-[270px] bg-primary-bg p-2.5 xs:p-3 sm:p-4 rounded-none shadow-2xl border border-border mb-3.5 flex flex-col items-center"
               >
                 {/* Showroom Image */}
-                <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden mb-2 sm:mb-2.5 bg-secondary-bg">
+                <div className="relative w-full aspect-[16/10] rounded-none overflow-hidden mb-2 sm:mb-2.5 bg-secondary-bg">
                   <Image
                     src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp"
                     alt={t("showroomAltImg")}

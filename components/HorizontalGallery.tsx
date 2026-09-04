@@ -307,7 +307,7 @@ export const HorizontalGallery: React.FC = () => {
             >
               {/* Outer Image Mask Container */}
               <div
-                className={`image-card ${item.widthClass} ${item.aspect} relative rounded-xl overflow-hidden bg-primary-bg shadow-sm border border-border transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[300ms] [clip-path:inset(0_0_0_100%_round_0.85rem)] opacity-0 group-[.is-revealed]:[clip-path:inset(0_0_0_0%_round_0.85rem)] group-[.is-revealed]:opacity-100`}
+                className={`image-card ${item.widthClass} ${item.aspect} relative rounded-none overflow-hidden bg-primary-bg shadow-sm border border-border transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[300ms] [clip-path:inset(0_0_0_100%_round_0px)] opacity-0 group-[.is-revealed]:[clip-path:inset(0_0_0_0%_round_0px)] group-[.is-revealed]:opacity-100`}
               >
                 <Image
                   src={item.img}
@@ -326,58 +326,192 @@ export const HorizontalGallery: React.FC = () => {
             </div>
           ))}
 
-          {/* STAGE 3: CHRONOLOGY MILESTONES (Integrated Horizontal Ledger) */}
-          <div className="shrink-0 w-[90vw] sm:w-[76vw] lg:w-[48vw] max-w-2xl self-center ml-16 sm:ml-28 lg:ml-36 flex flex-col justify-center select-none py-6">
-            <div className="mb-8">
-              <span className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-accent font-hanken block mb-2">
-                {resolveText("chronologyEyebrow", "CHRONOLOGY")}
-              </span>
-              <h3 className="font-sangbleu-sunrise text-3xl sm:text-4xl text-text font-normal tracking-tight">
-                {resolveText("chronologyTitle", "Milestones of Craft")}
-              </h3>
-              <div className="w-12 h-[2px] bg-accent/40 mt-3" />
-            </div>
+          {/* STAGE 3: CHRONOLOGY MILESTONES (Circular Orbital Diagram) */}
+          <div className="shrink-0 w-[95vw] sm:w-[85vw] lg:w-[65vw] max-w-4xl self-center ml-16 sm:ml-28 lg:ml-36 flex flex-col items-center justify-center select-none py-6">
+            <div className="relative w-full aspect-square max-w-[620px] max-h-[620px] flex items-center justify-center">
+              {/* SVG Background Orbit Rings & Connector Lines */}
+              <svg
+                className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+                viewBox="0 0 600 600"
+              >
+                {/* Outer Orbit */}
+                <circle
+                  cx="300"
+                  cy="300"
+                  r="275"
+                  fill="none"
+                  stroke="currentColor"
+                  className="text-accent/20"
+                  strokeDasharray="3 3"
+                />
+                {/* Middle Orbit */}
+                <circle
+                  cx="300"
+                  cy="300"
+                  r="205"
+                  fill="none"
+                  stroke="currentColor"
+                  className="text-accent/25"
+                />
+                {/* Inner Orbit */}
+                <circle
+                  cx="300"
+                  cy="300"
+                  r="145"
+                  fill="none"
+                  stroke="currentColor"
+                  className="text-accent/30"
+                  strokeDasharray="2 3"
+                />
 
-            {/* Ledger List */}
-            <div className="divide-y divide-border border-t border-b border-border">
-              {MILESTONES.map((item) => (
-                <div
-                  key={item.year}
-                  className="group py-4 sm:py-5 px-3 -mx-3 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline transition-colors hover:bg-primary-bg/50 rounded-lg"
-                >
-                  <span
-                    className={`sm:col-span-3 font-sangbleu-sunrise text-2xl sm:text-3xl tracking-tight transition-colors ${
-                      item.isHighlighted
-                        ? "text-accent font-normal"
-                        : "text-text font-light group-hover:text-accent"
-                    }`}
-                  >
-                    {item.year}
-                  </span>
-                  <div className="sm:col-span-9 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <p className="text-sm sm:text-base text-text font-medium font-hanken">
-                      {resolveText(item.titleKey, item.defaultTitle)}
-                    </p>
-                    <span
-                      className={`text-[0.65rem] uppercase tracking-[0.2em] shrink-0 font-hanken ${
-                        item.isHighlighted
-                          ? "text-accent font-bold"
-                          : "text-text-muted"
-                      }`}
-                    >
-                      {resolveText(item.tagKey, item.defaultTag)}
-                    </span>
-                  </div>
+                {/* Radial Spokes */}
+                <line
+                  x1="300"
+                  y1="300"
+                  x2="300"
+                  y2="25"
+                  stroke="currentColor"
+                  className="text-accent/35"
+                  strokeDasharray="2 2"
+                />
+                <line
+                  x1="300"
+                  y1="300"
+                  x2="520"
+                  y2="170"
+                  stroke="currentColor"
+                  className="text-accent/25"
+                  strokeDasharray="2 2"
+                />
+                <line
+                  x1="300"
+                  y1="300"
+                  x2="480"
+                  y2="460"
+                  stroke="currentColor"
+                  className="text-accent/25"
+                  strokeDasharray="2 2"
+                />
+                <line
+                  x1="300"
+                  y1="300"
+                  x2="120"
+                  y2="460"
+                  stroke="currentColor"
+                  className="text-accent/25"
+                  strokeDasharray="2 2"
+                />
+                <line
+                  x1="300"
+                  y1="300"
+                  x2="80"
+                  y2="170"
+                  stroke="currentColor"
+                  className="text-accent/25"
+                  strokeDasharray="2 2"
+                />
+              </svg>
+
+              {/* Center Hub */}
+              <div className="relative z-10 w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] rounded-full border border-accent/40 bg-primary-bg shadow-xl flex flex-col items-center justify-center p-4 text-center">
+                <div className="absolute inset-1.5 sm:inset-2.5 rounded-full border border-dashed border-accent/30 pointer-events-none" />
+                <span className="text-[0.6rem] sm:text-[0.66rem] font-hanken font-bold uppercase tracking-[0.3em] text-accent block mb-1">
+                  {resolveText("chronologyEyebrow", "CHRONOLOGY")}
+                </span>
+                <h3 className="font-sangbleu-sunrise text-2xl sm:text-4xl text-text font-normal leading-snug">
+                  Milestones <br />
+                  <span className="italic font-light">of Craft</span>
+                </h3>
+                <div className="flex items-center justify-center gap-2 text-accent text-xs mt-2 opacity-80">
+                  <span className="h-[1px] w-5 bg-accent/50" />
+                  <span>◇</span>
+                  <span className="h-[1px] w-5 bg-accent/50" />
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <p className="text-[0.62rem] uppercase tracking-[0.22em] text-text-muted font-hanken mt-6 text-center">
-              {resolveText(
-                "chronologyFooter",
-                "— A Legacy of Custom Joinery —",
-              )}
-            </p>
+              {/* 1. TOP NODE (2026) - National Honor */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center text-center z-20">
+                <div className="w-5 h-5 rounded-full border border-accent/60 bg-primary-bg flex items-center justify-center mb-1.5 shadow-xs">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                </div>
+                <span className="px-2.5 py-0.5 rounded-full border border-accent/40 bg-primary-bg/90 text-[0.56rem] sm:text-[0.6rem] font-hanken font-bold uppercase tracking-[0.2em] text-accent shadow-xs mb-0.5">
+                  {resolveText("milestone2026Tag", "NATIONAL HONOR")}
+                </span>
+                <h4 className="font-sangbleu-sunrise text-2xl sm:text-3xl lg:text-4xl text-accent font-normal leading-none my-0.5">
+                  2026
+                </h4>
+                <p className="font-hanken text-[0.68rem] sm:text-xs text-text-muted font-medium max-w-[170px] sm:max-w-[210px] leading-tight">
+                  {resolveText(
+                    "milestone2026Title",
+                    "Received Nationwide BFIOA Recognition",
+                  )}
+                </p>
+              </div>
+
+              {/* 2. TOP RIGHT NODE (2024–25) - Exhibition */}
+              <div className="absolute top-[20%] right-0 sm:right-[2%] flex flex-col items-start text-left z-20">
+                <span className="text-[0.56rem] sm:text-[0.6rem] font-hanken font-bold uppercase tracking-[0.2em] text-text-muted mb-0.5">
+                  {resolveText("milestone2024Tag", "EXHIBITION • PAVILION")}
+                </span>
+                <h4 className="font-sangbleu-sunrise text-2xl sm:text-3xl lg:text-4xl text-text font-normal leading-none my-0.5">
+                  2024–25
+                </h4>
+                <p className="font-hanken text-[0.68rem] sm:text-xs text-text-muted font-medium max-w-[160px] sm:max-w-[200px] leading-tight">
+                  {resolveText(
+                    "milestone2024Title",
+                    "Exhibited at the International Furniture Fair",
+                  )}
+                </p>
+              </div>
+
+              {/* 3. BOTTOM RIGHT NODE (2025) - Trade Alliance */}
+              <div className="absolute bottom-[16%] right-2 sm:right-[5%] flex flex-col items-start text-left z-20">
+                <span className="text-[0.56rem] sm:text-[0.6rem] font-hanken font-bold uppercase tracking-[0.2em] text-text-muted mb-0.5">
+                  {resolveText("milestone2025Tag", "TRADE ALLIANCE")}
+                </span>
+                <h4 className="font-sangbleu-sunrise text-2xl sm:text-3xl lg:text-4xl text-text font-normal leading-none my-0.5">
+                  2025
+                </h4>
+                <p className="font-hanken text-[0.68rem] sm:text-xs text-text-muted font-medium max-w-[160px] sm:max-w-[200px] leading-tight">
+                  {resolveText(
+                    "milestone2025Title",
+                    "Inducted into the Chamber of Commerce",
+                  )}
+                </p>
+              </div>
+
+              {/* 4. BOTTOM LEFT NODE (2020) - Inception */}
+              <div className="absolute bottom-[16%] left-2 sm:left-[5%] flex flex-col items-end text-right z-20">
+                <span className="text-[0.56rem] sm:text-[0.6rem] font-hanken font-bold uppercase tracking-[0.2em] text-text-muted mb-0.5">
+                  {resolveText("milestone2020Tag", "INCEPTION • CHATTOGRAM")}
+                </span>
+                <h4 className="font-sangbleu-sunrise text-2xl sm:text-3xl lg:text-4xl text-text font-normal leading-none my-0.5">
+                  2020
+                </h4>
+                <p className="font-hanken text-[0.68rem] sm:text-xs text-text-muted font-medium max-w-[160px] sm:max-w-[200px] leading-tight">
+                  {resolveText(
+                    "milestone2020Title",
+                    "Founded by Abul Kalam Bhuiyan",
+                  )}
+                </p>
+              </div>
+
+              {/* 5. TOP LEFT NODE (2021) - Retail Expansion */}
+              <div className="absolute top-[20%] left-0 sm:left-[2%] flex flex-col items-end text-right z-20">
+                <span className="text-[0.56rem] sm:text-[0.6rem] font-hanken font-bold uppercase tracking-[0.2em] text-text-muted mb-0.5">
+                  {resolveText("milestone2021Tag", "RETAIL EXPANSION")}
+                </span>
+                <h4 className="font-sangbleu-sunrise text-2xl sm:text-3xl lg:text-4xl text-text font-normal leading-none my-0.5">
+                  2021
+                </h4>
+                <p className="font-hanken text-[0.68rem] sm:text-xs text-text-muted font-medium max-w-[160px] sm:max-w-[200px] leading-tight">
+                  {resolveText(
+                    "milestone2021Title",
+                    "Opened the Flagship Agrabad Showroom",
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* STAGE 4: CLOSING INVITATION CTA (Refined Final Slide) */}

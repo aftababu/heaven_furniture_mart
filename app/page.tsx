@@ -7,7 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { BrandStatement } from "@/components/BrandStatement";
 import { Collections } from "@/components/Collections";
-import { WhyHeavenFlipCard } from "@/components/WhyHeavenFlipCard";
+import { WhyHeaven } from "@/components/WhyHeavenFlipCard";
 import { BespokeFeature } from "@/components/BespokeFeature";
 import { HorizontalGallery } from "@/components/HorizontalGallery";
 import { ShowroomMap } from "@/components/ShowroomMap";
@@ -16,7 +16,8 @@ import { ConsultationModal } from "@/components/ConsultationModal";
 
 export default function Home() {
   const [consultationOpen, setConsultationOpen] = useState(false);
-  const [consultationCategory, setConsultationCategory] = useState("Living / Sofa");
+  const [consultationCategory, setConsultationCategory] =
+    useState("Living / Sofa");
 
   const handleOpenConsultation = (category = "Living / Sofa") => {
     setConsultationCategory(category);
@@ -33,7 +34,7 @@ export default function Home() {
       <Collections
         onOpenConsultationWithCategory={(cat) => handleOpenConsultation(cat)}
       />
-      <WhyHeavenFlipCard onOpenConsultation={() => handleOpenConsultation()} />
+      <WhyHeaven onOpenConsultation={() => handleOpenConsultation()} />
       <BespokeFeature onOpenConsultation={() => handleOpenConsultation()} />
       <HorizontalGallery />
       <ShowroomMap />
