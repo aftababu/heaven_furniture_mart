@@ -7,7 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { BrandStatement } from "@/components/BrandStatement";
 import { Collections } from "@/components/Collections";
-import { WhyHeaven } from "@/components/WhyHeavenFlipCard";
+import { WhyHeaven } from "@/components/WhyHeaven";
 import { BespokeFeature } from "@/components/BespokeFeature";
 import { HorizontalGallery } from "@/components/HorizontalGallery";
 import { ShowroomMap } from "@/components/ShowroomMap";
