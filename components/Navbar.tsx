@@ -23,14 +23,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
       const currentScrollY = window.scrollY;
       setIsSticky(currentScrollY > 80);
 
+      // Check if user is inside #why-heaven section
+      const whyHeavenEl = document.getElementById("why-heaven");
+      let isInWhyHeaven = false;
+      if (whyHeavenEl) {
+        const rect = whyHeavenEl.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          isInWhyHeaven = true;
+        }
+      }
+
       if (currentScrollY <= 80) {
         // At the very top of the page (Hero)
         setIsVisible(true);
+      } else if (isInWhyHeaven) {
+        // Inside Why Heaven section -> Keep header hidden even when scrolling up
+        setIsVisible(false);
       } else if (currentScrollY > lastScrollY.current + 8) {
-        // Scrolling DOWN -> Hide header smoothly everywhere
+        // Scrolling DOWN -> Hide header
         setIsVisible(false);
       } else if (currentScrollY < lastScrollY.current - 8) {
-        // Scrolling UP -> Reveal header smoothly everywhere
+        // Scrolling UP -> Reveal header (for all other sections)
         setIsVisible(true);
       }
 

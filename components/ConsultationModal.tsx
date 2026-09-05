@@ -235,18 +235,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-      <DialogContent className="max-w-4xl w-[calc(100%-2rem)] p-0 overflow-hidden border border-[var(--color-border,#d6cfc3)] rounded-none shadow-[0_32px_80px_-20px_rgba(74,59,49,0.22)] bg-[var(--color-primary-bg,#f6f4ee)] max-h-[90vh] overflow-y-auto [&>button.absolute]:hidden">
+      <DialogContent className="max-w-4xl w-[calc(100%-2rem)] p-0 overflow-hidden border border-[var(--color-border,#d6cfc3)] rounded-none shadow-[0_32px_80px_-20px_rgba(74,59,49,0.22)] bg-[var(--color-primary-bg,#f6f4ee)] max-h-[90vh] overflow-y-auto">
         <div className="relative">
-          {/* Custom Atelier Close Button */}
-          <button
-            type="button"
-            className="absolute top-5 right-5 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-[var(--color-text,#4a3b31)]/5 border  text-[var(--color-text,#4a3b31)] transition-all duration-200 hover:rotate-90 border-none bg-none cursor-pointer"
-            onClick={handleClose}
-            aria-label="Close modal"
-          >
-            <X className="w-4 h-4" />
-          </button>
-
           <DialogTitle className="sr-only">{t("modalTitle")}</DialogTitle>
 
           {/* AnimatePresence for Form vs Success */}
@@ -286,7 +276,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                 {/* LEFT: Atelier Ledger */}
                 <div className="lg:col-span-5 bg-[var(--color-secondary-bg,#f4ede6)] border-b lg:border-b-0 lg:border-r border-[var(--color-border,#d6cfc3)] p-8 sm:p-10 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center justify-between mb-8 pr-10 sm:pr-12">
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-[var(--color-accent,#c9a227)]" />
                         <span className="text-[0.6rem] font-bold tracking-widest uppercase text-[var(--color-text,#4a3b31)]/70">

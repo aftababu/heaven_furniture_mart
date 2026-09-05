@@ -129,7 +129,7 @@ const MILESTONES: MilestoneItem[] = [
 ];
 
 export const HorizontalGallery: React.FC = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLDivElement>(null);
@@ -170,7 +170,7 @@ export const HorizontalGallery: React.FC = () => {
       if (!trackRef.current) return;
       const viewportWidth = window.innerWidth;
       const trackWidth = trackRef.current.scrollWidth;
-      maxScrollX = Math.max(trackWidth - viewportWidth, 0);
+      maxScrollX = Math.max(trackWidth - viewportWidth + 24, 0);
     };
 
     const updateGallery = () => {
@@ -255,14 +255,14 @@ export const HorizontalGallery: React.FC = () => {
     <section
       ref={sectionRef}
       id="social-proof"
-      className="relative h-[480vh] w-full bg-primary-bg"
+      className="relative h-[480vh] w-full bg-secondary-bg"
     >
       {/* STICKY VIEWPORT */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center bg-secondary-bg">
         {/* HORIZONTAL MOVING TRACK */}
         <div
           ref={trackRef}
-          className="flex flex-nowrap items-stretch h-full will-change-transform pl-6 sm:pl-12 lg:pl-20 pr-24 lg:pr-40 py-16 sm:py-24 bg-secondary-bg"
+          className="flex flex-nowrap items-stretch h-full will-change-transform pl-6 sm:pl-12 lg:pl-20 pr-16 sm:pr-32 lg:pr-40 py-16 sm:py-24 bg-secondary-bg"
         >
           {/* STAGE 1: MANAGING DIRECTOR'S QUOTE & TRUST */}
           <div
@@ -326,8 +326,74 @@ export const HorizontalGallery: React.FC = () => {
             </div>
           ))}
 
-          {/* STAGE 3: CHRONOLOGY MILESTONES (Circular Orbital Diagram) */}
-          <div className="shrink-0 w-[95vw] sm:w-[85vw] lg:w-[65vw] max-w-4xl self-center ml-16 sm:ml-28 lg:ml-36 flex flex-col items-center justify-center select-none py-6">
+          {/* STAGE 3: CHRONOLOGY MILESTONES */}
+
+          {/* Mobile Layout Card (Exact Match to Reference Design) */}
+          <div className="md:hidden shrink-0 w-[90vw] xs:w-[85vw] max-w-[380px] self-center ml-6 xs:ml-8 flex flex-col justify-center select-none py-6">
+            {/* Top Pill Header */}
+            <div className="flex flex-col items-center mb-7">
+              <div className="w-full max-w-[300px] py-4 px-6 rounded-[2.2rem] border border-accent/40 bg-secondary-bg/90 shadow-xs text-center">
+                <span className="text-[0.58rem] font-hanken font-bold uppercase tracking-[0.25em] text-accent block mb-1">
+                  {resolveText("chronologyEyebrow", "CHRONOLOGY")}
+                </span>
+                <h3 className="font-sangbleu-sunrise text-2xl text-text font-normal leading-snug">
+                  {lang === "bn" ? "আমাদের মাইলফলক" : "Milestones of Craft"}
+                </h3>
+              </div>
+              {/* Accent Line Below Pill */}
+              <div className="w-12 h-[2px] bg-accent/60 mt-3" />
+            </div>
+
+            {/* Vertical Dashed Timeline */}
+            <div className="relative pl-7 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:border-l before:border-dashed before:border-accent/40">
+              {MILESTONES.map((m) => {
+                const isHighlight = m.isHighlighted;
+                return (
+                  <div key={m.year} className="relative">
+                    {/* Node Dot */}
+                    <span
+                      className={`absolute -left-[23px] rounded-full border transition-all ${
+                        isHighlight
+                          ? "top-3.5 w-4 h-4 border-2 border-accent bg-secondary-bg shadow-xs"
+                          : "top-1.5 w-3.5 h-3.5 border-accent/40 bg-secondary-bg"
+                      }`}
+                    />
+
+                    {isHighlight ? (
+                      /* Highlighted Box Card for 2026 */
+                      <div className="border border-accent/50 bg-accent/5 p-4 rounded-xl shadow-xs">
+                        <span className="text-[0.56rem] font-hanken font-bold uppercase tracking-[0.2em] text-accent block mb-0.5">
+                          {resolveText(m.tagKey, m.defaultTag)}
+                        </span>
+                        <h4 className="font-sangbleu-sunrise text-3xl text-accent font-normal leading-tight my-0.5">
+                          {m.year}
+                        </h4>
+                        <p className="font-hanken text-[0.75rem] text-text font-bold leading-snug mt-1">
+                          {resolveText(m.titleKey, m.defaultTitle)}
+                        </p>
+                      </div>
+                    ) : (
+                      /* Standard Milestone Node */
+                      <div className="flex flex-col pr-2">
+                        <span className="text-[0.56rem] font-hanken font-bold uppercase tracking-[0.2em] text-text-muted/80 block mb-0.5">
+                          {resolveText(m.tagKey, m.defaultTag)}
+                        </span>
+                        <h4 className="font-sangbleu-sunrise text-2xl text-text font-normal leading-tight my-0.5">
+                          {m.year}
+                        </h4>
+                        <p className="font-hanken text-[0.72rem] text-text-muted font-normal leading-snug">
+                          {resolveText(m.titleKey, m.defaultTitle)}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Desktop / Tablet Layout (Circular Orbital Diagram - Hidden on Mobile) */}
+          <div className="hidden md:flex shrink-0 w-[85vw] lg:w-[65vw] max-w-4xl self-center ml-24 lg:ml-36 flex-col items-center justify-center select-none py-6">
             <div className="relative w-full aspect-square max-w-[620px] max-h-[620px] flex items-center justify-center">
               {/* SVG Background Orbit Rings & Connector Lines */}
               <svg
@@ -413,14 +479,23 @@ export const HorizontalGallery: React.FC = () => {
               </svg>
 
               {/* Center Hub */}
-              <div className="relative z-10 w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] rounded-full border border-accent/40 bg-primary-bg shadow-xl flex flex-col items-center justify-center p-4 text-center">
+              <div className="relative z-10 w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] rounded-full border border-accent/40 bg-secondary-bg shadow-xl flex flex-col items-center justify-center p-4 text-center">
                 <div className="absolute inset-1.5 sm:inset-2.5 rounded-full border border-dashed border-accent/30 pointer-events-none" />
                 <span className="text-[0.6rem] sm:text-[0.66rem] font-hanken font-bold uppercase tracking-[0.3em] text-accent block mb-1">
                   {resolveText("chronologyEyebrow", "CHRONOLOGY")}
                 </span>
                 <h3 className="font-sangbleu-sunrise text-2xl sm:text-4xl text-text font-normal leading-snug">
-                  Milestones <br />
-                  <span className="italic font-light">of Craft</span>
+                  {lang === "bn" ? (
+                    <>
+                      আমাদের <br />
+                      <span className="italic font-light">মাইলফলক</span>
+                    </>
+                  ) : (
+                    <>
+                      Milestones <br />
+                      <span className="italic font-light">of Craft</span>
+                    </>
+                  )}
                 </h3>
                 <div className="flex items-center justify-center gap-2 text-accent text-xs mt-2 opacity-80">
                   <span className="h-[1px] w-5 bg-accent/50" />
@@ -431,10 +506,10 @@ export const HorizontalGallery: React.FC = () => {
 
               {/* 1. TOP NODE (2026) - National Honor */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center text-center z-20">
-                <div className="w-5 h-5 rounded-full border border-accent/60 bg-primary-bg flex items-center justify-center mb-1.5 shadow-xs">
+                <div className="w-5 h-5 rounded-full border border-accent/60 bg-secondary-bg flex items-center justify-center mb-1.5 shadow-xs">
                   <div className="w-2 h-2 rounded-full bg-accent" />
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full border border-accent/40 bg-primary-bg/90 text-[0.56rem] sm:text-[0.6rem] font-hanken font-bold uppercase tracking-[0.2em] text-accent shadow-xs mb-0.5">
+                <span className="px-2.5 py-0.5 rounded-full border border-accent/40 bg-secondary-bg text-[0.56rem] sm:text-[0.6rem] font-hanken font-bold uppercase tracking-[0.2em] text-accent shadow-xs mb-0.5">
                   {resolveText("milestone2026Tag", "NATIONAL HONOR")}
                 </span>
                 <h4 className="font-sangbleu-sunrise text-2xl sm:text-3xl lg:text-4xl text-accent font-normal leading-none my-0.5">

@@ -279,6 +279,48 @@ export const translations: Translations = {
 
   // Horizontal Scroll / Social Proof
   eyebrow: { en: "SOCIAL PROOF", bn: "আস্থা ও অভিজ্ঞতা" },
+  chronologyEyebrow: { en: "CHRONOLOGY", bn: "ইতিহাস ও মাইলফলক" },
+  milestonesTitle: { en: "Milestones of Craft", bn: "আমাদের অর্জনের মাইলফলক" },
+  milestone2020Title: {
+    en: "Founded by Abul Kalam Bhuiyan",
+    bn: "আবুল কালাম ভূঁইয়া দ্বারা হেভেন ফার্নিচার মার্ট প্রতিষ্ঠিত",
+  },
+  milestone2020Tag: {
+    en: "INCEPTION · CHATTOGRAM",
+    bn: "সূচনা · চট্টগ্রাম",
+  },
+  milestone2021Title: {
+    en: "Opened the Flagship Agrabad Showroom",
+    bn: "আগ্রাবাদ এক্সেস রোডে বিশাল নিজস্ব শোরুম উদ্বোধন",
+  },
+  milestone2021Tag: {
+    en: "RETAIL EXPANSION",
+    bn: "শোরুম সম্প্রসারণ",
+  },
+  milestone2024Title: {
+    en: "Exhibited at the International Furniture Fair",
+    bn: "আন্তর্জাতিক ফার্নিচার মেলায় প্যাভিলিয়ন প্রদর্শন",
+  },
+  milestone2024Tag: {
+    en: "EXHIBITION · PAVILION",
+    bn: "আন্তর্জাতিক প্রদর্শনী",
+  },
+  milestone2025Title: {
+    en: "Inducted into the Chamber of Commerce",
+    bn: "চেম্বার অফ কমার্স অ্যান্ড ইন্ডাস্ট্রির সদস্যপদ",
+  },
+  milestone2025Tag: {
+    en: "TRADE ALLIANCE",
+    bn: "বাণিজ্য জোট",
+  },
+  milestone2026Title: {
+    en: "Received Nationwide BFIOA Recognition",
+    bn: "জাতীয় বিএফআইওএ বর্ষসেরা সম্মাননা লাভ",
+  },
+  milestone2026Tag: {
+    en: "NATIONAL HONOR",
+    bn: "জাতীয় সম্মাননা",
+  },
   quote_p1: {
     en: "“At Heaven Furniture Mart, we believe furniture is more than just function;",
     bn: "“হেভেন ফার্নিচার মার্টে আমরা বিশ্বাস করি আসবাব কেবল ব্যবহারের পণ্য নয়;",

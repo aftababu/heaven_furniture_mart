@@ -105,8 +105,8 @@ const DialogContent = React.forwardRef<
       <DialogOverlay />
       <DialogPrimitive.Content ref={ref} className={baseClassName} {...props}>
         {children}
-        <DialogPrimitive.Close className="absolute right-6 top-6 rounded-sm text-text hover:bg-text/10 p-1.5 transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-accent group">
-          <X className="h-5 w-5 transition-transform duration-300 group-hover:rotate-90 text-text" />
+        <DialogPrimitive.Close className="absolute right-4 top-4 sm:right-6 sm:top-6 z-30 p-2 text-text hover:text-accent transition-colors bg-transparent border-none focus:outline-none flex items-center justify-center rounded-none cursor-pointer">
+          <X className="h-4 h-4 sm:h-5 sm:w-5 transition-transform duration-300 hover:rotate-90 text-text" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
