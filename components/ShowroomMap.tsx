@@ -98,6 +98,7 @@ export const ShowroomMap: React.FC = () => {
                     href="https://maps.app.goo.gl/G3oVqTfunGKS5q2C8"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="relative block w-full h-full"
                   >
                     <Image
                       src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp"

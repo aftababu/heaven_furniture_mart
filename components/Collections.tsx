@@ -176,7 +176,7 @@ export const Collections: React.FC<CollectionsProps> = ({
                   src={cat.img}
                   alt={t(cat.key)}
                   fill
-                  loading="lazy"
+                  priority={idx === 0}
                   sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className={`w-full h-full object-cover ${cat.objectPos} transition-transform duration-1000 ease-out group-hover:scale-105 select-none`}
                 />
@@ -238,6 +238,7 @@ export const Collections: React.FC<CollectionsProps> = ({
                                     src={hs.img}
                                     alt={t(hs.nameKey)}
                                     fill
+                                    sizes="48px"
                                     className="object-cover group-hover/btn:scale-105 transition-transform duration-500"
                                   />
                                 </div>
