@@ -65,8 +65,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
           !isVisible
             ? "fixed top-0 left-0 -translate-y-full opacity-0 pointer-events-none"
             : isSticky
-            ? "fixed top-0 left-0 bg-primary-bg/90 backdrop-blur-md border-b border-border/40 shadow-sm translate-y-0 opacity-100"
-            : "absolute top-0 left-0 bg-transparent border-b border-transparent shadow-none translate-y-0 opacity-100"
+              ? "fixed top-0 left-0 bg-primary-bg/90 backdrop-blur-md border-b border-border/40 shadow-sm translate-y-0 opacity-100"
+              : "absolute top-0 left-0 bg-transparent border-b border-transparent shadow-none translate-y-0 opacity-100"
         }`}
       >
         <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-8 lg:px-12 flex justify-between items-center relative h-full overflow-visible">
@@ -173,6 +173,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               </div>
               <Button
                 variant="secondary"
+                className="bg-transparent border-none shadow-none"
                 size="icon"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label={t("ariaCloseMenu")}

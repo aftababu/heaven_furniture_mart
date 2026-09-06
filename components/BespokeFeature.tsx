@@ -36,8 +36,18 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
     setSliderPos(percentage);
   };
 
+  const handleTouchStart = () => {
+    isDragging.current = true;
+  };
+
   const handleTouchMove = (e: React.TouchEvent) => {
-    handleMove(e.touches[0].clientX);
+    if (isDragging.current) {
+      handleMove(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    isDragging.current = false;
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -176,12 +186,13 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
             <div className="relative rounded-none overflow-hidden shadow-xl bg-primary-bg p-1 border border-border">
               <div
                 ref={containerRef}
-                onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
                 onMouseMove={handleMouseMove}
                 onTouchMove={handleTouchMove}
-                className="relative w-full aspect-[4/3] xs:aspect-[16/10] sm:aspect-[16/12] overflow-hidden rounded-none cursor-ew-resize select-none"
+                onTouchEnd={handleTouchEnd}
+                onTouchCancel={handleTouchEnd}
+                className="relative w-full aspect-[4/3] xs:aspect-[16/10] sm:aspect-[16/12] overflow-hidden rounded-none select-none"
               >
                 {/* 1. BEFORE Image (Underneath) */}
                 <Image
@@ -207,10 +218,15 @@ export const BespokeFeature: React.FC<BespokeFeatureProps> = ({
 
                 {/* 3. Draggable Vertical Divider & Handle */}
                 <div
-                  className="absolute inset-y-0 w-0.5 bg-primary-bg shadow-2xl z-20 pointer-events-none"
+                  className="absolute inset-y-0 w-0.5 bg-primary-bg shadow-2xl z-20 cursor-ew-resize group"
                   style={{ left: `${sliderPos}%` }}
+                  onMouseDown={handleMouseDown}
+                  onTouchStart={handleTouchStart}
                 >
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 xs:w-10 sm:w-12 h-9 xs:h-10 sm:h-12 rounded-none bg-text border-2 border-primary-bg flex items-center justify-center shadow-2xl">
+                  {/* Invisible Hitbox to make grabbing easier */}
+                  <div className="absolute inset-y-0 -left-4 w-8 bg-transparent" />
+                  
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 xs:w-10 sm:w-12 h-9 xs:h-10 sm:h-12 rounded-none bg-text border-2 border-primary-bg flex items-center justify-center shadow-2xl pointer-events-none group-hover:scale-105 transition-transform duration-200">
                     <Sliders className="w-4 sm:w-5 h-4 sm:h-5 text-primary-bg" />
                   </div>
                 </div>

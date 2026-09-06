@@ -105,30 +105,33 @@ const SLIDES: SlideData[] = [
   },
 ];
 
-const EASE_LUXURY = [0.16, 1, 0.3, 1] as const;
+const EASE_LUXURY = [0.22, 1, 0.36, 1] as const;
 
 // Luxury Refined Editorial Motion Variants
 const imageVariants: Variants = {
   enter: (dir: number) => ({
     opacity: 0,
-    scale: 1.015,
-    x: dir > 0 ? 8 : -8,
+    scale: 1.03,
+    x: dir > 0 ? 12 : -12,
+    filter: "blur(4px)",
   }),
   center: {
     opacity: 1,
     scale: 1,
     x: 0,
+    filter: "blur(0px)",
     transition: {
-      duration: 0.55,
+      duration: 0.8,
       ease: EASE_LUXURY,
     },
   },
   exit: (dir: number) => ({
     opacity: 0,
-    scale: 1.015,
-    x: dir > 0 ? -8 : 8,
+    scale: 0.98,
+    x: dir > 0 ? -12 : 12,
+    filter: "blur(4px)",
     transition: {
-      duration: 0.35,
+      duration: 0.5,
       ease: EASE_LUXURY,
     },
   }),
@@ -139,26 +142,27 @@ const textContainerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.07,
-      delayChildren: 0.04,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
     },
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.25,
+      duration: 0.3,
       ease: EASE_LUXURY,
     },
   },
 };
 
 const textItemVariants: Variants = {
-  hidden: { opacity: 0, y: 8 },
+  hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
   visible: {
     opacity: 1,
     y: 0,
+    filter: "blur(0px)",
     transition: {
-      duration: 0.45,
+      duration: 0.7,
       ease: EASE_LUXURY,
     },
   },
@@ -185,6 +189,8 @@ export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
   const gestureLocked = useRef(false);
   const touchStartY = useRef(0);
   const touchLocked = useRef(false);
+  const unlockTimeRef = useRef(0);
+  const exitAccumulator = useRef(0);
 
   useEffect(() => {
     activeStageRef.current = activeStage;
@@ -224,6 +230,7 @@ export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
     if (!lenis || !isLockedRef.current) return;
     
     isLockedRef.current = false;
+    unlockTimeRef.current = Date.now();
     lenis.start();
   }, []);
 
@@ -249,7 +256,7 @@ export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
       const prevScroll = prevScrollRef.current;
       prevScrollRef.current = scrollY;
 
-      if (isLockedRef.current) return;
+      if (isLockedRef.current || Date.now() - unlockTimeRef.current < 800) return;
 
       const section = sectionRef.current;
       if (!section) return;
@@ -297,7 +304,7 @@ export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
       let isNewGesture = false;
 
       // Detect new physical gesture via silence OR sudden acceleration spike
-      if (timeDelta > 300) {
+      if (timeDelta > 250) {
         isNewGesture = true;
       } else if (absCurrent > absPrev * 2 && absCurrent > 15) {
         isNewGesture = true;
@@ -325,6 +332,25 @@ export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
 
       // We are trapped. Own the gesture.
       e.preventDefault();
+
+      // --- ESCAPE HATCH FOR FRUSTRATED MOUSE WHEEL USERS ---
+      if (currentStage === SLIDES.length - 1 && e.deltaY > 0) {
+        exitAccumulator.current += e.deltaY;
+        if (exitAccumulator.current > 500) {
+          unlockSection();
+          exitAccumulator.current = 0;
+          return;
+        }
+      } else if (currentStage === 0 && e.deltaY < 0) {
+        exitAccumulator.current += e.deltaY;
+        if (exitAccumulator.current < -500) {
+          unlockSection();
+          exitAccumulator.current = 0;
+          return;
+        }
+      } else {
+        exitAccumulator.current = 0;
+      }
 
       if (gestureLocked.current) return;
 
@@ -432,7 +458,7 @@ export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
           {/* ================= CENTER LARGER STATIC IMAGE CONTAINER ================= */}
           <div className="relative w-full my-auto flex items-center justify-center py-2 sm:py-3">
             {/* Enlarged Static Image Frame Container */}
-            <div className="relative w-full max-w-6xl h-[46vh] sm:h-[54vh] lg:h-[58vh] rounded-none overflow-hidden bg-secondary-bg border border-border shadow-sm">
+            <div className="relative w-full max-w-6xl h-[46vh] sm:h-[54vh] lg:h-[58vh] overflow-hidden bg-secondary-bg">
               <AnimatePresence mode="popLayout" custom={direction}>
                 <motion.div
                   key={current.num}
@@ -449,7 +475,7 @@ export const WhyHeaven: React.FC<WhyHeavenProps> = ({ onOpenConsultation }) => {
                     fill
                     priority
                     sizes="(max-width: 1024px) 96vw, 1400px"
-                    className="object-cover object-center w-full h-full rounded-none"
+                    className="object-cover object-center w-full h-full"
                   />
                 </motion.div>
               </AnimatePresence>
