@@ -18,7 +18,20 @@ export default function CenterLogoTab() {
         whileTap={{ scale: 0.96 }}
         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
       >
-        <Link href="/" className="flex flex-col items-center justify-center group">
+        <Link
+          href="/"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              if ((window as any).lenis) {
+                (window as any).lenis.scrollTo(0);
+              } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }
+          }}
+          className="flex flex-col items-center justify-center group"
+        >
           {/* HEAVEN with Gold Accent A (Reduced size under 1024px lg breakpoint) */}
           <h1 className="font-sangbleu-sunrise font-normal not-italic uppercase text-base xs:text-lg sm:text-2xl lg:text-[2.2rem] tracking-[0.08em] xs:tracking-[0.12em] sm:tracking-[0.15em] text-text leading-none block transition-colors group-hover:text-accent whitespace-nowrap">
             HE<span className="text-accent">A</span>VEN

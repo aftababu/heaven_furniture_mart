@@ -20,11 +20,11 @@ export const BrandStatement: React.FC = () => {
           loop
           muted
           playsInline
-          poster="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=2000"
+          poster="https://res.cloudinary.com/dmglab5ej/image/upload/c_thumb,w_200,g_face/v1788443692/hackathon/inside_mkpujz.webp"
           className="object-cover w-full h-full transform transition-transform duration-[15s] ease-out scale-100 group-hover:scale-105"
         >
           <source
-            src="https://res.cloudinary.com/dmglab5ej/video/upload/v1788277092/hackathon/heaven_furniture_mart_snni0t.mp4"
+            src="https://res.cloudinary.com/dmglab5ej/video/upload/v1788662254/hackathon/heaven_furniture_mart_mcgsam.mp4"
             type="video/mp4"
           />
         </video>

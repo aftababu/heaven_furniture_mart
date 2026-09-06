@@ -55,7 +55,7 @@ export const ShowroomMap: React.FC = () => {
           </div>
 
           <a
-            href="https://maps.google.com/?q=Agrabad+Access+Road,+Chattogram"
+            href="https://maps.app.goo.gl/G3oVqTfunGKS5q2C8"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 font-hanken text-xs uppercase tracking-[0.2em] font-bold text-text hover:text-accent border-b border-text pb-2 hover:border-accent transition-all self-start"
@@ -94,14 +94,20 @@ export const ShowroomMap: React.FC = () => {
               >
                 {/* Showroom Image */}
                 <div className="relative w-full aspect-[16/10] rounded-none overflow-hidden mb-2 sm:mb-2.5 bg-secondary-bg">
-                  <Image
-                    src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp"
-                    alt={t("showroomAltImg")}
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 640px) 210px, 270px"
-                    className="w-full h-full object-cover object-center"
-                  />
+                  <a
+                    href="https://maps.app.goo.gl/G3oVqTfunGKS5q2C8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src="https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/shop_is53xd.webp"
+                      alt={t("showroomAltImg")}
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 640px) 210px, 270px"
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </a>
                   <div className="absolute top-2 right-2 bg-text/90 backdrop-blur-md px-2 py-0.5 rounded-sm text-[0.6rem] sm:text-[0.62rem] font-hanken font-bold tracking-widest text-primary-bg uppercase border border-primary-bg/10">
                     {t("openBadge")}
                   </div>

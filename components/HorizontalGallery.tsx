@@ -337,7 +337,7 @@ export const HorizontalGallery: React.FC = () => {
                   {resolveText("chronologyEyebrow", "CHRONOLOGY")}
                 </span>
                 <h3 className="font-sangbleu-sunrise text-2xl text-text font-normal leading-snug">
-                  {lang === "bn" ? "আমাদের মাইলফলক" : "Milestones of Craft"}
+                  {t("milestonesTitle")}
                 </h3>
               </div>
               {/* Accent Line Below Pill */}
@@ -485,17 +485,8 @@ export const HorizontalGallery: React.FC = () => {
                   {resolveText("chronologyEyebrow", "CHRONOLOGY")}
                 </span>
                 <h3 className="font-sangbleu-sunrise text-2xl sm:text-4xl text-text font-normal leading-snug">
-                  {lang === "bn" ? (
-                    <>
-                      আমাদের <br />
-                      <span className="italic font-light">মাইলফলক</span>
-                    </>
-                  ) : (
-                    <>
-                      Milestones <br />
-                      <span className="italic font-light">of Craft</span>
-                    </>
-                  )}
+                  {t("milestonesTitleLine1")} <br />
+                  <span className="italic font-light">{t("milestonesTitleLine2")}</span>
                 </h3>
                 <div className="flex items-center justify-center gap-2 text-accent text-xs mt-2 opacity-80">
                   <span className="h-[1px] w-5 bg-accent/50" />

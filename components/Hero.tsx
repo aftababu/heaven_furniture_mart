@@ -7,10 +7,10 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface HeroProps {
-  onOpenConsultation?: () => void;
+  onOpenConsultation: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = () => {
+export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
   const { lang, t } = useLanguage();
 
   const heroRef = useRef<HTMLElement>(null);
@@ -180,19 +180,23 @@ export const Hero: React.FC<HeroProps> = () => {
 
           {/* Architectural Action Row */}
           <div className="flex items-center">
-            <motion.a
+            <motion.button
               whileHover={{ translateX: 10 }}
               whileTap={{ scale: 0.98 }}
-              href="#collections"
+              // href="#collections"
+              onClick={() => {
+                // setMobileMenuOpen(false);
+                onOpenConsultation();
+              }}
               transition={{
                 duration: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="font-hanken text-xs sm:text-sm uppercase tracking-[0.22em] font-bold text-text hover:text-accent flex items-center gap-3 border-b-2 border-text pb-1.5 hover:border-accent transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-accent"
+              className="font-hanken cursor-pointer text-xs sm:text-sm uppercase tracking-[0.22em] font-bold text-text hover:text-accent flex items-center gap-3 border-b-2 border-text pb-1.5 hover:border-accent transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-accent"
             >
               <span>{t("heroCtaSecondary")}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 text-accent" />
-            </motion.a>
+            </motion.button>
           </div>
         </motion.div>
 

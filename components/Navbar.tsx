@@ -18,6 +18,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    target: string,
+  ) => {
+    e.preventDefault();
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(target);
+    } else {
+      document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+    }
+    setMobileMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -74,18 +87,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
           <nav className="hidden md:flex gap-4 md:gap-5 lg:gap-8 items-center">
             <a
               href="#collections"
+              onClick={(e) => handleNavClick(e, "#collections")}
               className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-text-muted hover:text-accent transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-accent"
             >
               {t("navShop")}
             </a>
             <a
               href="#bespoke"
+              onClick={(e) => handleNavClick(e, "#bespoke")}
               className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-text-muted hover:text-accent transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-accent"
             >
               {t("navBespoke")}
             </a>
             <a
               href="#why-heaven"
+              onClick={(e) => handleNavClick(e, "#why-heaven")}
               className="font-hanken text-[0.68rem] md:text-[0.7rem] lg:text-[0.72rem] tracking-[0.16em] md:tracking-[0.18em] lg:tracking-[0.2em] text-text-muted hover:text-accent transition-colors uppercase font-semibold focus-visible:outline-2 focus-visible:outline-accent"
             >
               {t("navWhyHeaven")}
@@ -113,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
             <div className="flex items-center text-[0.65rem] md:text-[0.68rem] tracking-[0.18em] md:tracking-[0.22em] font-hanken uppercase select-none">
               <button
                 onClick={() => setLang("en")}
-                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent ${
+                className={`transition-colors cursor-pointer  duration-200 focus-visible:outline-2 focus-visible:outline-accent ${
                   lang === "en"
                     ? "text-text font-semibold"
                     : "text-text-muted font-normal hover:text-text"
@@ -126,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
               </span>
               <button
                 onClick={() => setLang("bn")}
-                className={`transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent ${
+                className={`transition-colors cursor-pointer  duration-200 focus-visible:outline-2 focus-visible:outline-accent ${
                   lang === "bn"
                     ? "text-text font-semibold"
                     : "text-text-muted font-normal hover:text-text"
@@ -185,21 +201,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
             <nav className="flex flex-col gap-6 py-12">
               <a
                 href="#collections"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, "#collections")}
                 className="font-sangbleu-sunrise font-light text-4xl text-text hover:text-accent transition-colors"
               >
                 {t("navShop")}
               </a>
               <a
                 href="#bespoke"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, "#bespoke")}
                 className="font-sangbleu-sunrise font-light text-4xl text-text hover:text-accent transition-colors"
               >
                 {t("navBespoke")}
               </a>
               <a
                 href="#why-heaven"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, "#why-heaven")}
                 className="font-sangbleu-sunrise font-light text-4xl text-text hover:text-accent transition-colors"
               >
                 {t("navWhyHeaven")}

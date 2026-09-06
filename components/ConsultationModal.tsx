@@ -192,11 +192,11 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     const payload = [
       "*HEAVEN FURNITURE MART — ATELIER COMMISSION*",
       "──────────────────────────────",
-      `*Client:* ${name.trim() || (lang === "bn" ? "অনুল্লেখিত" : "Not Provided")}`,
-      `*Contact:* ${phone.trim() || (lang === "bn" ? "অনুল্লেখিত" : "Not Provided")}`,
+      `*Client:* ${name.trim() || t("modalNotProvided")}`,
+      `*Contact:* ${phone.trim() || t("modalNotProvided")}`,
       `*Domain:* ${getDomainLabel(domain)}`,
       `*Materiality:* ${getTimberLabel(timber)}`,
-      `*Spatial Brief:* ${notes.trim() || (lang === "bn" ? "কোনো বিশেষ মাপ নেই" : "No notes specified")}`,
+      `*Spatial Brief:* ${notes.trim() || t("modalNoNotes")}`,
       "──────────────────────────────",
       "*Dispatch:* Agrabad Access Road Showroom",
     ].join("\n");

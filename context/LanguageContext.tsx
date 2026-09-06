@@ -48,7 +48,10 @@ export const translations: Translations = {
     en: "Book A Design Consultation",
     bn: "ডিজাইন কনসালটেশন বুক করুন",
   },
-  heroCtaSecondary: { en: "Explore Our Work", bn: "আমাদের কাজ দেখুন" },
+  heroCtaSecondary: {
+    en: "START YOUR PROJECT",
+    bn: "প্রকল্প শুরু করুন",
+  },
   scrollDiscover: {
     en: "Scroll to discover",
     bn: "আরও দেখতে নিচে স্ক্রোল করুন",
@@ -259,7 +262,7 @@ export const translations: Translations = {
     bn: "সতর্কতার সাথে আপনার ঘরে পৌঁছে নিখুঁতভাবে সেট করে দেওয়া হয়।",
   },
   startProject: {
-    en: "START YOUR BESPOKE PROJECT ",
+    en: "DESIGN YOUR PIECE ",
     bn: "আপনার কাস্টম প্রজেক্ট শুরু করুন ",
   },
   standardLabel: { en: "STANDARD MASS-PRODUCED", bn: "সাধারণ রেডিমেড আসবাব" },
@@ -470,6 +473,142 @@ export const translations: Translations = {
     en: "© 2026 HEAVEN FURNITURE MART",
     bn: "© ২০২৬ হেভেন ফার্নিচার মার্ট",
   },
+
+  milestonesTitleLine1: { en: "Milestones", bn: "আমাদের" },
+  milestonesTitleLine2: { en: "of Craft", bn: "মাইলফলক" },
+
+  // Collections Hotspots
+  hotspotLivingSofaName: {
+    en: "Interior Wodden Wall",
+    bn: "ইন্টেরিয়র কাঠের দেয়াল",
+  },
+  hotspotLivingSofaSpec: {
+    en: "Teak & High-Density Foam",
+    bn: "সেগুন কাঠ ও হাই-ডেনসিটি ফোম",
+  },
+  hotspotLivingTableName: {
+    en: "Premium Long Sofa",
+    bn: "প্রিমিয়াম লং সোফা",
+  },
+  hotspotLivingTableSpec: {
+    en: "Hand-Polished Solid Teak",
+    bn: "পলিশ করা সিজনড সেগুন কাঠ",
+  },
+
+  hotspotBedroomBedName: {
+    en: "Royal King Canopy Bed",
+    bn: "রয়্যাল কিং সাইজ বেড",
+  },
+  hotspotBedroomBedSpec: {
+    en: "Mahogany & Cushioned Headboard",
+    bn: "মেহগনি কাঠ ও কুশন হেডবোর্ড",
+  },
+  hotspotBedroomConsoleName: {
+    en: "Minimalist Bedside Console",
+    bn: "মিনিমালিস্ট সাইড টেবিল",
+  },
+  hotspotBedroomConsoleSpec: {
+    en: "Brass Accents & Teak Finish",
+    bn: "পিতলের নকশা ও সেগুন ফিনিশ",
+  },
+
+  hotspotDiningTableName: {
+    en: "Heritage 5-Seater Table",
+    bn: "৫-সিটার ডাইনিং টেবিল",
+  },
+  hotspotDiningTableSpec: {
+    en: "Solid Seasoned Burmese Teak",
+    bn: "সিজনড বার্মিজ সেগুন কাঠ",
+  },
+  hotspotDiningChairName: {
+    en: "Sculpted Dining Chair",
+    bn: "স্কাল্পটেড ডাইনিং চেয়ার",
+  },
+  hotspotDiningChairSpec: {
+    en: "Ergonomic Teak & Leatherette",
+    bn: "সেগুন কাঠ ও লেদার সিট",
+  },
+
+  hotspotBespokeUnitName: {
+    en: "Custom Wall Console Unit",
+    bn: "কাস্টম ওয়াল কনসোল",
+  },
+  hotspotBespokeUnitSpec: {
+    en: "Integrated Architectural Lighting",
+    bn: "ইনবিল্ট লাইটিং ও কাস্টম উডওয়ার্ক",
+  },
+
+  // Why Heaven Slides
+  whSlide1Tag: { en: "INITIAL CONSULTATION", bn: "পরামর্শ ও পরিকল্পনা" },
+  whSlide1Title: { en: "Free design consultation", bn: "ফ্রি ডিজাইন পরামর্শ" },
+  whSlide1Desc: {
+    en: "Work directly with our expert interior architects to bring your dream living space vision to life.",
+    bn: "আপনার স্বপ্নের ঘর সাজাতে অভিজ্ঞ ফার্নিচার ডিজাইনারের সরাসরি ফ্রি পরামর্শ পান।",
+  },
+
+  whSlide2Tag: { en: "BESPOKE ARCHITECTURE", bn: "কাস্টম ফিটিং" },
+  whSlide2Title: {
+    en: "Fully bespoke — built to your space, not mass-produced",
+    bn: "সম্পূর্ণ কাস্টম — প্রতিটি ফার্নিচার ঘরের মাপে তৈরি, মাস-প্রোডিউসড নয়",
+  },
+  whSlide2Desc: {
+    en: "Every piece is custom-tailored to your room's exact architectural dimensions and personal aesthetic.",
+    bn: "ঘরের নিখুঁত মাপে এবং আপনার নিজস্ব স্টাইল ও স্বাদ অনুযায়ী তৈরি সেরা কাস্টম ফার্নিচার।",
+  },
+
+  whSlide3Tag: { en: "MATERIALITY & TIMBER", bn: "কায়িক কারিগরি" },
+  whSlide3Title: {
+    en: "Premium wood & materials, skilled in-house craftsmanship",
+    bn: "প্রিমিয়াম কাঠ ও উপাদান, অভিজ্ঞ কারিগরদের দক্ষ হাত",
+  },
+  whSlide3Desc: {
+    en: "Seasoned solid teak, mahogany, and anti-warp engineered wood with hand-polished luxury finishes.",
+    bn: "উন্নত মেহগনি ও সেগুন কাঠ এবং ইন-হাউজ দক্ষ কারিগরদের টেকসই হাতের নিখুঁত কাজ।",
+  },
+
+  whSlide4Tag: { en: "THE PHYSICAL SHOWROOM", bn: "শোরুম ভিজিট" },
+  whSlide4Title: {
+    en: "Large physical showroom in Chattogram (Agrabad)",
+    bn: "চট্টগ্রামের আগ্রাবাদে সুবিশাল নিজস্ব শোরুম",
+  },
+  whSlide4Desc: {
+    en: "Touch, feel, and experience our handcrafted luxury furniture collections in person at Agrabad Access Road.",
+    bn: "আগ্রাবাদ এক্সেস রোডে সরাসরি শোরুম ভিজিট করে ফার্নিচারের ফিনিশিং ও কোয়ালিটি স্বচক্ষে দেখুন।",
+  },
+
+  whSlide5Tag: { en: "WHITE-GLOVE SERVICE", bn: "হোম সার্ভিস" },
+  whSlide5Title: {
+    en: "Delivery & installation included",
+    bn: "ডেলিভারি ও প্রফেশনাল ফিটিং ইনক্লুডেড",
+  },
+  whSlide5Desc: {
+    en: "Seamless white-glove delivery and precision setup directly at your doorstep by our skilled team.",
+    bn: "ঝামেলাহীন হোম ডেলিভারি এবং অভিজ্ঞ ফিটিং টিম দিয়ে নিখুঁত ইনস্টলেশন নিশ্চয়তা।",
+  },
+
+  whSlide6Tag: { en: "FINANCIAL COMFORT", bn: "সহজ পেমেন্ট" },
+  whSlide6Title: {
+    en: "Easy payment options",
+    bn: "সহজ ও সুবিধাজনক পেমেন্ট অপশন",
+  },
+  whSlide6Desc: {
+    en: "Flexible milestone payment plans and installment structures tailored for hassle-free home furnishing.",
+    bn: "বাজেট ফ্রেন্ডলি কিস্তি ও পার্ট পেমেন্ট সুবিধায় নিজের পছন্দমতো ঘর সাজান স্বাচ্ছন্দে।",
+  },
+
+  whSlide7Tag: { en: "ACCREDITED HERITAGE", bn: "বিশ্বস্ততা" },
+  whSlide7Title: {
+    en: "Trusted by hundreds of happy homeowners",
+    bn: "শত শত সন্তুষ্ট গৃহমালিকের বিশ্বস্ত পছন্দ",
+  },
+  whSlide7Desc: {
+    en: "Years of proven artisan excellence, structural warranty, and delighted homeowners across Bangladesh.",
+    bn: "চট্টগ্রামজুড়ে শত শত সন্তুষ্ট কাস্টমারের দীর্ঘদিনের বিশ্বস্ততা ও গুণগত মানের সেরা গ্যারান্টি।",
+  },
+
+  // Consultation Modal
+  modalNotProvided: { en: "Not Provided", bn: "অনুল্লেখিত" },
+  modalNoNotes: { en: "No notes specified", bn: "কোনো বিশেষ মাপ নেই" },
 };
 
 interface LanguageContextType {

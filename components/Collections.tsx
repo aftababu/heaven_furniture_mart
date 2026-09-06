@@ -10,10 +10,8 @@ interface HotspotProduct {
   id: string;
   top: string;
   left: string;
-  nameEn: string;
-  nameBn: string;
-  specEn: string;
-  specBn: string;
+  nameKey: string;
+  specKey: string;
   price: string;
   img: string;
 }
@@ -37,23 +35,19 @@ const categories: CategoryItem[] = [
         id: "living-sofa",
         top: "52%",
         left: "38%",
-        nameEn: "Velvet Modular Sofa",
-        nameBn: "ভেলভেট মডুলার সোফা",
-        specEn: "Teak & High-Density Foam",
-        specBn: "সেগুন কাঠ ও হাই-ডেনসিটি ফোম",
+        nameKey: "hotspotLivingSofaName",
+        specKey: "hotspotLivingSofaSpec",
         price: "৳ 1,45,000",
-        img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/sofa_c2txdn.webp",
+        img: "https://res.cloudinary.com/dmglab5ej/image/upload/w_200,h_200,c_limit,e_blur:400,o_90,b_black/l_text:arial_80:®,ar_1:1,c_lfill,o_60,co_rgb:ffffff,b_rgb:000000,r_max/v1788443692/hackathon/living_bccxod.webp",
       },
       {
         id: "living-table",
         top: "76%",
         left: "68%",
-        nameEn: "Artisan Teak Coffee Table",
-        nameBn: "আর্টিসান সেগুন টি-টেবিল",
-        specEn: "Hand-Polished Solid Teak",
-        specBn: "পলিশ করা সিজনড সেগুন কাঠ",
+        nameKey: "hotspotLivingTableName",
+        specKey: "hotspotLivingTableSpec",
         price: "৳ 38,000",
-        img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443691/hackathon/tabil_iabih2.webp",
+        img: "https://res.cloudinary.com/dmglab5ej/image/upload/w_200,h_200,c_limit,e_blur:400,o_90,b_black/l_text:arial_80:®,ar_1:1,c_lfill,o_60,co_rgb:ffffff,b_rgb:000000,r_max/v1788443692/hackathon/living_bccxod.webp",
       },
     ],
   },
@@ -67,23 +61,19 @@ const categories: CategoryItem[] = [
         id: "bedroom-bed",
         top: "46%",
         left: "48%",
-        nameEn: "Royal King Canopy Bed",
-        nameBn: "রয়্যাল কিং সাইজ বেড",
-        specEn: "Mahogany & Cushioned Headboard",
-        specBn: "মেহগনি কাঠ ও কুশন হেডবোর্ড",
+        nameKey: "hotspotBedroomBedName",
+        specKey: "hotspotBedroomBedSpec",
         price: "৳ 1,25,000",
-        img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443694/hackathon/bedroom_ztinrh.webp",
+        img: "https://res.cloudinary.com/dmglab5ej/image/upload/w_200,h_200,c_limit,e_blur:400,o_90,b_black/l_text:arial_80:®,ar_1:1,c_lfill,o_60,co_rgb:ffffff,b_rgb:000000,r_max/v1788443694/hackathon/bedroom_ztinrh.webp",
       },
       {
         id: "bedroom-console",
         top: "65%",
         left: "82%",
-        nameEn: "Minimalist Bedside Console",
-        nameBn: "মিনিমালিস্ট সাইড টেবিল",
-        specEn: "Brass Accents & Teak Finish",
-        specBn: "পিতলের নকশা ও সেগুন ফিনিশ",
+        nameKey: "hotspotBedroomConsoleName",
+        specKey: "hotspotBedroomConsoleSpec",
         price: "৳ 22,500",
-        img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/design_dtfmyh.webp",
+        img: "https://res.cloudinary.com/dmglab5ej/image/upload/w_200,h_200,c_limit,e_blur:400,o_90,b_black/l_text:arial_80:®,ar_1:1,c_lfill,o_60,co_rgb:ffffff,b_rgb:000000,r_max/v1788443694/hackathon/bedroom_ztinrh.webp",
       },
     ],
   },
@@ -97,23 +87,19 @@ const categories: CategoryItem[] = [
         id: "dining-table",
         top: "52%",
         left: "48%",
-        nameEn: "Heritage 8-Seater Table",
-        nameBn: "৮-সিটার ডাইনিং টেবিল",
-        specEn: "Solid Seasoned Burmese Teak",
-        specBn: "সিজনড বার্মিজ সেগুন কাঠ",
+        nameKey: "hotspotDiningTableName",
+        specKey: "hotspotDiningTableSpec",
         price: "৳ 1,85,000",
-        img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443692/hackathon/din_quuemd.webp",
+        img: "https://res.cloudinary.com/dmglab5ej/image/upload/w_200,h_200,c_limit,e_blur:400,o_90,b_black/l_text:arial_80:®,ar_1:1,c_lfill,o_60,co_rgb:ffffff,b_rgb:000000,r_max/v1788443692/hackathon/din_quuemd.webp",
       },
       {
         id: "dining-chair",
         top: "68%",
         left: "25%",
-        nameEn: "Sculpted Dining Chair",
-        nameBn: "স্কাল্পটেড ডাইনিং চেয়ার",
-        specEn: "Ergonomic Teak & Leatherette",
-        specBn: "সেগুন কাঠ ও লেদার সিট",
+        nameKey: "hotspotDiningChairName",
+        specKey: "hotspotDiningChairSpec",
         price: "৳ 18,500",
-        img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788445505/hackathon/wood_sumsjx.webp",
+        img: "https://res.cloudinary.com/dmglab5ej/image/upload/w_200,h_200,c_limit,e_blur:400,o_90,b_black/l_text:arial_80:®,ar_1:1,c_lfill,o_60,co_rgb:ffffff,b_rgb:000000,r_max/v1788443692/hackathon/din_quuemd.webp",
       },
     ],
   },
@@ -126,13 +112,11 @@ const categories: CategoryItem[] = [
       {
         id: "bespoke-unit",
         top: "42%",
-        left: "58%",
-        nameEn: "Custom Wall Console Unit",
-        nameBn: "কাস্টম ওয়াল কনসোল",
-        specEn: "Integrated Architectural Lighting",
-        specBn: "ইনবিল্ট লাইটিং ও কাস্টম উডওয়ার্ক",
+        left: "65%",
+        nameKey: "hotspotBespokeUnitName",
+        specKey: "hotspotBespokeUnitSpec",
         price: "৳ 2,10,000",
-        img: "https://res.cloudinary.com/dmglab5ej/image/upload/v1788443693/hackathon/card1_xhse8b.webp",
+        img: "https://res.cloudinary.com/dmglab5ej/image/upload/w_200,h_200,c_limit,e_blur:400,o_90,b_black/l_text:arial_80:®,ar_1:1,c_lfill,o_60,co_rgb:ffffff,b_rgb:000000,r_max/v1788443693/hackathon/bespoke_bhel21.webp",
       },
     ],
   },
@@ -214,7 +198,7 @@ export const Collections: React.FC<CollectionsProps> = ({
                       {/* Clean Black Circular Pin with White Center Dot */}
                       <button
                         onClick={(e) => toggleHotspot(e, hs.id)}
-                        aria-label={`View product details for ${hs.nameEn}`}
+                        aria-label={`View product details for ${t(hs.nameKey)}`}
                         className="relative group/pin focus:outline-none cursor-pointer p-1.5 flex items-center justify-center"
                       >
                         {/* Black Outer Circular Layer (0.1 Opacity) */}
@@ -252,26 +236,22 @@ export const Collections: React.FC<CollectionsProps> = ({
                                 <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-none overflow-hidden bg-secondary-bg shrink-0 border border-border/50">
                                   <Image
                                     src={hs.img}
-                                    alt={lang === "bn" ? hs.nameBn : hs.nameEn}
+                                    alt={t(hs.nameKey)}
                                     fill
-                                    sizes="60px"
-                                    className="object-cover w-full h-full"
+                                    className="object-cover group-hover/btn:scale-105 transition-transform duration-500"
                                   />
                                 </div>
-
-                                {/* Text Details */}
-                                <div className="flex-1 min-w-0">
-                                  <h4 className="font-hanken text-[0.75rem] sm:text-xs font-bold text-[#2c221e] leading-snug truncate group-hover/card:text-accent transition-colors">
-                                    {lang === "bn" ? hs.nameBn : hs.nameEn}
+                                <div className="flex-1 py-1 pr-2">
+                                  <h4 className="font-hanken text-[0.8rem] sm:text-sm font-bold text-text leading-tight mb-0.5">
+                                    {t(hs.nameKey)}
                                   </h4>
-                                  <p className="font-hanken text-[0.62rem] text-[#73655c] truncate mt-0.5">
-                                    {lang === "bn" ? hs.specBn : hs.specEn}
+                                  <p className="font-hanken text-[0.65rem] sm:text-xs text-text-muted mb-1 line-clamp-1">
+                                    {t(hs.specKey)}
                                   </p>
                                   <span className="font-sangbleu-sunrise text-[0.75rem] sm:text-xs font-semibold text-accent block mt-0.5">
                                     {hs.price}
                                   </span>
                                 </div>
-
                                 {/* Right Arrow */}
                                 <ChevronRight className="w-4 h-4 text-[#a09488] group-hover/card:text-accent group-hover/card:translate-x-0.5 transition-all shrink-0 ml-1" />
                               </div>

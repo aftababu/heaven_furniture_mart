@@ -13,6 +13,15 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
   const { t } = useLanguage();
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(target);
+    } else {
+      document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-primary-bg text-text py-16 xs:py-20 sm:py-28 px-4 xs:px-6 sm:px-12 border-t border-border relative overflow-hidden">
       <div className="max-w-[1600px] mx-auto">
@@ -23,6 +32,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
             <div className="mb-6 lg:mb-0">
               <Link
                 href="/"
+                onClick={(e) => {
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    if ((window as any).lenis) {
+                      (window as any).lenis.scrollTo(0);
+                    } else {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }
+                }}
                 className="flex flex-col items-start justify-center "
               >
                 <h1 className="font-sangbleu-sunrise font-normal not-italic uppercase text-base xs:text-lg sm:text-2xl lg:text-[2.2rem] tracking-[0.08em] xs:tracking-[0.12em] sm:tracking-[0.15em] text-text leading-none block transition-colors group-hover:text-accent whitespace-nowrap">
@@ -78,6 +97,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 >
                   <a
                     href="#collections"
+                    onClick={(e) => handleNavClick(e, "#collections")}
                     className="hover:text-accent/80  transition-colors leading-relaxed"
                   >
                     {t("catLiving")}
@@ -88,6 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 >
                   <a
                     href="#collections"
+                    onClick={(e) => handleNavClick(e, "#collections")}
                     className="hover:text-accent/80 transition-colors leading-relaxed"
                   >
                     {t("catBedroom")}
@@ -98,6 +119,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 >
                   <a
                     href="#collections"
+                    onClick={(e) => handleNavClick(e, "#collections")}
                     className="hover:text-accent/80 transition-colors leading-relaxed"
                   >
                     {t("catDining")}
@@ -108,6 +130,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 >
                   <a
                     href="#bespoke"
+                    onClick={(e) => handleNavClick(e, "#bespoke")}
                     className="hover:text-accent/80 transition-colors leading-relaxed"
                   >
                     {t("catBespoke")}
@@ -126,6 +149,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 >
                   <a
                     href="#about"
+                    onClick={(e) => handleNavClick(e, "#about")}
                     className="hover:text-accent/80 transition-colors leading-relaxed"
                   >
                     {t("footerAboutUs")}
@@ -136,6 +160,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 >
                   <a
                     href="#why-heaven"
+                    onClick={(e) => handleNavClick(e, "#why-heaven")}
                     className="hover:text-accent/80 transition-colors leading-relaxed"
                   >
                     {t("footerOurCraft")}

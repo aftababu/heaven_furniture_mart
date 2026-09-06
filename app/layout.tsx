@@ -181,6 +181,7 @@ export default function RootLayout({
       className={`${moirest.variable} ${sangBleuSunrise.variable} ${notoSerifBengali.variable} ${notoSansBengali.variable} scroll-smooth h-full antialiased`}
     >
       <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" />
         <meta
           name="google-site-verification"
           content="VGbvF1AhtWU-atZCC7AlYj-YYkRvXaUsuGJSHMFAato"
